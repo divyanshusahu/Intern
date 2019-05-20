@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Air Parachute</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <!-- jQuery CDN - Slim version -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <div class="wrapper">
+        <!-- sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Software Name</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#file" data-toggle="collapse" aria-expended="false" class="dropdown-toggle">File</a>
+                    <ul class="collapse list-unstyled" id="file">
+                        <li>
+                            <a href="#">New</a>
+                        </li>
+                        <li>
+                            <a href="#">Open</a>
+                        </li>
+                        <li>
+                            <a href="#">Import VTK</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">Exit</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#view" data-toggle="collapse" aria-expended="false" class="dropdown-toggle">View</a>
+                    <ul class="collapse list-unstyled" id="view">
+                        <li>
+                            <a href="#">Default</a>
+                        </li>
+                        <li>
+                            <a href="#">Isomeric</a>
+                        </li>
+                        <li>
+                            <a href="#">Front View</a>
+                        </li>
+                        <li>
+                            <a href="#">Back View</a>
+                        </li>
+                        <li>
+                            <a href="#">Left View</a>
+                        </li>
+                        <li>
+                            <a href="#">Right View</a>
+                        </li>
+                        <li>
+                            <a href="#">Top View</a>
+                        </li>
+                        <li>
+                            <a href="#">Bottom View</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#input_parameter" data-toggle="collapse" aria-expended="false" class="dropdown-toggle">Input Parameter</a>
+                    <ul class="collapse list-unstyled" id="input_parameter">
+                        <li>
+                            <a href="#">PlanForm</a>
+                        </li>
+                        <li>
+                            <a href="#">Airfoil</a>
+                        </li>
+                        <li>
+                            <a href="#">Volute</a>
+                        </li>
+                        <li>
+                            <a href="#">Anchor Location</a>
+                        </li>
+                        <li>
+                            <a href="#">Flat Panels</a>
+                        </li>
+                        <li>
+                            <a href="#">Rigging Lines Arrangement</a>
+                        </li>
+                        <li>
+                            <a href="#">Brake Lines</a>
+                        </li>
+                        <li>
+                            <a href="#">Run</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">Advance Input</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#round_canopy" data-toggle="collapse" aria-expended="false" class="dropdown-toggle">Round Canopy</a>
+                    <ul class="collapse list-unstyled" id="round_canopy">
+                        <li>
+                            <a href="#">Input Parameter</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#solver" data-toggle="collapse" aria-expended="false" class="dropdown-toggle">Solver</a>
+                    <ul class="collapse list-unstyled" id="solver">
+                        <li>
+                            <a href="#">Stop Solver</a>
+                        </li>
+                        <li>
+                            <a href="#">Run Parez</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#help" data-toggle="collapse" aria-expended="false" class="dropdown-toggle">Help</a>
+                    <ul class="collapse list-unstyled" id="help">
+                        <li>
+                            <a href="#">Manual</a>
+                        </li>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- Software Display -->
+        <div id="content">
+
+            <!-- Top navigation bar for some shotcuts -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Com 1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Com 2</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Com 3</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Com 4</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Com 5</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Run</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Box for Output -->
+            <div id="output">
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>
