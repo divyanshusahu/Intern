@@ -212,11 +212,6 @@ a[data-toggle="collapse"] {
     opacity: 0.8
 }
 
-:target {
-    visibility: hidden;
-    display: none;
-}
-
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
