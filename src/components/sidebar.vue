@@ -7,26 +7,33 @@
     </div>
 
     <ul class="list-unstyled components">
-      <li>
-        <a href="#file" data-toggle="collapse" aria-expended="false" class="dropdown-toggle">File</a>
-        <ul class="collapse list-unstyled" id="file">
-          <li>
-            <a href="#">New</a>
-          </li>
-          <li>
-            <a href="#">Open</a>
-          </li>
-          <li>
-            <a href="#">Import VTK</a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#">Exit</a>
-          </li>
-        </ul>
-      </li>
+      <fileSidebar />
+      <viewSidebar />
+      <inputParameterSidebar />
+      <roundCanopySidebar />
+      <solverSidebar />
+      <helpSidebar />
     </ul>
   
-	</nav>
-
+  </nav>
 </template>
+
+<script>
+import fileSidebar from './fileSidebar.vue'
+import viewSidebar from './viewSidebar.vue'
+import inputParameterSidebar from './inputParameterSidebar.vue'
+import roundCanopySidebar from './roundCanopySidebar.vue'
+import solverSidebar from './solverSidebar.vue'
+import helpSidebar from './helpSidebar.vue'
+
+export default {
+  components : {
+    fileSidebar,
+    viewSidebar,
+    inputParameterSidebar,
+    roundCanopySidebar,
+    solverSidebar,
+    helpSidebar
+  }
+}
+</script>
