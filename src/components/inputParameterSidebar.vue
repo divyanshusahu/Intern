@@ -1,7 +1,8 @@
 <template>
   <li>
         <a href="#" data-toggle="collapse" aria-expended="false" class="dropdown-toggle"
-        v-on:click="input_parameter_flag = !input_parameter_flag">Input Parameter</a>
+        v-on:click="input_parameter_flag = !input_parameter_flag">
+        <i class="fas fa-keyboard"></i>Input Parameter</a>
         <ul class="list-unstyled" id="input_parameter" v-bind:class="{collapse: input_parameter_flag}">
           <li>
             <a href="#" id="btn_planform">PlanForm</a>

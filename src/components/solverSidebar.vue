@@ -1,7 +1,7 @@
 <template>
 	<li>
   	<a href="#" data-toggle="collapse" aria-expended="false" class="dropdown-toggle"
-		v-on:click="solver_flag = !solver_flag">Solver</a>
+		v-on:click="solver_flag = !solver_flag"><i class="fas fa-play"></i>Solver</a>
     <ul class="list-unstyled" id="solver" v-bind:class="{collapse : solver_flag}">
       <li>
         <a href="#">Stop Solver</a>

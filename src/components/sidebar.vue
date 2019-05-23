@@ -3,7 +3,7 @@
 	<nav id="sidebar">
     
 		<div class="sidebar-header">
-      <h3>Software Name</h3>
+      <h3 style="text-align: center;">RAM AIR PARACHUTE</h3>
     </div>
 
     <ul class="list-unstyled components">

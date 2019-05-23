@@ -1,7 +1,8 @@
 <template>
   <li>
         <a href="#" data-toggle="collapse" aria-expended="false" class="dropdown-toggle" 
-        v-on:click="view_flag = !view_flag">View</a>
+        v-on:click="view_flag = !view_flag">
+        <i class="fas fa-eye"></i>View</a>
         <ul class="list-unstyled" id="view" v-bind:class="{collapse: view_flag}">
           <li>
             <a href="#">Default</a>

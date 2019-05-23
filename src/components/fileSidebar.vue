@@ -1,8 +1,9 @@
 <template>
     <li>
         <a href="#" data-toggle="collapse" aria-expended="false" class="dropdown-toggle"
-        v-on:click="file_flag = !file_flag">File</a>
-        <ul class="list-unstyled" id="file" v-bind:class="{collapse: file_flag}">
+        v-on:click="file_flag = !file_flag">
+        <i class="fas fa-file"></i>File</a>
+        <ul class="list-unstyled nav3" id="file" v-bind:class="{collapse: file_flag}">
           <li>
             <a href="#">New</a>
           </li>
