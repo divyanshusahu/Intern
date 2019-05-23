@@ -5,7 +5,8 @@
     <div class="wrapper">
       <sidebar />
       <div id="content">
-        
+        <topbar />
+        <softwareOutput />
       </div>
     </div>
 
@@ -15,11 +16,15 @@
 
 <script>
 import sidebar from './components/sidebar.vue'
+import topbar from './components/topbar.vue'
+import softwareOutput from './components/softwareOutput.vue'
 
 export default {
   name: 'app',
   components: {
-    sidebar
+    sidebar,
+    topbar,
+    softwareOutput
   },
 }
 </script>
@@ -39,5 +44,7 @@ export default {
 
 @import 'assets/css/wrapper.css';
 @import 'assets/css/sidebar.css';
+@import 'assets/css/topbar.css';
+@import 'assets/css/softwareOutput.css';
 
 </style>

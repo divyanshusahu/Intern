@@ -1,7 +1,7 @@
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    min-height: 100vh;
+    min-height: 90vh;
     max-height: 100vh;
     overflow: auto;
     background: rgba(0, 0, 0, 0.8);
@@ -15,7 +15,7 @@
 #sidebar .sidebar-header {
     padding: 20px;
     background-color: rgb(22, 22, 22);
-    color: #fff;
+    color: #b71c1c;
 }
 
 #sidebar.active {
@@ -25,7 +25,7 @@
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid rgb(74, 227, 135);
+    /*border-bottom: 1px solid rgb(74, 227, 135);*/
 }
 
 #sidebar ul li a {
@@ -36,7 +36,7 @@
 
 #sidebar ul li a:hover {
     color: #fff;
-    background-color: rgb(33, 33, 33);
+    background-color: rgba(0, 0, 0, 1);
 }
 
 #sidebar ul li.active>a,
