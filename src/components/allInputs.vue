@@ -5,6 +5,8 @@
         <inputParameterSidebarAirfoil />
         <inputParameterSidebarVolute />
         <inputParameterSidebarAl />
+        <inputParameterSidebarFp />
+        <inputParameterSidebarAi />
     </div>
 </template>
 
@@ -14,6 +16,8 @@ import inputParameterSidebarPlanform from './inputParameterSidebarPlanform.vue'
 import inputParameterSidebarAirfoil from './inputParameterSidebarAirfoil.vue'
 import inputParameterSidebarVolute from './inputParameterSidebarVolute.vue'
 import inputParameterSidebarAl from './inputParameterSidebarAl.vue'
+import inputParameterSidebarFp from './inputParameterSidebarFp.vue'
+import inputParameterSidebarAi from './inputParameterSidebarAi.vue'
 
 export default {
     components : {
@@ -21,7 +25,9 @@ export default {
         inputParameterSidebarPlanform,
         inputParameterSidebarAirfoil,
         inputParameterSidebarVolute,
-        inputParameterSidebarAl
+        inputParameterSidebarAl,
+        inputParameterSidebarFp,
+        inputParameterSidebarAi
     }
 }
 </script>

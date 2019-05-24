@@ -50,7 +50,7 @@ export default {
 @import 'assets/css/sidebar.css';
 @import 'assets/css/topbar.css';
 @import 'assets/css/softwareOutput.css';
-@import 'assets/css/smallScreen.css';
 @import 'assets/css/customModal.css';
+@import 'assets/css/smallScreen.css';
 
 </style>

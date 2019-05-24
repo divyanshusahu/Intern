@@ -26,4 +26,9 @@
     #sidebarCollapse.active span:last-of-type {
         transform: rotate(-45deg) translate(1px, -1px);
     }
+    .input_popup {
+        width: 80%;
+        left: 5%;
+        margin: auto;
+    }
 }

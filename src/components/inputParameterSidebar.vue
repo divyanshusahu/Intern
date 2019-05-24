@@ -16,7 +16,7 @@
           <li v-on:click="got_clicked_al">
             <a href="#" id="btn_anchor_location">Anchor Location</a>
           </li>
-          <li>
+          <li v-on:click="got_clicked_fp">
             <a href="#" id="btn_flat_panels">Flat Panels</a>
           </li>
           <li>
@@ -29,7 +29,7 @@
             <a href="#">Run</a>
           </li>
           <li class="divider"></li>
-          <li>
+          <li v-on:click="got_clicked_ai">
             <a href="#" id="btn_advance_input">Advance Input</a>
           </li>
         </ul>
@@ -45,7 +45,9 @@ export default {
       input_param_planform_flag : false,
       input_param_airfoil_flag : false,
       input_param_volute_flag : false,
-      input_param_al_flag : false
+      input_param_al_flag : false,
+      input_param_fp_flag : false,
+      input_param_ai_flag : false
     };
   },
   methods : {
@@ -60,6 +62,12 @@ export default {
     },
     got_clicked_al : function() {
       EventBus.$emit("input_param_al_got_clicked", this.input_param_al_flag);
+    },
+    got_clicked_fp : function() {
+      EventBus.$emit("input_param_fp_got_clicked", this.input_param_fp_flag);
+    },
+    got_clicked_ai : function() {
+      EventBus.$emit("input_param_ai_got_clicked", this.input_param_ai_flag);
     }
   }  
 }
