@@ -43,8 +43,8 @@ export default {
   margin-top: 60px;*/
 }
 
-::-webkit-scrollbar {width: 6px; height: 4px; background: rgba(0,0,0,0.8); }
-::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.8); }
+::-webkit-scrollbar {width: 6px; height: 4px; background: rgba(0,0,0,0.4); }
+::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.4); }
 
 @import 'assets/css/wrapper.css';
 @import 'assets/css/sidebar.css';

@@ -4,16 +4,16 @@
         v-on:click="input_parameter_flag = !input_parameter_flag">
         <i class="fas fa-keyboard"></i>Input Parameter</a>
         <ul class="list-unstyled" id="input_parameter" v-bind:class="{collapse: input_parameter_flag}">
-          <li>
+          <li v-on:click="got_clicked_planform">
             <a href="#" id="btn_planform">PlanForm</a>
           </li>
-          <li>
+          <li v-on:click="got_clicked_airfoil">
             <a href="#" id="btn_airfoil">Airfoil</a>
           </li>
-          <li>
+          <li v-on:click="got_clicked_volute">
             <a href="#" id="btn_volute">Volute</a>
           </li>
-          <li>
+          <li v-on:click="got_clicked_al">
             <a href="#" id="btn_anchor_location">Anchor Location</a>
           </li>
           <li>
@@ -37,11 +37,30 @@
 </template>
 
 <script>
+import { EventBus } from '../main.js';
 export default {
   data : function() {
     return {
-      input_parameter_flag: true
+      input_parameter_flag: true,
+      input_param_planform_flag : false,
+      input_param_airfoil_flag : false,
+      input_param_volute_flag : false,
+      input_param_al_flag : false
     };
+  },
+  methods : {
+    got_clicked_planform : function() {
+      EventBus.$emit("input_param_planform_got_clicked", this.input_param_planform_flag);
+    },
+    got_clicked_airfoil : function() {
+      EventBus.$emit("input_param_airfoil_got_clicked", this.input_param_airfoil_flag);
+    },
+    got_clicked_volute : function() {
+      EventBus.$emit("input_param_volute_got_clicked", this.input_param_volute_flag);
+    },
+    got_clicked_al : function() {
+      EventBus.$emit("input_param_al_got_clicked", this.input_param_al_flag);
+    }
   }  
 }
 </script>

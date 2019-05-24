@@ -1,6 +1,6 @@
 <template>
   
-	<nav id="sidebar">
+	<nav id="sidebar" v-bind:class="{active: sidebar_toggle}">
     
 		<div class="sidebar-header">
       <h3 style="text-align: center;">RAM AIR PARACHUTE</h3>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { EventBus } from '../main.js';
+
 import fileSidebar from './fileSidebar.vue'
 import viewSidebar from './viewSidebar.vue'
 import inputParameterSidebar from './inputParameterSidebar.vue'
@@ -34,6 +36,16 @@ export default {
     roundCanopySidebar,
     solverSidebar,
     helpSidebar
+  },
+  data : function() {
+    return {
+      sidebar_toggle : null
+      };
+  },
+  created() {
+    EventBus.$on('sidebar_flag_got_clicked', (sidebar_collapse_flag) => {
+      this.sidebar_toggle = sidebar_collapse_flag;
+    });
   }
 }
 </script>

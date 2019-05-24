@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" v-on:click="got_clicked">
     <div class="container-fluid">
-      <button type="button" id="sidebarCollapse" class="navbar-btn">
+      <button type="button" id="sidebarCollapse" class="navbar-btn" v-bind:class="{active: sidebar_collapse_flag}">
         <span></span>
         <span></span>
         <span></span>
@@ -40,11 +40,20 @@
 </template>
 
 <script>
+
+import { EventBus } from '../main.js';
 export default {
   data : function() {
     return {
       topbar_flag : true,
+      sidebar_collapse_flag : false
     };
+  },
+  methods : {
+    got_clicked : function() {
+      this.sidebar_collapse_flag = !this.sidebar_collapse_flag;
+      EventBus.$emit('sidebar_flag_got_clicked', this.sidebar_collapse_flag);
+    }
   }
 }
 </script>

@@ -32,6 +32,10 @@
     transition: 0.5s;
 }
 
+.blur_the_wrapper {
+    filter: blur(10px);
+}
+
 .custom_modal_header {
     width: 100%;
     /*border: 1px solid black;*/

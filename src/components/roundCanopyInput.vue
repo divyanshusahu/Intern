@@ -1,6 +1,7 @@
 <template>
     
-    <div class="custom_modal pop_up_toggle" id="round_canopy_modal">
+    <div class="custom_modal" id="round_canopy_modal" 
+    v-bind:class="{pop_up_toggle: input_toggle}">
         <div class="input_popup">
             <div class="custom_modal_header">
                 <h6>Round Parachute</h6>
@@ -78,7 +79,7 @@
                 </table>
             </div>
             <div class="custom_modal_footer">
-                <button type="button" class="input_close_button">Close</button>
+                <button type="button" class="input_close_button" v-on:click="input_toggle = !input_toggle">Close</button>
             </div>
         </div>
     </div>
@@ -86,7 +87,17 @@
 </template>
 
 <script>
+import { EventBus } from '../main.js';
 export default {
-
+    data : function() {
+        return {
+            input_toggle : true
+        }
+    },
+    created() {
+        EventBus.$on('rc_input_param_got_clicked', (rc_input_param_flag) => {
+            this.input_toggle = rc_input_param_flag;
+        });
+    }
 }
 </script>
