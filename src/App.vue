@@ -10,6 +10,8 @@
       </div>
     </div>
 
+  <allInputs />
+
   </div>
 
 </template>
@@ -18,13 +20,15 @@
 import sidebar from './components/sidebar.vue'
 import topbar from './components/topbar.vue'
 import softwareOutput from './components/softwareOutput.vue'
+import allInputs from './components/allInputs.vue'
 
 export default {
   name: 'app',
   components: {
     sidebar,
     topbar,
-    softwareOutput
+    softwareOutput,
+    allInputs
   },
 }
 </script>
@@ -46,5 +50,7 @@ export default {
 @import 'assets/css/sidebar.css';
 @import 'assets/css/topbar.css';
 @import 'assets/css/softwareOutput.css';
+@import 'assets/css/smallScreen.css';
+@import 'assets/css/customModal.css';
 
 </style>
