@@ -7,6 +7,7 @@
       <div id="content">
         <topbar />
         <softwareOutput />
+        <outputLog />
       </div>
     </div>
 
@@ -20,6 +21,7 @@
 import sidebar from './components/sidebar.vue'
 import topbar from './components/topbar.vue'
 import softwareOutput from './components/softwareOutput.vue'
+import outputLog from './components/outputLog.vue'
 import allInputs from './components/allInputs.vue'
 
 export default {
@@ -28,6 +30,7 @@ export default {
     sidebar,
     topbar,
     softwareOutput,
+    outputLog,
     allInputs
   },
 }
@@ -50,6 +53,7 @@ export default {
 @import 'assets/css/sidebar.css';
 @import 'assets/css/topbar.css';
 @import 'assets/css/softwareOutput.css';
+@import 'assets/css/outputLog.css';
 @import 'assets/css/customModal.css';
 @import 'assets/css/smallScreen.css';
 

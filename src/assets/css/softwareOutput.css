@@ -1,8 +1,16 @@
-#softwareOutput {
+#content {
     width: 100%;
-    border: 1px solid #ccc;
-    height: 80%;
-    background: #fff;
-    box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.5);
-    margin-top: 2em;
+    padding: 0px;
+    min-height: 100vh;
+    margin-left: 0px;
+}
+
+#softwareOutput {
+    width: 90%;
+    /*border: 1px solid #ccc;*/
+    height: 60%;
+    /*background: #fff;*/
+    /*box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.5);*/
+    margin-top: 1em;
+    margin-left: 5%;
 }

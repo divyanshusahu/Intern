@@ -1,7 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-lg" v-on:click="got_clicked">
+  
+  <nav class="navbar navbar-expand-lg bg-white">
     <div class="container-fluid">
-      <button type="button" id="sidebarCollapse" class="navbar-btn" v-bind:class="{active: sidebar_collapse_flag}">
+      <button type="button" id="sidebarCollapse" class="navbar-btn" 
+      v-bind:class="{active: sidebar_collapse_flag}" v-on:click="got_clicked">
+        <i class="far fa-arrow-alt-circle-left"></i>
         <span></span>
         <span></span>
         <span></span>
@@ -37,6 +40,7 @@
       </div>
     </div>
   </nav>
+
 </template>
 
 <script>

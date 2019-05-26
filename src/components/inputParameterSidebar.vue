@@ -1,8 +1,9 @@
 <template>
   <li>
-        <a href="#" data-toggle="collapse" aria-expended="false" class="dropdown-toggle"
+        <a href="#" data-toggle="collapse" aria-expended="false" class=""
+        v-bind:class="{'dropdown-toggle' : !sidebar_toggle}"
         v-on:click="input_parameter_flag = !input_parameter_flag">
-        <i class="fas fa-keyboard"></i>Input Parameter</a>
+        <i class="fas fa-keyboard"></i><strong>Input Parameter</strong></a>
         <ul class="list-unstyled" id="input_parameter" v-bind:class="{collapse: input_parameter_flag}">
           <li v-on:click="got_clicked_planform">
             <a href="#" id="btn_planform">PlanForm</a>
@@ -41,6 +42,7 @@ import { EventBus } from '../main.js';
 export default {
   data : function() {
     return {
+      sidebar_toggle : null,
       input_parameter_flag: true,
       input_param_planform_flag : false,
       input_param_airfoil_flag : false,
@@ -69,7 +71,12 @@ export default {
     got_clicked_ai : function() {
       EventBus.$emit("input_param_ai_got_clicked", this.input_param_ai_flag);
     }
-  }  
+  },
+  created() {
+      EventBus.$on('sidebar_flag_got_clicked', (sidebar_collapse_flag) => {
+        this.sidebar_toggle = sidebar_collapse_flag;
+      });
+    } 
 }
 </script>
 

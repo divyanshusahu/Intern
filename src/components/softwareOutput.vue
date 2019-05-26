@@ -1,5 +1,5 @@
 <template>
-    <div id="softwareOutput">
-        
+    <div id="softwareOutput" class="card">
     </div>
+        
 </template>

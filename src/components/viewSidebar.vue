@@ -1,8 +1,9 @@
 <template>
   <li>
-        <a href="#" data-toggle="collapse" aria-expended="false" class="dropdown-toggle" 
+        <a href="#" data-toggle="collapse" aria-expended="false" class=""
+        v-bind:class="{'dropdown-toggle' : !sidebar_toggle}" 
         v-on:click="view_flag = !view_flag">
-        <i class="fas fa-eye"></i>View</a>
+        <i class="fas fa-eye"></i><strong>View</strong></a>
         <ul class="list-unstyled" id="view" v-bind:class="{collapse: view_flag}">
           <li>
             <a href="#">Default</a>
@@ -33,11 +34,18 @@
 </template>
 
 <script>
+import { EventBus } from '../main.js';
 export default {
   data : function() {
     return {
+      sidebar_toggle : null,
       view_flag: true
     };
-  }
+  },
+  created() {
+      EventBus.$on('sidebar_flag_got_clicked', (sidebar_collapse_flag) => {
+        this.sidebar_toggle = sidebar_collapse_flag;
+      });
+    }
 }
 </script>

@@ -3,7 +3,8 @@
 	<nav id="sidebar" v-bind:class="{active: sidebar_toggle}">
     
 		<div class="sidebar-header">
-      <h3 style="text-align: center;">RAM AIR PARACHUTE</h3>
+      <h3 style="text-align: center;">SOFTWARE</h3>
+      <strong>SN</strong>
     </div>
 
     <ul class="list-unstyled components">
