@@ -20,10 +20,10 @@
           <li v-on:click="got_clicked_fp">
             <a href="#" id="btn_flat_panels">Flat Panels</a>
           </li>
-          <li>
+          <li v-on:click="got_clicked_rla">
             <a href="#" id="btn_rigging_lines_arrangement">Rigging Lines Arrangement</a>
           </li>
-          <li>
+          <li v-on:click="got_clicked_brake_lines">
             <a href="#" id="btn_brake_lines">Brake Lines</a>
           </li>
           <li>
@@ -49,6 +49,8 @@ export default {
       input_param_volute_flag : false,
       input_param_al_flag : false,
       input_param_fp_flag : false,
+      input_param_rla_flag : false,
+      input_param_brake_lines_flag : false,
       input_param_ai_flag : false
     };
   },
@@ -67,6 +69,12 @@ export default {
     },
     got_clicked_fp : function() {
       EventBus.$emit("input_param_fp_got_clicked", this.input_param_fp_flag);
+    },
+    got_clicked_rla : function() {
+      EventBus.$emit("input_param_rla_got_clicked", this.input_param_rla_flag);
+    },
+    got_clicked_brake_lines : function() {
+      EventBus.$emit("input_param_brake_lines_got_clicked", this.input_param_brake_lines_flag);
     },
     got_clicked_ai : function() {
       EventBus.$emit("input_param_ai_got_clicked", this.input_param_ai_flag);

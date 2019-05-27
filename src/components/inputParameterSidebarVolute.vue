@@ -2,7 +2,7 @@
     
     <div class="custom_modal" id="volute_modal"
     v-bind:class="{pop_up_toggle: input_toggle}">
-        <div class="input_popup">
+        <!--<div class="input_popup">
             <div class="custom_modal_header">
                 <h6>Volute Input</h6>
             </div>
@@ -27,6 +27,30 @@
                 v-on:click="input_toggle = !input_toggle">Close</button>
             </div>
 
+        </div>-->
+        <div class="card bg-light input_popup">
+            <div class="card-header">
+                <h5>Volute Input<span v-on:click="input_toggle = !input_toggle">&times;</span></h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <tr>
+                        <td>Shape</td>
+                        <td>Elleptic</td>
+                    </tr>
+                    <tr>
+                        <td>Minot to major axis ratio</td>
+                        <td><input type="number" value="1" name="volute_input_minot_ratio" stylr="width:100px;"></td>
+                    </tr>
+                    <tr>
+                        <td>Semi Span Angle(deg)</td>
+                        <td><input type="number" value="45" name="volute_input_ssa" style="width: 100px"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-success" v-on:click="input_toggle = !input_toggle">Close</button>
+            </div>
         </div>
     </div>
 

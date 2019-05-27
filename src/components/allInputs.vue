@@ -6,6 +6,8 @@
         <inputParameterSidebarVolute />
         <inputParameterSidebarAl />
         <inputParameterSidebarFp />
+        <inputParameterSidebarRLA />
+        <inputParameterSidebarBL />
         <inputParameterSidebarAi />
     </div>
 </template>
@@ -17,6 +19,8 @@ import inputParameterSidebarAirfoil from './inputParameterSidebarAirfoil.vue'
 import inputParameterSidebarVolute from './inputParameterSidebarVolute.vue'
 import inputParameterSidebarAl from './inputParameterSidebarAl.vue'
 import inputParameterSidebarFp from './inputParameterSidebarFp.vue'
+import inputParameterSidebarRLA from './inputParameterSidebarRLA.vue'
+import inputParameterSidebarBL from './inputParameterSidebarBL.vue'
 import inputParameterSidebarAi from './inputParameterSidebarAi.vue'
 
 export default {
@@ -27,6 +31,8 @@ export default {
         inputParameterSidebarVolute,
         inputParameterSidebarAl,
         inputParameterSidebarFp,
+        inputParameterSidebarRLA,
+        inputParameterSidebarBL,
         inputParameterSidebarAi
     }
 }

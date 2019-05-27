@@ -2,7 +2,7 @@
     
     <div class="custom_modal" id="flat_panels_modal"
     v-bind:class="{pop_up_toggle : input_toggle}">
-        <div class="input_popup">
+        <!--<div class="input_popup">
             <div class="custom_modal_header">
                 <h6>Flat panels</h6>
             </div>
@@ -58,7 +58,63 @@
                 <button type="button" class="input_close_button" 
                 v-on:click="input_toggle = !input_toggle">Close</button>
             </div>
+        </div>-->
 
+        <div class="card bg-light input_popup">
+            <div class="card-header">
+                <h5>Panel Input<span v-on:click="input_toggle = !input_toggle">&times;</span></h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <tr>
+                        <td><b>Sewing Allowances</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Max Value(mm)</td>
+                        <td><input type="number" value="50" name="flat_panels_sa_max_value" style="width: 100px"></td>
+                    </tr>
+                    <tr>
+                        <td>Min Value(mm)</td>
+                        <td><input type="number" value="1" name="flat_panels_sa_min_value" style="width: 100px"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Sewing Allowance for Ribs</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sides (% of chord)</td>
+                        <td><input type="number" value="2" name="flat_panels_sar_sides" style="width: 100px"></td>
+                    </tr>
+                    <tr>
+                        <td>Front (% of chord)</td>
+                        <td><input type="number" value="2" name="flat_panels_sar_front" style="width: 100px"></td>
+                    </tr>
+                    <tr>
+                        <td>Rear (% of chord)</td>
+                        <td><input type="number" value="2" name="flat_panels_sar_rear" style="width: 100px"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Sewing Allowance Panel</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sides (% of chord)</td>
+                        <td><input type="number" value="2" name="flat_panels_sap_sides" style="width: 100px"></td>
+                    </tr>
+                    <tr>
+                        <td>Front (% of chord)</td>
+                        <td><input type="number" value="2" name="flat_panels_sap_front" style="width: 100px"></td>
+                    </tr>
+                    <tr>
+                        <td>Rear (% of chord)</td>
+                        <td><input type="number" value="2" name="flat_panels_sap_rear" style="width: 100px"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-success" v-on:click="input_toggle = !input_toggle">Close</button>
+            </div>
         </div>
     </div>
 </template>

@@ -2,7 +2,7 @@
     
     <div class="custom_modal" id="anchor_location_modal"
     v-bind:class="{pop_up_toggle : input_toggle}">
-        <div class="input_popup">
+        <!--<div class="input_popup">
             <div class="custom_modal_header">
                 <h6>Anchor Description</h6>
             </div>
@@ -18,7 +18,22 @@
                 <button type="button" class="input_close_button"
                 v-on:click="input_toggle = !input_toggle">Close</button>
             </div>
-
+        </div>-->
+       
+        <div class="card bg-light input_popup">
+            <div class="card-header">
+                <h5>Anchor Description<span v-on:click="input_toggle = !input_toggle">&times;</span></h5>
+            </div>
+            <div class="card-body">
+                <label>Ribs Connection</label>
+                <select name="ribs_connection">
+                    <option value="all_ribs">All Ribs</option>
+                    <option value="alternative_ribs">Alternative Ribs</option>
+                </select>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-success" v-on:click="input_toggle = !input_toggle">Close</button>
+            </div>
         </div>
     </div>
 
