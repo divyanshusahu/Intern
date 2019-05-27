@@ -1,9 +1,14 @@
 <template>
   <li>
-        <a href="#" data-toggle="collapse" aria-expended="false" class=""
+        <!--<a href="#" data-toggle="collapse" aria-expended="false" class=""
         v-bind:class="{'dropdown-toggle' : !sidebar_toggle}" 
         v-on:click="view_flag = !view_flag">
-        <i class="fas fa-eye"></i><strong>View</strong></a>
+        <i class="fas fa-eye"></i><strong>View</strong></a>-->
+        <a href="#" v-on:click="view_flag = !view_flag">
+          <i class="fas fa-eye sidebar_icons"></i><strong>View</strong>
+          <i class="fas downmenu_icon" 
+          v-bind:class="{toggle_dropdown_menu : !view_flag, 'fa-caret-down': !sidebar_toggle}"></i>
+        </a>
         <ul class="list-unstyled" id="view" v-bind:class="{collapse: view_flag}">
           <li>
             <a href="#">Default</a>

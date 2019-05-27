@@ -83,12 +83,13 @@
     /*background-color: rgba(0, 0, 0, 1);*/
 }
 
-#sidebar ul li.active>a,
+
+/*#sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
     background: inherit;
     transition: 2s;
-}
+}*/
 
 ul ul a {
     font-size: 0.9em !important;
@@ -96,7 +97,8 @@ ul ul a {
     background: inherit;
 }
 
-a[data-toggle="collapse"] {
+
+/*a[data-toggle="collapse"] {
     position: relative;
 }
 
@@ -106,10 +108,20 @@ a[data-toggle="collapse"] {
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
-    /*color: rgb(74, 227, 135);*/
+    color: rgb(74, 227, 135);
     color: rgba(255, 255, 255, 0.5);
+}*/
+
+.sidebar_icons {
+    margin-right: 0.8em;
 }
 
-.fas {
-    margin-right: 0.8em;
+.downmenu_icon {
+    float: right;
+    margin-right: 0.9em;
+    margin-top: 0.4em;
+}
+
+.toggle_dropdown_menu {
+    transform: rotate(180deg);
 }

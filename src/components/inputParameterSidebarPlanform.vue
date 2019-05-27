@@ -38,6 +38,7 @@
                 <h5>Planform Input<span v-on:click="input_toggle = !input_toggle">&times;</span></h5>
             </div>
             <div class="card-body">
+                <form id="planform_input_form">
                 <table class="table table-borderless">
                     <tr>
                         <td>Total Ribs</td>
@@ -57,6 +58,7 @@
                         <td><input type="number" value="5810" name="planform_chrod" style="width: 100px"></td>
                     </tr>
                 </table>
+                </form>
             </div>
             <div class="card-footer">
                 <button type="button" class="btn btn-success" v-on:click="input_toggle = !input_toggle">Close</button>
