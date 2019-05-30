@@ -1,5 +1,5 @@
 <template>
-	<li>
+    <li>
   	<!--<a href="#" data-toggle="collapse" aria-expended="false" class=""
 		v-bind:class="{'dropdown-toggle' : !sidebar_toggle}"
 		v-on:click="solver_flag = !solver_flag"><i class="fas fa-play"></i><strong>Solver</strong></a>-->
