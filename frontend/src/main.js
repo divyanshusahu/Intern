@@ -4,7 +4,12 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-export const EventBus = new Vue();
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+export const EventBus = new Vue()
+
+Vue.use(VueAxios, axios);
 
 import App from './App.vue'
 

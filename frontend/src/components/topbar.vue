@@ -33,7 +33,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Com 5</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-on:click="run_the_software">
             <a class="nav-link" href="#">Run</a>
           </li>
         </ul>
@@ -50,14 +50,62 @@ export default {
   data : function() {
     return {
       topbar_flag : true,
-      sidebar_collapse_flag : false
+      sidebar_collapse_flag : false,
+      run_clicked_flag : false,
+      input_param_obj : {}
     };
   },
   methods : {
     got_clicked : function() {
       this.sidebar_collapse_flag = !this.sidebar_collapse_flag;
       EventBus.$emit('sidebar_flag_got_clicked', this.sidebar_collapse_flag);
+    },
+    run_clicked : function() {
+      this.run_clicked_flag = true;
+      this.input_param_obj = {};
+      EventBus.$emit('run_got_clicked', this.run_clicked_flag);
+
+      /*setTimeout(function() {
+        EventBus.$on('inputParamFP_obj', (flat_panels_obj) => {
+          Object.assign(this.input_param_obj, flat_panels_obj);
+          console.log("hey");
+        });
+      },5000);*/
+      
+      /*EventBus.$on('inputParamFP_obj', (flat_panels_obj) => {
+        Object.assign(this.input_param_obj, flat_panels_obj);
+        console.log("hey");
+      //});
+      
+      if (Object.keys(this.input_param_obj).length) {
+        this.axios.post('/api/submit', this.input_param_obj).then(({data}) => {
+        //this.data = data;
+        });
+      }
+      });
+
+      this.run_clicked_flag = false;*/
+    
+    },
+
+    recieve_parameters : function() {
+      EventBus.$on('inputParamFP_obj', (flat_panels_obj) => {
+        Object.assign(this.input_param_obj, flat_panels_obj);
+      })
+    },
+
+    create_request : function() {
+      this.axios.post('/api/submit', this.input_param_obj);
+    },
+
+    run_the_software : function() {
+      this.run_clicked();
+      this.recieve_parameters();
+      this.run_clicked();
+      this.recieve_parameters();
+      this.create_request();
     }
-  }
+
+  },
 }
 </script>

@@ -2,6 +2,7 @@
 node_modules
 dist
 flask_restframework
+solverMain
 
 # local env files
 .env.local

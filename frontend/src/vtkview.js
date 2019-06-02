@@ -105,7 +105,7 @@ function createViewer(container) {
     const fullScreenRenderer = vtkFullScreenRenderWindow.newInstance({
         background,
         rootContainer: container,
-        containerStyle: { height: '100%', width: '100%', position: 'relative' },
+        containerStyle: { height: '100%', width: '100%', position: 'absolute' },
     });
     renderer = fullScreenRenderer.getRenderer();
     renderWindow = fullScreenRenderer.getRenderWindow();
@@ -487,7 +487,6 @@ if (userParams.url || userParams.fileURL) {
     const exampleContainer = document.querySelector('.content');
     const rootBody = document.querySelector('#softwareOutput');
     const myContainer = exampleContainer || rootBody;
-
     if (myContainer) {
         myContainer.classList.add(style.fullScreen);
         //rootBody.style.margin = '0';
@@ -500,6 +499,12 @@ if (userParams.url || userParams.fileURL) {
 // Auto setup if no method get called within 100ms
 setTimeout(() => {
     if (autoInit) {
-        initLocalFileLoader();
+        //initLocalFileLoader();
+        const exampleContainer = document.querySelector('.content');
+        const rootBody = document.querySelector('#softwareOutput');
+        const myContainer = exampleContainer || rootBody;
+        myContainer.classList.add(style.fullScreen);
+        var obj = { "fileURL": "https://data.kitware.com/api/v1/item/59de9de58d777f31ac641dc5/download" };
+        //load(myContainer, obj);
     }
 }, 100);
