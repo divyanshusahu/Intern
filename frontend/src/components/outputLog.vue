@@ -1,6 +1,6 @@
 <template>
     <div id="outputLog" class="card">
-        <p>{{ result }}</p>
+        <p>{{ result.input_file }}</p>
     </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     created() {
         EventBus.$on("solver_overall_result",(solver_result) =>{
             Object.assign(this.result, solver_result);
-            console.log(this.result)
+            this.$forceUpdate();
         });
     }
 }
