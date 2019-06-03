@@ -4,10 +4,13 @@
 
 ```
 root
-|   backend
-|   frontend
-|   solverMain
-|   vtk_to_vtp
+|___ backend/
+|___ frontend/
+|___ solverMain/
+    |___solverMain
+    |___test/
+|___ vtk_to_vtp/
+    |___vtkunstructured_to_polydataset
 ```
 
 ### Requirements
