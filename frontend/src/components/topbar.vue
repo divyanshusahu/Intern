@@ -46,6 +46,7 @@
 <script>
 
 import { EventBus } from '../main.js';
+import { display_result } from '../vtkview.js';
 export default {
   data : function() {
     return {
@@ -123,6 +124,9 @@ export default {
     create_request : function() {
       this.axios.post('/api/submit', this.input_param_obj).then((res) => {
         Object.assign(this.solver_result, res.data);
+        if (this.solver_result["success"] == "OK") {
+          display_result();
+        }
         EventBus.$emit("solver_overall_result", this.solver_result);
       });
     },

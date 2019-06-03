@@ -4,6 +4,7 @@ dist
 flask_restframework
 solverMain
 tmp
+vtk_to_vtp
 
 # local env files
 .env.local

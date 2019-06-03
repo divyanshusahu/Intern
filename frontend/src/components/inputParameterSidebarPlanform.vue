@@ -42,7 +42,7 @@
                 <table class="table table-borderless">
                     <tr>
                         <td>Total Ribs</td>
-                        <td><input type="number" value="28" name="planform_total_ribs" style="width: 100px"></td>
+                        <td><input type="number" value="28.0" name="planform_total_ribs" style="width: 100px"></td>
                         <td>Platform Type</td>
                         <td>
                             <select name="planform_plftype">
@@ -86,8 +86,8 @@ export default {
             if (run_clicked_flag)
             {
                 this.planform_input_obj["planform_description"] = {
-                    "max_chord_length" : document.getElementsByName("planform_chord")[0].value,
-                    "span_length" : document.getElementsByName("planform_span")[0].value,
+                    "max_chord_length" : parseFloat(document.getElementsByName("planform_chord")[0].value),
+                    "span_length" : parseFloat(document.getElementsByName("planform_span")[0].value),
                     "shape" : document.getElementsByName("planform_plftype")[0].value,
                     "spanwise_chord_length_percentc": [
                         [
@@ -122,7 +122,7 @@ export default {
                         ]
                     ],
                 }
-                this.planform_input_obj["number_of_panel"] = document.getElementsByName("planform_total_ribs")[0].value;
+                this.planform_input_obj["number_of_panel"] = parseFloat(document.getElementsByName("planform_total_ribs")[0].value);
                 EventBus.$emit('inputParamPLANFORM_obj', this.planform_input_obj);
             }
         });

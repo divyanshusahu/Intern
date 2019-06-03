@@ -93,8 +93,8 @@ export default {
             {
                 this.airfoil_input_obj["rib_description"] = {
                     "LE_cut" : {
-                        "angle_with_chord_line" : document.getElementsByName("airfoil_acl")[0].value,
-                        "chord_length_percentc" : document.getElementsByName("airfoil_clp")[0].value
+                        "angle_with_chord_line" : parseFloat(document.getElementsByName("airfoil_acl")[0].value),
+                        "chord_length_percentc" : parseFloat(document.getElementsByName("airfoil_clp")[0].value)
                     },
                     "aerofoil" : "../solverMain/test/airfoil.txt",
                     "lightening_holes": [

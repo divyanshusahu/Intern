@@ -20,7 +20,7 @@ import {
 
 import style from './assets/css/GeometryViewer.module.css';
 
-let autoInit = true;
+//let autoInit = true;
 let background = [0, 0, 0];
 let renderWindow;
 let renderer;
@@ -390,7 +390,7 @@ function loadFile(file) {
 // ----------------------------------------------------------------------------
 
 export function load(container, options) {
-    autoInit = false;
+    //autoInit = false;
     emptyContainer(container);
 
     if (options.files) {
@@ -496,9 +496,8 @@ if (userParams.url || userParams.fileURL) {
     load(myContainer, userParams);
 }
 
-import { EventBus } from './main.js';
 // Auto setup if no method get called within 100ms
-setTimeout(() => {
+/*setTimeout(() => {
     if (autoInit) {
         //initLocalFileLoader();
         const exampleContainer = document.querySelector('.content');
@@ -512,4 +511,13 @@ setTimeout(() => {
             }
         });
     }
-}, 100);
+}, 100);*/
+
+export function display_result() {
+    const exampleContainer = document.querySelector('.content');
+    const rootBody = document.querySelector('#softwareOutput');
+    const myContainer = exampleContainer || rootBody;
+    myContainer.classList.add(style.fullScreen);
+    var obj = { "fileURL": "http://127.0.0.1:5000/tmp/cad_surfacefile.vtp" };
+    load(myContainer, obj);
+}

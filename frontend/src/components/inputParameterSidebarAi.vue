@@ -133,18 +133,18 @@ export default {
             if (run_clicked_flag)
             {
                 this.advance_input_obj['side_flap_description'] = {
-                    "rear_edge_length_percentl" : document.getElementsByName("advip_sfd_rel")[0].value,
-                    "start_line_index" : document.getElementsByName("advip_sfd_index")[0].value,
-                    "front_edge_length_percentl" : document.getElementsByName("advip_sfd_fel")[0].value,
+                    "rear_edge_length_percentl" : parseFloat(document.getElementsByName("advip_sfd_rel")[0].value),
+                    "start_line_index" : parseFloat(document.getElementsByName("advip_sfd_index")[0].value),
+                    "front_edge_length_percentl" : parseFloat(document.getElementsByName("advip_sfd_fel")[0].value),
                     "enable_generation" : true
                 };
-                this.advance_input_obj["washout_description"] = {
-                    "center_of_rotation_percentc" : document.getElementsByName("advip_washout_description_cr")[0].value,
+                this.advance_input_obj["wash_out_description"] = {
+                    "center_of_rotation_percentc" : parseFloat(document.getElementsByName("advip_washout_description_cr")[0].value),
                     "variation" : document.getElementsByName("advip_washout_description_variation")[0].value,
-                    "tip_angle" : document.getElementsByName("advip_washout_description_ta")[0].value,
+                    "tip_angle" : parseFloat(document.getElementsByName("advip_washout_description_ta")[0].value),
                     "user_defined_angle": [
                         -10, 
-                         -8, 
+                        -8, 
                         -6, 
                         -4, 
                         -2, 
@@ -152,14 +152,22 @@ export default {
                     ], 
                 };
                 this.advance_input_obj["slider"] = {
-                    "percent_area" : document.getElementsByName("advip_slider_ap")[0].value,
-                    "width_length_ratio" : document.getElementsByName("advip_slider_wlr")[0].value
+                    "percent_area" : parseFloat(document.getElementsByName("advip_slider_ap")[0].value),
+                    "width_length_ratio" : parseFloat(document.getElementsByName("advip_slider_wlr")[0].value)
                 };
                 this.advance_input_obj["transform_geometry"] = {
                     "rotation" : {
-                        "angle" : document.getElementsByName("advip_tg_ra")[0].value.split(",")
+                        "angle" : document.getElementsByName("advip_tg_ra")[0].value.split(",").map(
+                            function(x){
+                                return parseFloat(x,10);
+                            }
+                        )
                     },
-                    "translation" : document.getElementsByName("advip_tg_ta")[0].value.split(",")
+                    "translation" : document.getElementsByName("advip_tg_ta")[0].value.split(",").map(
+                        function(x){
+                            return parseFloat(x,10);
+                        }
+                    )
                 };
                 
                 EventBus.$emit('inputParamAI_obj', this.advance_input_obj);

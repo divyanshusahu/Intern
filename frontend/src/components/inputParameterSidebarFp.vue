@@ -139,14 +139,14 @@ export default {
                 this.flat_panels_obj["drawing_2d"] = {
                     "file_name" : "../solverMain/test/ram_2d_drawing.dxf",
                     "sewing_allowance" : {
-                        "panel_rear_percentc" : document.getElementsByName("flat_panels_sap_rear")[0].value,
-                        "max_value" : document.getElementsByName("flat_panels_sa_max_value")[0].value,
-                        "min_value" : document.getElementsByName("flat_panels_sa_min_value")[0].value,
-                        "rib_rear_percentc" : document.getElementsByName("flat_panels_sar_rear")[0].value,
-                        "rib_front_percentc" : document.getElementsByName("flat_panels_sar_front")[0].value,
-                        "panel_front_percentc" : document.getElementsByName("flat_panels_sap_front")[0].value,
-                        "panel_sides_percentc" : document.getElementsByName("flat_panels_sap_sides")[0].value,
-                        "rib_sides_percentc" : document.getElementsByName("flat_panels_sar_sides")[0].value
+                        "panel_rear_percentc" : parseFloat(document.getElementsByName("flat_panels_sap_rear")[0].value),
+                        "max_value" : parseFloat(document.getElementsByName("flat_panels_sa_max_value")[0].value),
+                        "min_value" : parseFloat(document.getElementsByName("flat_panels_sa_min_value")[0].value),
+                        "rib_rear_percentc" : parseFloat(document.getElementsByName("flat_panels_sar_rear")[0].value),
+                        "rib_front_percentc" : parseFloat(document.getElementsByName("flat_panels_sar_front")[0].value),
+                        "panel_front_percentc" : parseFloat(document.getElementsByName("flat_panels_sap_front")[0].value),
+                        "panel_sides_percentc" : parseFloat(document.getElementsByName("flat_panels_sap_sides")[0].value),
+                        "rib_sides_percentc" : parseFloat(document.getElementsByName("flat_panels_sar_sides")[0].value)
                     }
                 };
                 EventBus.$emit('inputParamFP_obj', this.flat_panels_obj);
