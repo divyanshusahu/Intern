@@ -36,15 +36,15 @@
                 <table class="table table-borderless">
                     <tr>
                         <td>Shape</td>
-                        <td>Elleptic</td>
+                        <td>Elliptic</td>
                     </tr>
                     <tr>
                         <td>Minot to major axis ratio</td>
-                        <td><input type="number" value="1" name="volute_input_minot_ratio" stylr="width:100px;"></td>
+                        <td><input type="number" value="1.0" name="volute_input_minot_ratio" stylr="width:100px;"></td>
                     </tr>
                     <tr>
                         <td>Semi Span Angle(deg)</td>
-                        <td><input type="number" value="45" name="volute_input_ssa" style="width: 100px"></td>
+                        <td><input type="number" value="45.0" name="volute_input_ssa" style="width: 100px"></td>
                     </tr>
                 </table>
             </div>
@@ -61,12 +61,25 @@ import { EventBus } from '../main.js';
 export default {
     data : function() {
         return {
-            input_toggle : true
+            input_toggle : true,
+            volute_obj : {}
         }
     },
     created() {
         EventBus.$on("input_param_volute_got_clicked", (input_param_volute_flag) => {
             this.input_toggle = input_param_volute_flag;
+        });
+
+        EventBus.$on("run_got_clicked", (run_clicked_flag) => {
+            if (run_clicked_flag)
+            {
+                this.volute_obj["volute_description"] = {
+                    "shape" : "ELLIPTIC",
+                    "semi_span_angle" : document.getElementsByName("volute_input_ssa")[0].value,
+                    "minor_to_major_axes" : document.getElementsByName("volute_input_minot_ratio")[0].value
+                };
+                EventBus.$emit('inputParamVOLUTE_obj', this.volute_obj);
+            }
         });
     }
 }

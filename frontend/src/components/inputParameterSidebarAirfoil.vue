@@ -44,11 +44,11 @@
                 <table class="table table-borderless">
                     <tr>
                         <td>Chord length Percentage</td>
-                        <td><input type="number" value="5" name="airfoil_clp" style="width: 100px"></td>
+                        <td><input type="number" value="5.0" name="airfoil_clp" style="width: 100px"></td>
                     </tr>
                     <tr>
                         <td>Angle with chord length (deg)</td>
-                        <td><input type="number" value="45" name="airfoil_acl" style="width: 100px"></td>
+                        <td><input type="number" value="135.0" name="airfoil_acl" style="width: 100px"></td>
                     </tr>
                     <tr>
                         <td>Standard Airfoil</td>
@@ -79,12 +79,40 @@ import { EventBus } from '../main.js';
 export default {
     data : function() {
         return {
-            input_toggle : true
+            input_toggle : true,
+            airfoil_input_obj : {}
         }
     },
     created() {
         EventBus.$on('input_param_airfoil_got_clicked', (input_param_airfoil_flag) => {
             this.input_toggle = input_param_airfoil_flag;
+        });
+
+        EventBus.$on('run_got_clicked', (run_clicked_flag) => {
+            if (run_clicked_flag)
+            {
+                this.airfoil_input_obj["rib_description"] = {
+                    "LE_cut" : {
+                        "angle_with_chord_line" : document.getElementsByName("airfoil_acl")[0].value,
+                        "chord_length_percentc" : document.getElementsByName("airfoil_clp")[0].value
+                    },
+                    "aerofoil" : "../solverMain/test/airfoil.txt",
+                    "lightening_holes": [
+                        {
+                            "shape": "ELLIPTIC", 
+                            "box_index": 0, 
+                            "minor_to_major_axes": 0.7, 
+                            "size": 5
+                        }, 
+                        {
+                            "shape": "TRIANGULAR", 
+                            "box_index": 1, 
+                            "minor_to_major_axes": 0.7
+                        }
+                    ],
+                };
+                EventBus.$emit('inputParamAI_obj', this.airfoil_input_obj);
+            }
         });
     }
 }

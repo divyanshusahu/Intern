@@ -50,7 +50,7 @@
                         <td>Rotation Axis(x,y,z)</td>
                         <td><input type="text" value="0,0,0" name="advip_tg_ra" style="width: 100px"></td>
                         <td>Area Percentage</td>
-                        <td><input type="number" value="2" name="advip_slider_ap" style="width: 100px"></td>
+                        <td><input type="number" value="2.0" name="advip_slider_ap" style="width: 100px"></td>
                     </tr>
                     <tr>
                         <td>Translation Axix(x,y,z)</td>
@@ -66,26 +66,26 @@
                     </tr>
                     <tr>
                         <td>Tip Angle(deg)</td>
-                        <td><input type="number" value="0" name="advip_washout_description_ta" style="width: 100px"></td>
+                        <td><input type="number" value="0.0" name="advip_washout_description_ta" style="width: 100px"></td>
                         <td>Rear Edge Length</td>
-                        <td><input type="number" value="10" name="advip_sfd_rel" style="width: 100px"></td>
+                        <td><input type="number" value="10.0" name="advip_sfd_rel" style="width: 100px"></td>
                     </tr>
                     <tr>
                         <td>Center of Rotation</td>
-                        <td><input type="number" value="0" name="advip_washout_description_cr" style="width: 100px"></td>
+                        <td><input type="number" value="0.0" name="advip_washout_description_cr" style="width: 100px"></td>
                         <td>Front Edge Length</td>
-                        <td><input type="number" value="20" name="advip_sfd_fel" style="width: 100px"></td>
+                        <td><input type="number" value="20.0" name="advip_sfd_fel" style="width: 100px"></td>
                     </tr>
                     <tr>
                         <td>Variation</td>
                         <td>
                             <select name="advip_washout_description_variation">
-                                <option value="Quadratic">Quadratic</option>
-                                <option value="Linear">Linear</option>
+                                <option value="QUADRATIC">Quadratic</option>
+                                <option value="LINEAR">Linear</option>
                             </select>
                         </td>
                         <td>Index</td>
-                        <td><input type="number" value="0" name="advip_sfd_index" style="width: 100px"></td>
+                        <td><input type="number" value="0.0" name="advip_sfd_index" style="width: 100px"></td>
                     </tr>
                     <tr>
                         <td><b>Others</b></td>
@@ -95,13 +95,13 @@
                     </tr>
                     <tr>
                         <td>Distance Karabiners Length</td>
-                        <td><input type="number" value="400" name="advip_others_dkl" style="width: 100px"></td>
+                        <td><input type="number" value="400.0" name="advip_others_dkl" style="width: 100px"></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td>Mesh Size</td>
-                        <td><input type="number" value="3" name="advip_others_ms" style="width: 100px"></td>
+                        <td><input type="number" value="3.0" name="advip_others_ms" style="width: 100px"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -120,12 +120,50 @@ import { EventBus } from '../main.js';
 export default {
     data : function() {
         return {
-            input_toggle : true
+            input_toggle : true,
+            advance_input_obj : {}
         }
     },
     created() {
         EventBus.$on("input_param_ai_got_clicked", (input_param_ai_flag) => {
             this.input_toggle = input_param_ai_flag;
+        });
+
+        EventBus.$on("run_got_clicked", (run_clicked_flag) => {
+            if (run_clicked_flag)
+            {
+                this.advance_input_obj['side_flap_description'] = {
+                    "rear_edge_length_percentl" : document.getElementsByName("advip_sfd_rel")[0].value,
+                    "start_line_index" : document.getElementsByName("advip_sfd_index")[0].value,
+                    "front_edge_length_percentl" : document.getElementsByName("advip_sfd_fel")[0].value,
+                    "enable_generation" : true
+                };
+                this.advance_input_obj["washout_description"] = {
+                    "center_of_rotation_percentc" : document.getElementsByName("advip_washout_description_cr")[0].value,
+                    "variation" : document.getElementsByName("advip_washout_description_variation")[0].value,
+                    "tip_angle" : document.getElementsByName("advip_washout_description_ta")[0].value,
+                    "user_defined_angle": [
+                        -10, 
+                         -8, 
+                        -6, 
+                        -4, 
+                        -2, 
+                        -1
+                    ], 
+                };
+                this.advance_input_obj["slider"] = {
+                    "percent_area" : document.getElementsByName("advip_slider_ap")[0].value,
+                    "width_length_ratio" : document.getElementsByName("advip_slider_wlr")[0].value
+                };
+                this.advance_input_obj["transform_geometry"] = {
+                    "rotation" : {
+                        "angle" : document.getElementsByName("advip_tg_ra")[0].value.split(",")
+                    },
+                    "translation" : document.getElementsByName("advip_tg_ta")[0].value.split(",")
+                };
+                
+                EventBus.$emit('inputParamAI_obj', this.advance_input_obj);
+            }
         });
     }
 }

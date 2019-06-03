@@ -28,12 +28,40 @@ import { EventBus } from '../main.js'
 export default {
     data : function() {
         return {
-            input_toggle : true
+            input_toggle : true,
+            brake_lines_obj : {}
         }
     },
     created() {
         EventBus.$on('input_param_brake_lines_got_clicked', (input_param_brake_lines_flag) => {
             this.input_toggle = input_param_brake_lines_flag;
+        });
+
+        EventBus.$on('run_got_clicked', (run_clicked_flag) => {
+            if (run_clicked_flag)
+            {
+                this.brake_lines_obj["brake_line_description"] = {
+                    "L1_length_percentl": 30.0, 
+                    "user_defined_ribs": [
+                        1.0, 
+                        4.0, 
+                        6.0, 
+                        9.0
+                    ], 
+                    "enable_generation": true, 
+                    "L1_combination": [
+                        [
+                            0, 
+                            1
+                        ], 
+                        [
+                            2, 
+                            3
+                        ]
+                    ]
+                };
+                EventBus.$emit('inputParamBL_obj', this.brake_lines_obj);
+            }
         });
     }
 }

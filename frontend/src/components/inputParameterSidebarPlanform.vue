@@ -46,16 +46,16 @@
                         <td>Platform Type</td>
                         <td>
                             <select name="planform_plftype">
-                                <option value="rectangular">Rectangular</option>
-                                <option value="elliptical">Elliptical</option>
+                                <option value="RECTANGULAR">Rectangular</option>
+                                <option value="ELLIPTICAL">Elliptical</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Span(mm)</td>
-                        <td><input type="number" value="16180" name="planform_span" style="width: 100px"></td>
+                        <td><input type="number" value="16180.0" name="planform_span" style="width: 100px"></td>
                         <td>Chord(mm)</td>
-                        <td><input type="number" value="5810" name="planform_chrod" style="width: 100px"></td>
+                        <td><input type="number" value="5810.0" name="planform_chord" style="width: 100px"></td>
                     </tr>
                 </table>
                 </form>
@@ -73,12 +73,58 @@ import { EventBus } from '../main.js'
 export default {
     data : function() {
         return {
-            input_toggle : true
+            input_toggle : true,
+            planform_input_obj : {}
         }
     },
     created() {
         EventBus.$on('input_param_planform_got_clicked', (input_param_planform_flag) => {
             this.input_toggle = input_param_planform_flag;
+        });
+
+        EventBus.$on('run_got_clicked', (run_clicked_flag) => {
+            if (run_clicked_flag)
+            {
+                this.planform_input_obj["planform_description"] = {
+                    "max_chord_length" : document.getElementsByName("planform_chord")[0].value,
+                    "span_length" : document.getElementsByName("planform_span")[0].value,
+                    "shape" : document.getElementsByName("planform_plftype")[0].value,
+                    "spanwise_chord_length_percentc": [
+                        [
+                            0, 
+                            0, 
+                            100
+                        ], 
+                        [
+                            10, 
+                            0, 
+                            100
+                        ], 
+                        [
+                            30, 
+                            2, 
+                            96
+                        ], 
+                        [
+                            50, 
+                            5, 
+                            90
+                        ], 
+                        [
+                            70, 
+                            10, 
+                            80
+                        ], 
+                        [
+                            100, 
+                            18, 
+                            64
+                        ]
+                    ],
+                }
+                this.planform_input_obj["number_of_panel"] = document.getElementsByName("planform_total_ribs")[0].value;
+                EventBus.$emit('inputParamPLANFORM_obj', this.planform_input_obj);
+            }
         });
     }
 }

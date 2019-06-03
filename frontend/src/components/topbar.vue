@@ -52,7 +52,8 @@ export default {
       topbar_flag : true,
       sidebar_collapse_flag : false,
       run_clicked_flag : false,
-      input_param_obj : {}
+      input_param_obj : {},
+      solver_result : {}
     };
   },
   methods : {
@@ -89,13 +90,41 @@ export default {
     },
 
     recieve_parameters : function() {
+      EventBus.$on('inputParamPLANFORM_obj', (planform_input_obj) => {
+        Object.assign(this.input_param_obj, planform_input_obj);
+      });
+      EventBus.$on('inputParamAI_obj', (advance_input_obj) => {
+        Object.assign(this.input_param_obj, advance_input_obj);
+      });
       EventBus.$on('inputParamFP_obj', (flat_panels_obj) => {
         Object.assign(this.input_param_obj, flat_panels_obj);
-      })
+      });
+      EventBus.$on('inputParamVOLUTE_obj', (volute_obj) => {
+        Object.assign(this.input_param_obj, volute_obj);
+      });
+      EventBus.$on('inputParamBL_obj', (brake_lines_obj) => {
+        Object.assign(this.input_param_obj, brake_lines_obj);
+      });
+      EventBus.$on('inputParamRLA_obj', (rla_obj) => {
+        Object.assign(this.input_param_obj, rla_obj);
+      });
+      EventBus.$on('inputParamAI_obj', (advance_input_obj) => {
+        Object.assign(this.input_param_obj, advance_input_obj);
+      });
+
+      this.input_param_obj["mesh_parameters"] = {
+        "fixed_node_file_name": "../solverMain/test/fixed_nodes.txt", 
+        "edge_length_percentc": 3.0, 
+        "mesh_file_name": "../solverMain/test/cad_surfacefile.vtk", 
+        "geometry_file_name": "../solverMain/test/gmsh_file.geo"
+      }
     },
 
     create_request : function() {
-      this.axios.post('/api/submit', this.input_param_obj);
+      this.axios.post('/api/submit', this.input_param_obj).then((res) => {
+        Object.assign(this.solver_result, res.data);
+        EventBus.$emit("solver_overall_result", this.solver_result);
+      });
     },
 
     run_the_software : function() {

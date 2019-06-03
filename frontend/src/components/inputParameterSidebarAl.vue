@@ -27,8 +27,8 @@
             <div class="card-body">
                 <label>Ribs Connection</label>
                 <select name="ribs_connection">
-                    <option value="all_ribs">All Ribs</option>
-                    <option value="alternative_ribs">Alternative Ribs</option>
+                    <option value="ALL">All Ribs</option>
+                    <option value="ALTERNATIVE">Alternative Ribs</option>
                 </select>
             </div>
             <div class="card-footer">
@@ -44,13 +44,22 @@ import { EventBus } from '../main.js';
 export default {
     data : function(){
         return {
-            input_toggle : true
+            input_toggle : true,
+            anchor_loation_value : null
         }
     },
     created() {
         EventBus.$on("input_param_al_got_clicked", (input_param_al_flag) => {
             this.input_toggle = input_param_al_flag;
         });
+
+        EventBus.$on('run_got_clicked', (run_clicked_flag) => {
+            if (run_clicked_flag)
+            {
+                this.anchor_loation_value = document.getElementsByName("ribs_connection")[0].value;
+                EventBus.$emit('inputParamAL_obj', this.anchor_loation_value);
+            }
+        })
     }
 }
 </script>

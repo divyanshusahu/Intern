@@ -496,6 +496,7 @@ if (userParams.url || userParams.fileURL) {
     load(myContainer, userParams);
 }
 
+import { EventBus } from './main.js';
 // Auto setup if no method get called within 100ms
 setTimeout(() => {
     if (autoInit) {
@@ -504,7 +505,11 @@ setTimeout(() => {
         const rootBody = document.querySelector('#softwareOutput');
         const myContainer = exampleContainer || rootBody;
         myContainer.classList.add(style.fullScreen);
-        var obj = { "fileURL": "https://data.kitware.com/api/v1/item/59de9de58d777f31ac641dc5/download" };
-        //load(myContainer, obj);
+        EventBus.$on("run_got_clicked", (run_clicked_flag) => {
+            if (run_clicked_flag) {
+                var obj = { "fileURL": "http://127.0.0.1:5000/tmp/test.vtp" };
+                //load(myContainer, obj);
+            }
+        });
     }
 }, 100);
