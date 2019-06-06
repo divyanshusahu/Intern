@@ -35,7 +35,7 @@
 .bigFileDrop {
     /*transform: translate(-50%, -50%);*/
     background-color: white;
-    background-image: url('./dropBG.jpg');
+    /*background-image: url('./dropBG.jpg');*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
