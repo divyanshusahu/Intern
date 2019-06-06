@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS, cross_origin
 import json, subprocess
 import os
+from cloud_connect import upld_fl, create_presigned_url
 """from flask_restful import Resource, Api"""
 
 app = Flask(__name__)
@@ -103,20 +104,28 @@ def submit_job() :
             json.dump(data, f)
         except :
             solver_run_status_code = 1
-            return solver_run_status_code
-    
+            return jsonify(runcode=solver_run_status_code)
+        
+    upload_to_s3_path = "paraview/input.scf"
+    try :
+        upld_fl(input_file_path, upload_to_s3_path)
+    except :
+        solver_run_status_code = 1
+        return jsonify(runcode=solver_run_status_code)
+        
     #solver_run_status_code = run_solver(input_file_path)
 
     #solver_run_status_code = subprocess.run("python3 run_process.py ./tmp/input.scf", shell=True).returncode
     #cwd = os.getcwd()
     #tmp_folder = os.path.join(cwd, 'tmp')
-    #docker_command = "docker run --rm -v %s:/work paraview python3.6 /python/run_process.py /work/input.scf" %  tmp_folder
+    docker_command = "docker run paraview python3.6 /python/run_process.py %s" % (upload_to_s3_path)
     #solver_run_status_code = subprocess.Popen(docker_command, shell=True).returncode
-    #proc = subprocess.Popen(docker_command.split())
-    #proc.wait()
-    #solver_run_status_code = proc.returncode
-    print(solver_run_status_code)
-    return jsonify(runcode = solver_run_status_code)
+    proc = subprocess.run(docker_command, shell=True, stdout=subprocess.PIPE)
+    return_output = str(proc.stdout).split('\\n')
+    return_output = return_output[-2]
+    return_output = json.dumps(return_output)
+    return_output = json.loads(return_output)
+    return return_output
 
 @app.route("/tmp/cad_surfacefile.vtp", methods=['GET'])  # Now hardcoded change accordingly
 @cross_origin()  
@@ -125,4 +134,4 @@ def show_output():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True)

@@ -1,8 +1,10 @@
 import subprocess, sys
+from cloud_connect import dwnl_fl, create_presigned_url, upld_fl
 
 def run_solver(path_to_input) :
+    saved_path = dwnl_fl(path_to_input)
     run_code = 0
-    c1 = "/solverMain/solverMain %s" % (path_to_input)
+    c1 = "/solverMain/solverMain %s" % (saved_path)
     r1 = subprocess.run(c1, shell=True).returncode
     if r1 != 0 :
         run_code = 2
@@ -21,8 +23,13 @@ def run_solver(path_to_input) :
     if r4 != 0 :
         run_code = 4
         return run_code
-    
-    return run_code
+
+    upld_fl('/work/cad_surfacefile.vtp', 'paraview/cad_surfacefile.vtp')
+    url = create_presigned_url('paraview/cad_surfacefile.vtp')
+    url = '"'+str(url)+'"'
+    std_out = '{"runcode":%s, "url":%s}' % (run_code, url)
+    print(std_out)
+    return True
 
 if __name__ == "__main__" :
     run_solver(sys.argv[1])

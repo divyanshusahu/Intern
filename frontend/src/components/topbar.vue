@@ -124,13 +124,10 @@ export default {
     create_request : function() {
       this.axios.post('/api/submit', this.input_param_obj).then((res) => {
         Object.assign(this.solver_result, res.data);
-        console.log(res.data);
         if (this.solver_result["runcode"] == 0) {
-          display_result();
+          display_result(this.solver_result["url"]);
         }
         EventBus.$emit("solver_overall_result", this.solver_result);
-      }).catch(error => {
-        console.log(error);
       });
     },
 

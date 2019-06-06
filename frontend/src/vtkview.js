@@ -513,11 +513,11 @@ if (userParams.url || userParams.fileURL) {
     }
 }, 100);*/
 
-export function display_result() {
+export function display_result(url) {
     const exampleContainer = document.querySelector('.content');
     const rootBody = document.querySelector('#softwareOutput');
     const myContainer = exampleContainer || rootBody;
     myContainer.classList.add(style.fullScreen);
-    var obj = { "fileURL": "http://127.0.0.1:5000/tmp/cad_surfacefile.vtp" };
+    var obj = { "fileURL": url };
     load(myContainer, obj);
 }
