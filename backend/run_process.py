@@ -24,12 +24,9 @@ def run_solver(path_to_input) :
         run_code = 4
         return run_code
 
-    upld_fl('/work/cad_surfacefile.vtp', 'paraview/cad_surfacefile.vtp')
-    url = create_presigned_url('paraview/cad_surfacefile.vtp')
-    url = '"'+str(url)+'"'
-    std_out = '{"runcode":%s, "url":%s}' % (run_code, url)
-    print(std_out)
-    return True
+    output_file_path = path_to_input.split("/")[0] + "/cad_surfacefile.vtp"
+    upld_fl('/work/cad_surfacefile.vtp', output_file_path)
+    return 0
 
 if __name__ == "__main__" :
     run_solver(sys.argv[1])

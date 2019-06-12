@@ -3,6 +3,10 @@ from flask_cors import CORS, cross_origin
 import json, subprocess
 import os
 from cloud_connect import upld_fl, create_presigned_url
+import snowflake
+import boto3
+import sqlite3
+import settings
 """from flask_restful import Resource, Api"""
 
 app = Flask(__name__)
@@ -97,6 +101,9 @@ def submit_job() :
                     converting_vtp = result['converting_vtp'],
                     converting_vtp_result = result['converting_vtp_result'],
                     success="OK")"""
+
+    snowflake_generator = snowflake.generator(1,1)
+    case_id = next(snowflake_generator)
     
     input_file_path = "./tmp/input.scf"
     with open(input_file_path, 'w') as f :
@@ -106,31 +113,104 @@ def submit_job() :
             solver_run_status_code = 1
             return jsonify(runcode=solver_run_status_code)
         
-    upload_to_s3_path = "paraview/input.scf"
+    upload_to_s3_path = "%s/input.scf" % (case_id)
     try :
         upld_fl(input_file_path, upload_to_s3_path)
     except :
         solver_run_status_code = 1
         return jsonify(runcode=solver_run_status_code)
-        
+
+    batch = boto3.client('batch')
+    result = batch.submit_job(jobName='Paraview_%s' % (case_id),
+                              jobQueue=settings.JOB_QUEUE,
+                              jobDefinition=settings.JOB_DEFINITION,
+                              parameters={
+                                  'input_path' : '%s/input.scf' % (case_id)
+                              },
+                              containerOverrides={
+                                  'environment': [
+                                      {
+                                          'name': 'BUCKET_NAME',
+                                          'value': settings.BUCKET_NAME
+                                      },
+                                      {
+                                          'name': 'AWS_REGION',
+                                          'value': settings.AWS_REGION
+                                      }
+                                  ]
+                              },
+                              retryStrategy={
+                                  'attempts':1
+                              },
+                              timeout={
+                                  'attemptDurationSeconds': 86400*30
+                              })
+    job_id = result['jobId']
+
+    connection = sqlite3.connect('pp103.db')
+    """c = connection.cursor()
+    db_insert_data = [case_id, job_id]
+    c.execute("INSERT INTO cases VALUES (?,?)", db_insert_data) 
+    c.commit()
+    c.close()"""
+
+    try :
+        with connection :
+            db_insert_data = [case_id, job_id]
+            connection.execute("INSERT INTO cases VALUES (?,?)", db_insert_data)
+    except :
+        solver_run_status_code = 1
+        return jsonify(runcode=solver_run_status_code)
+
     #solver_run_status_code = run_solver(input_file_path)
 
     #solver_run_status_code = subprocess.run("python3 run_process.py ./tmp/input.scf", shell=True).returncode
     #cwd = os.getcwd()
     #tmp_folder = os.path.join(cwd, 'tmp')
-    docker_command = "docker run paraview python3.6 /python/run_process.py %s" % (upload_to_s3_path)
+    #docker_command = "docker run paraview python3.6 /python/run_process.py %s" % (upload_to_s3_path)
     #solver_run_status_code = subprocess.Popen(docker_command, shell=True).returncode
-    proc = subprocess.run(docker_command, shell=True, stdout=subprocess.PIPE)
-    return_output = str(proc.stdout).split('\\n')
-    return_output = return_output[-2]
-    return_output = json.dumps(return_output)
-    return_output = json.loads(return_output)
-    return return_output
+    #proc = subprocess.run(docker_command, shell=True, stdout=subprocess.PIPE)
+    #return_output = str(proc.stdout).split('\\n')
+    #return_output = return_output[-2]
+    #return_output = json.dumps(return_output)
+    #return_output = json.loads(return_output)
+    #return return_output
+    return_output = {'case_id' : str(case_id)}
+    return jsonify(return_output)
 
-@app.route("/tmp/cad_surfacefile.vtp", methods=['GET'])  # Now hardcoded change accordingly
+'''@app.route("/tmp/cad_surfacefile.vtp", methods=['GET'])  # Now hardcoded change accordingly
 @cross_origin()  
 def show_output():
-    return send_from_directory("tmp", "cad_surfacefile.vtp")
+    return send_from_directory("tmp", "cad_surfacefile.vtp")'''
+
+
+@app.route('/api/job_status', methods=['POST'])
+def check_job_status() :
+    data = request.get_json()
+    batch = boto3.client('batch')
+    conn = sqlite3.connect('pp103.db')
+    c = conn.cursor()
+    try :
+        c.execute("SELECT * FROM cases WHERE case_id=?", [int(data['case_id']),])
+        result = c.fetchall()
+        c.close()
+        case_id, job_id = result[0]
+    except Exception as e:
+        print(e)
+        return jsonify(runcode=10)
+    
+    response = batch.describe_jobs(
+        jobs=[
+            job_id
+        ]
+    )
+    
+    url = None
+    if response['jobs'][0]['status'] == 'SUCCEEDED' :
+        filename = "%s/cad_surfacefile.vtp" % (case_id)
+        url = create_presigned_url(filename)
+    
+    return jsonify(url=url, current_status=response['jobs'][0]['status'])
 
 
 if __name__ == '__main__':

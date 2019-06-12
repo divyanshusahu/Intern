@@ -5,11 +5,13 @@ flask_restframework
 solverMain
 tmp
 vtk_to_vtp
+*.db
 __pycache__
 
 # local env files
 .env.local
 .env.*.local
+.env
 
 # Log files
 npm-debug.log*

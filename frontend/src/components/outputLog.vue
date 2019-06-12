@@ -9,21 +9,41 @@
         <p>{{ result.converting_vtp }}</p>
         <p>{{ result.coverting_vtp_result }}</p>
         <p>{{ result.success }}</p>-->
-        <p>{{ this.result }}</p>
+        <p>{{ this.current }}</p>
     </div>
 </template>
 
 <script>
 import { EventBus } from '../main.js';
+import { display_result } from '../vtkview.js';
+
 export default {
     data : function() {
         return {
-            result : {}
+            caseID : {},
+            result : {},
+            current : {}
         }
     },
     created() {
+        let self=this;
         EventBus.$on("solver_overall_result",(solver_result) =>{
-            Object.assign(this.result, solver_result);
+            Object.assign(this.caseID, solver_result);
+            if (this.caseID['case_id'])
+            {
+                var check_status = setInterval(function() {
+                    self.axios.post('/api/job_status', self.caseID).then((res) => {
+                        console.log(res.data);
+                        Object.assign(self.current, res.data);
+                        if(res.data['current_status'] == 'SUCCEEDED') {
+                            Object.assign(self.result, res.data);
+                            display_result(self.result['url']);
+                            clearInterval(check_status);
+                        }
+                    });
+                },5000);
+                console.log(this.result);
+            }
             this.$forceUpdate();
         });
     }

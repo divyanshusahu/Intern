@@ -12,15 +12,16 @@ RUN apt-get install -y ssh
 RUN apt-get install -y python3-pip && \
     pip3 install boto3
 
-RUN mkdir /work
+RUN pip3 install envs 
 
-ENV AWS_ACCESS_KEY_ID=AKIASKEGXXNEZDPUOVNB
-ENV AWS_SECRET_ACCESS_KEY=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
-ENV REGION=ap-south-1
+RUN mkdir /work
 
 COPY backend/run_process.py /python/run_process.py
 COPY backend/cloud_connect.py /python/cloud_connect.py
+COPY backend/settings.py /python/settings.py
 COPY solverMain /solverMain
 COPY vtk_to_vtp/vtkunstructured_to_polydataset /solverMain/
 
 RUN chmod +x /solverMain/solverMain /solverMain/vtkunstructured_to_polydataset
+
+WORKDIR /python
