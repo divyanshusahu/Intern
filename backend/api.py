@@ -2,11 +2,12 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS, cross_origin
 import json, subprocess
 import os
-from cloud_connect import upld_fl, create_presigned_url
+from cloud_connect import create_presigned_url
 import snowflake
 import boto3
 import sqlite3
 import settings
+from case_model import CaseModel
 """from flask_restful import Resource, Api"""
 
 app = Flask(__name__)
@@ -105,7 +106,7 @@ def submit_job() :
     snowflake_generator = snowflake.generator(1,1)
     case_id = next(snowflake_generator)
     
-    input_file_path = "./tmp/input.scf"
+    """input_file_path = "./tmp/input.scf"
     with open(input_file_path, 'w') as f :
         try :
             json.dump(data, f)
@@ -118,7 +119,14 @@ def submit_job() :
         upld_fl(input_file_path, upload_to_s3_path)
     except :
         solver_run_status_code = 1
-        return jsonify(runcode=solver_run_status_code)
+        return jsonify(runcode=solver_run_status_code)"""
+
+    upload_to_s3_path = "%s/input.scf" % (case_id)
+    upload_file = boto3.resource('s3')
+    upload_file_object = upload_file.Object(settings.BUCKET_NAME, upload_to_s3_path)
+    upload_file_object.put(
+        Body=(bytes(json.dumps(data).encode('UTF-8')))
+    )
 
     batch = boto3.client('batch')
     result = batch.submit_job(jobName='Paraview_%s' % (case_id),
@@ -147,12 +155,12 @@ def submit_job() :
                               })
     job_id = result['jobId']
 
-    connection = sqlite3.connect('pp103.db')
-    """c = connection.cursor()
+    """connection = sqlite3.connect('pp103.db')
+    c = connection.cursor()
     db_insert_data = [case_id, job_id]
     c.execute("INSERT INTO cases VALUES (?,?)", db_insert_data) 
     c.commit()
-    c.close()"""
+    c.close()
 
     try :
         with connection :
@@ -160,7 +168,12 @@ def submit_job() :
             connection.execute("INSERT INTO cases VALUES (?,?)", db_insert_data)
     except :
         solver_run_status_code = 1
-        return jsonify(runcode=solver_run_status_code)
+        return jsonify(runcode=solver_run_status_code)"""
+
+    if not CaseModel.exists() :
+        CaseModel.create_table(read_capacity_units=1, write_capacity_units=1, wait=True)
+    case = CaseModel(str(case_id), str(job_id))
+    case.save()
 
     #solver_run_status_code = run_solver(input_file_path)
 
@@ -188,13 +201,15 @@ def show_output():
 def check_job_status() :
     data = request.get_json()
     batch = boto3.client('batch')
-    conn = sqlite3.connect('pp103.db')
-    c = conn.cursor()
+    #conn = sqlite3.connect('pp103.db')
+    #c = conn.cursor()
     try :
-        c.execute("SELECT * FROM cases WHERE case_id=?", [int(data['case_id']),])
+        """c.execute("SELECT * FROM cases WHERE case_id=?", [int(data['case_id']),])
         result = c.fetchall()
         c.close()
-        case_id, job_id = result[0]
+        case_id, job_id = result[0]"""
+        for case in CaseModel.query(data['case_id']) :
+            job_id = case.attribute_values['job_id']
     except Exception as e:
         print(e)
         return jsonify(runcode=10)
