@@ -42,7 +42,6 @@ export default {
                         }
                     });
                 },5000);
-                console.log(this.result);
             }
             this.$forceUpdate();
         });

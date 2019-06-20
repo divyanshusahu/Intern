@@ -10,10 +10,12 @@
         </a>
         <ul class="list-unstyled" id="file" v-bind:class="{collapse: file_flag}">
           <li>
-            <a href="#">New</a>
+            <a href="#" v-on:click="remove_output">New</a>
           </li>
           <li>
-            <a href="#">Open</a>
+            <a href="#" v-on:click="local_vtp_open">Open
+              <input id="vtp_file_input" type="file" accept=".vtp" style="display:none;" />
+            </a>
           </li>
           <li>
             <a href="#">Import VTK</a>
@@ -28,6 +30,7 @@
 
 <script>
 import { EventBus } from '../main.js';
+import { initLocalFileLoader } from '../vtkview.js';
 export default {
     data : function() {
       return {
@@ -39,6 +42,23 @@ export default {
       EventBus.$on('sidebar_flag_got_clicked', (sidebar_collapse_flag) => {
         this.sidebar_toggle = sidebar_collapse_flag;
       });
+    },
+    methods : {
+      remove_output : function() {
+        var outDiv = document.getElementById("softwareOutput");
+        if (outDiv.children[0].children.length){
+          outDiv.removeChild(outDiv.getElementsByTagName("div")[0]);
+          //outDiv.innerHTML = '<div class="content"></div>';
+          let a = document.createElement('div');
+          a.setAttribute('class', 'content');
+          outDiv.insertBefore(a, outDiv.firstChild);
+          outDiv.style.backgroundColor = "#fff";
+        }
+      },
+      local_vtp_open : function() {
+        document.getElementById("vtp_file_input").click();
+        initLocalFileLoader();
+      }
     }
 }
 </script>

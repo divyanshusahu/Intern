@@ -19,13 +19,13 @@
       <div class="navbar-collapse" id="navbarSupportedContent" v-bind:class="{collapse: topbar_flag}">
         <ul class="nav navbar-nav ml-auto" style="float: right;">
           <li class="nav-item">
-            <a class="nav-link" href="#">Com 1</a>
+            <a class="nav-link" href="#">Isomeric</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Com 2</a>
+            <a class="nav-link" href="#">Front View</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Com 3</a>
+            <a class="nav-link" href="#">Back View</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Com 4</a>
@@ -131,13 +131,31 @@ export default {
     },
 
     run_the_software : function() {
+        if (document.getElementById("softwareOutput").children[0].children.length){
+          document.getElementById("softwareOutput").removeChild(
+            document.getElementById("softwareOutput").getElementsByTagName("div")[0]
+          );
+          let a = document.createElement('div');
+          a.setAttribute('class', 'content');
+          document.getElementById("softwareOutput").insertBefore(
+            a, document.getElementById("softwareOutput").firstChild
+          );
+      }
+      document.getElementById("loader").style.display = "block";
+      document.getElementById("softwareOutput").style.backgroundColor = "#1c2020";
       this.run_clicked();
       this.recieve_parameters();
       this.run_clicked();
       this.recieve_parameters();
       this.create_request();
     }
-
   },
+  created() {
+    EventBus.$on("sidebar_run_got_clicked", (run_flag) => {
+      if (run_flag) {
+        this.run_the_software();
+      }
+    });
+  }
 }
 </script>

@@ -186,8 +186,13 @@ function createPipeline(fileName, fileContents) {
     controlContainer.appendChild(colorBySelector);
     controlContainer.appendChild(componentSelector);
     controlContainer.appendChild(opacitySelector);
-    rootControllerContainer.appendChild(controlContainer);
-
+    if (rootControllerContainer.children.length) {
+        rootControllerContainer.removeChild(rootControllerContainer.getElementsByTagName("div")[0]);
+        rootControllerContainer.appendChild(controlContainer)
+    }
+    else {
+        rootControllerContainer.appendChild(controlContainer);
+    }
     // VTK pipeline
     const vtpReader = vtkXMLPolyDataReader.newInstance();
     vtpReader.parseAsArrayBuffer(fileContents);
@@ -457,28 +462,28 @@ export function initLocalFileLoader(container) {
         //rootBody.style.padding = '0';
     }
 
-    const fileContainer = document.createElement('div');
-    fileContainer.style.height = "100%";
-    fileContainer.innerHTML = `<div class="${
-    style.bigFileDrop
-  }"/><input type="file" multiple accept=".vtp" style="display: none;"/>`;
-    myContainer.appendChild(fileContainer);
-    const fileInput = fileContainer.querySelector('input');
+    //const fileContainer = document.createElement('div');
+    //fileContainer.style.height = "100%";
+    //fileContainer.innerHTML = `<div class="${
+    //style.bigFileDrop
+  //}"/><input type="file" multiple accept=".vtp" style="display: none;"/>`;
+    //myContainer.appendChild(fileContainer);
+    //const fileInput = fileContainer.querySelector('input');
+    let fileInput = document.getElementById("vtp_file_input");
 
     function handleFile(e) {
         preventDefaults(e);
-        const dataTransfer = e.dataTransfer;
-        const files = e.target.files || dataTransfer.files;
+        let dataTransfer = e.dataTransfer;
+        let files = e.target.files || dataTransfer.files;
         if (files.length > 0) {
-            myContainer.removeChild(fileContainer);
             load(myContainer, { files });
         }
     }
 
     fileInput.addEventListener('change', handleFile);
-    fileContainer.addEventListener('drop', handleFile);
-    fileContainer.addEventListener('click', () => fileInput.click());
-    fileContainer.addEventListener('dragover', preventDefaults);
+    //fileContainer.addEventListener('drop', handleFile);
+    //fileContainer.addEventListener('click', () => fileInput.click());
+    //fileContainer.addEventListener('dragover', preventDefaults);
 }
 
 // Look at URL an see if we should load a file
@@ -514,6 +519,7 @@ if (userParams.url || userParams.fileURL) {
 }, 100);*/
 
 export function display_result(url) {
+    document.getElementById("loader").style.display = "none";
     const exampleContainer = document.querySelector('.content');
     const rootBody = document.querySelector('#softwareOutput');
     const myContainer = exampleContainer || rootBody;

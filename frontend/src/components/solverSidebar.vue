@@ -13,7 +13,7 @@
         <a href="#">Stop Solver</a>
       </li>
       <li>
-        <a href="#">Run Parez</a>
+        <a href="#" v-on:click="sidebar_run_clicked">Run Parez</a>
       </li>
     </ul>
 	</li>
@@ -25,13 +25,21 @@ export default {
 	data : function() {
 		return {
 			sidebar_toggle : null,
-			solver_flag : true
+      solver_flag : true,
+      run_flag : false
 		};
 	},
 	created() {
       EventBus.$on('sidebar_flag_got_clicked', (sidebar_collapse_flag) => {
         this.sidebar_toggle = sidebar_collapse_flag;
       });
+  },
+  methods : {
+    sidebar_run_clicked : function() {
+      this.run_flag = true;
+      EventBus.$emit("sidebar_run_got_clicked", this.run_flag);
+      this.run_flag = false;
     }
+  }
 }
 </script>

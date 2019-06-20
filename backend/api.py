@@ -222,7 +222,7 @@ def check_job_status() :
     
     url = None
     if response['jobs'][0]['status'] == 'SUCCEEDED' :
-        filename = "%s/cad_surfacefile.vtp" % (case_id)
+        filename = "%s/cad_surfacefile.vtp" % (data['case_id'])
         url = create_presigned_url(filename)
     
     return jsonify(url=url, current_status=response['jobs'][0]['status'])
