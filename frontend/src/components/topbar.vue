@@ -19,19 +19,16 @@
       <div class="navbar-collapse" id="navbarSupportedContent" v-bind:class="{collapse: topbar_flag}">
         <ul class="nav navbar-nav ml-auto" style="float: right;">
           <li class="nav-item">
-            <a class="nav-link" href="#">Isomeric</a>
+            <a class="nav-link" href="#" v-on:click="camera_view('top')">Top View</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Front View</a>
+            <a class="nav-link" href="#" v-on:click="camera_view('bottom')">Bottom View</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Back View</a>
+            <a class="nav-link" href="#" v-on:click="camera_view('front')">Front View</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Com 4</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Com 5</a>
+            <a class="nav-link" href="#" v-on:click="camera_view('back')">Back View</a>
           </li>
           <li class="nav-item" v-on:click="run_the_software">
             <a class="nav-link" href="#">Run</a>
@@ -46,6 +43,7 @@
 <script>
 
 import { EventBus } from '../main.js';
+import { change_camera_view } from '../vtkview.js';
 export default {
   data : function() {
     return {
@@ -148,6 +146,10 @@ export default {
       this.run_clicked();
       this.recieve_parameters();
       this.create_request();
+    },
+
+    camera_view : function(view) {
+      change_camera_view(view);
     }
   },
   created() {

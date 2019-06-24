@@ -1,11 +1,9 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS, cross_origin
-import json, subprocess
-import os
+import json
 from cloud_connect import create_presigned_url
 import snowflake
 import boto3
-import sqlite3
 import settings
 from case_model import CaseModel
 """from flask_restful import Resource, Api"""
@@ -226,6 +224,24 @@ def check_job_status() :
         url = create_presigned_url(filename)
     
     return jsonify(url=url, current_status=response['jobs'][0]['status'])
+
+@app.route('/api/job_cancel', methods=['POST'])
+def cancel_job() :
+    data = request.get_json()
+    batch = boto3.client('batch')
+    try :
+        for case in CaseModel.query(data['case_id']) :
+            job_id = case.attribute_values['job_id']
+    except Exception as e :
+        print(e)
+        return jsonify(runcode=10)
+    
+    response = batch.cancel_job(
+        jobId=job_id,
+        resason='Cancelling Job'
+    )
+
+    return response
 
 
 if __name__ == '__main__':

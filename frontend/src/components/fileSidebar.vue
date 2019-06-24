@@ -20,10 +20,6 @@
           <li>
             <a href="#">Import VTK</a>
           </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#">Exit</a>
-          </li>
         </ul>
       </li>
 </template>
@@ -45,6 +41,7 @@ export default {
     },
     methods : {
       remove_output : function() {
+        document.getElementById("vtp_file_input").value = "";
         var outDiv = document.getElementById("softwareOutput");
         if (outDiv.children[0].children.length){
           outDiv.removeChild(outDiv.getElementsByTagName("div")[0]);

@@ -10,7 +10,7 @@
         </a>
     <ul class="list-unstyled" id="solver" v-bind:class="{collapse : solver_flag}">
       <li>
-        <a href="#">Stop Solver</a>
+        <a href="#" v-on:click="stop_solver">Stop Solver</a>
       </li>
       <li>
         <a href="#" v-on:click="sidebar_run_clicked">Run Parez</a>
@@ -39,6 +39,13 @@ export default {
       this.run_flag = true;
       EventBus.$emit("sidebar_run_got_clicked", this.run_flag);
       this.run_flag = false;
+    },
+    stop_solver : function() {
+      EventBus.$on("solver_overall_resuslt", (solver_result) => {
+        this.axios.post('/api/job_cancel', solver_result).then((data) => {
+          console.log(data);
+        });
+      });
     }
   }
 }
