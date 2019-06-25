@@ -10,12 +10,17 @@
         <span></span>
       </button>
 
+      <button type="button" class="btn d-block d-lg-none" v-on:click="run_the_software">
+        <i class="fas fa-play sidebar_icons"></i><b>Run</b>
+      </button>
+
+      <!-- Sidebar pagination which later discarded
       <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" 
       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
       aria-label="Toggle navigation" v-on:click="topbar_flag = !topbar_flag">
         <i class="fas fa-align-justify"></i>
       </button>
-
+      -->
       <div class="navbar-collapse" id="navbarSupportedContent" v-bind:class="{collapse: topbar_flag}">
         <ul class="nav navbar-nav ml-auto" style="float: right;">
           <li class="nav-item">

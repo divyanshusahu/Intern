@@ -535,6 +535,7 @@ export function change_camera_view(view) {
         renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
         renderer.getActiveCamera().setPosition(2937.4682, 0, 41801.8841657527);
         renderer.getActiveCamera().setViewAngle(30);
+        renderer.resetCameraClippingRange();
         updateCamera(renderer.getActiveCamera());
     }
 
@@ -544,6 +545,7 @@ export function change_camera_view(view) {
         renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
         renderer.getActiveCamera().setPosition(2937.4682, 0, -27396.0232657527);
         renderer.getActiveCamera().setViewAngle(30);
+        renderer.resetCameraClippingRange();
         updateCamera(renderer.getActiveCamera());
     }
 
@@ -553,6 +555,7 @@ export function change_camera_view(view) {
         renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
         renderer.getActiveCamera().setPosition(2937.4682, 34598.9537157527, 7202.93045);
         renderer.getActiveCamera().setViewAngle(30);
+        renderer.resetCameraClippingRange();
         updateCamera(renderer.getActiveCamera());
     }
 
@@ -562,6 +565,7 @@ export function change_camera_view(view) {
         renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
         renderer.getActiveCamera().setPosition(2937.4682, -34598.9537157527, 7202.93045);
         renderer.getActiveCamera().setViewAngle(30);
+        renderer.resetCameraClippingRange();
         updateCamera(renderer.getActiveCamera());
     }
 
@@ -571,6 +575,7 @@ export function change_camera_view(view) {
         renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
         renderer.getActiveCamera().setPosition(37536.4219157527, 0, 7202.93045);
         renderer.getActiveCamera().setViewAngle(30);
+        renderer.resetCameraClippingRange();
         updateCamera(renderer.getActiveCamera());
     }
 
@@ -580,6 +585,7 @@ export function change_camera_view(view) {
         renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
         renderer.getActiveCamera().setPosition(-31661.4855157527, 0, 7202.93045);
         renderer.getActiveCamera().setViewAngle(30);
+        renderer.resetCameraClippingRange();
         updateCamera(renderer.getActiveCamera());
     }
 }

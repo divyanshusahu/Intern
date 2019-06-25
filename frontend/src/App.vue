@@ -11,7 +11,8 @@
       </div>
     </div>
 
-  <allInputs />
+    <allInputs />
+    <!--<div class="small_screen_overlay"></div>-->
 
   </div>
 

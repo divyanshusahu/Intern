@@ -64,10 +64,10 @@
     line-height: 1.5em;
 }
 
-#sidebar.active ul li ul {
+/*#sidebar.active ul li ul {
     display: none;
     visibility: hidden;
-}
+}*/
 
 #sidebar ul li a strong {
     font-weight: normal;

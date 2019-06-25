@@ -5,6 +5,9 @@
 		<div class="sidebar-header">
       <h3 style="text-align: center;">SOFTWARE</h3>
       <strong>SN</strong>
+      <i class="far fa-arrow-alt-circle-left d-inline-block d-lg-none" style="float: right; font-size: 1.5em;"
+      v-on:click="sidebar_toggle = !sidebar_toggle">
+      </i>
     </div>
 
     <ul class="list-unstyled components">
@@ -47,6 +50,11 @@ export default {
     EventBus.$on('sidebar_flag_got_clicked', (sidebar_collapse_flag) => {
       this.sidebar_toggle = sidebar_collapse_flag;
     });
+  },
+  methods : {
+    mobile_got_clicked : function() {
+
+    }
   }
 }
 </script>
