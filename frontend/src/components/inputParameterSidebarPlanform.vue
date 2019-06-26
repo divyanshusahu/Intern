@@ -86,9 +86,7 @@ export default {
             if (run_clicked_flag)
             {
                 this.planform_input_obj["planform_description"] = {
-                    "max_chord_length" : parseFloat(document.getElementsByName("planform_chord")[0].value),
-                    "span_length" : parseFloat(document.getElementsByName("planform_span")[0].value),
-                    "shape" : document.getElementsByName("planform_plftype")[0].value,
+                    "max_chord_length" : parseFloat(document.getElementsByName("planform_chord")[0].value).toFixed(1),
                     "spanwise_chord_length_percentc": [
                         [
                             0, 
@@ -121,7 +119,10 @@ export default {
                             64
                         ]
                     ],
-                }
+                    "shape" : document.getElementsByName("planform_plftype")[0].value,
+                    "span_length" : parseFloat(document.getElementsByName("planform_span")[0].value).toFixed(1),
+                };
+
                 this.planform_input_obj["number_of_panel"] = parseFloat(document.getElementsByName("planform_total_ribs")[0].value);
                 EventBus.$emit('inputParamPLANFORM_obj', this.planform_input_obj);
             }

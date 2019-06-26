@@ -93,10 +93,9 @@ export default {
             {
                 this.airfoil_input_obj["rib_description"] = {
                     "LE_cut" : {
-                        "angle_with_chord_line" : parseFloat(document.getElementsByName("airfoil_acl")[0].value),
-                        "chord_length_percentc" : parseFloat(document.getElementsByName("airfoil_clp")[0].value)
+                        "angle_with_chord_line" : parseFloat(document.getElementsByName("airfoil_acl")[0].value).toFixed(1),
+                        "chord_length_percentc" : parseFloat(document.getElementsByName("airfoil_clp")[0].value).toFixed(1)
                     },
-                    "aerofoil" : "../solverMain/test/airfoil.txt",
                     "lightening_holes": [
                         {
                             "shape": "ELLIPTIC", 
@@ -110,6 +109,8 @@ export default {
                             "minor_to_major_axes": 0.7
                         }
                     ],
+                    "aerofoil" : "/solverMain/test/airfoil.txt",
+                    "tape_V_angle":20
                 };
                 EventBus.$emit('inputParamAI_obj', this.airfoil_input_obj);
             }

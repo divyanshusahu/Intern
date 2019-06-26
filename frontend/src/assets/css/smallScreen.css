@@ -12,6 +12,8 @@
         left:0;
         z-index:9999;
         min-height: 100vh;
+        opacity: 0.9;
+        color: #fff;
     }
 
     #sidebar.active {
@@ -58,6 +60,10 @@
 
     #softwareOutput {
         height: 75vh;
+    }
+
+    #outputLog {
+        height: 10vh;
     }
 
     #sidebarCollapse {

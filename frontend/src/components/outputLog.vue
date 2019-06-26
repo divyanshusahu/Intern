@@ -9,7 +9,7 @@
         <p>{{ result.converting_vtp }}</p>
         <p>{{ result.coverting_vtp_result }}</p>
         <p>{{ result.success }}</p>-->
-        <p>{{ this.current }}</p>
+        <p>{{ logRender }}</p>
     </div>
 </template>
 
@@ -22,19 +22,22 @@ export default {
         return {
             caseID : {},
             result : {},
-            current : {}
+            logRender : ""
         }
     },
     created() {
         let self=this;
         EventBus.$on("solver_overall_result",(solver_result) =>{
             Object.assign(this.caseID, solver_result);
+            self.logRender = "";
             if (this.caseID['case_id'])
             {
                 var check_status = setInterval(function() {
                     self.axios.post('/api/job_status', self.caseID).then((res) => {
-                        console.log(res.data);
-                        Object.assign(self.current, res.data);
+                        if (self.logRender != res.data["current_status"]) {
+                            self.logRender = res.data["current_status"];
+                            this.$forceUpdate();
+                        }
                         if(res.data['current_status'] == 'SUCCEEDED') {
                             Object.assign(self.result, res.data);
                             display_result(self.result['url']);
@@ -43,7 +46,6 @@ export default {
                     });
                 },5000);
             }
-            this.$forceUpdate();
         });
     }
 }

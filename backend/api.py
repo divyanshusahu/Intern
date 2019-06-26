@@ -23,7 +23,7 @@ api.add_resource(HelloWorld, '/')"""
 def submit_job() :
     data = request.get_json()
     data["mesh_parameters"] = {
-        "fixed_node_file_element" : "/work/fixed_nodes.txt",
+        "fixed_node_file_name" : "/work/fixed_nodes.txt",
         "edge_length_percentc" : 3,
         "mesh_file_name" : "/work/cad_surfacefile.vtk",
         "geometry_file_name" : "/work/gmsh_file.geo"

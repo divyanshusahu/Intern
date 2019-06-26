@@ -75,8 +75,8 @@ export default {
             {
                 this.volute_obj["volute_description"] = {
                     "shape" : "ELLIPTIC",
-                    "semi_span_angle" : parseFloat(document.getElementsByName("volute_input_ssa")[0].value),
-                    "minor_to_major_axes" : parseFloat(document.getElementsByName("volute_input_minot_ratio")[0].value)
+                    "semi_span_angle" : parseFloat(document.getElementsByName("volute_input_ssa")[0].value).toFixed(1),
+                    "minor_to_major_axes" : parseFloat(document.getElementsByName("volute_input_minot_ratio")[0].value).toFixed(1)
                 };
                 EventBus.$emit('inputParamVOLUTE_obj', this.volute_obj);
             }

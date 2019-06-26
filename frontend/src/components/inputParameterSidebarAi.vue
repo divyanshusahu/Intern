@@ -139,9 +139,6 @@ export default {
                     "enable_generation" : true
                 };
                 this.advance_input_obj["wash_out_description"] = {
-                    "center_of_rotation_percentc" : parseFloat(document.getElementsByName("advip_washout_description_cr")[0].value),
-                    "variation" : document.getElementsByName("advip_washout_description_variation")[0].value,
-                    "tip_angle" : parseFloat(document.getElementsByName("advip_washout_description_ta")[0].value),
                     "user_defined_angle": [
                         -10, 
                         -8, 
@@ -149,23 +146,26 @@ export default {
                         -4, 
                         -2, 
                         -1
-                    ], 
+                    ],
+                    "center_of_rotation_percentc" : parseFloat(document.getElementsByName("advip_washout_description_cr")[0].value).toFixed(1),
+                    "variation" : document.getElementsByName("advip_washout_description_variation")[0].value,
+                    "tip_angle" : parseFloat(document.getElementsByName("advip_washout_description_ta")[0].value).toFixed(1),
                 };
                 this.advance_input_obj["slider"] = {
-                    "percent_area" : parseFloat(document.getElementsByName("advip_slider_ap")[0].value),
-                    "width_length_ratio" : parseFloat(document.getElementsByName("advip_slider_wlr")[0].value)
+                    "percent_area" : parseFloat(document.getElementsByName("advip_slider_ap")[0].value).toFixed(1),
+                    "width_length_ratio" : parseFloat(document.getElementsByName("advip_slider_wlr")[0].value).toFixed(1)
                 };
                 this.advance_input_obj["transform_geometry"] = {
                     "rotation" : {
                         "angle" : document.getElementsByName("advip_tg_ra")[0].value.split(",").map(
                             function(x){
-                                return parseFloat(x,10);
+                                return parseFloat(x,10).toFixed(1);
                             }
                         )
                     },
                     "translation" : document.getElementsByName("advip_tg_ta")[0].value.split(",").map(
                         function(x){
-                            return parseFloat(x,10);
+                            return parseFloat(x,10).toFixed(1);
                         }
                     )
                 };

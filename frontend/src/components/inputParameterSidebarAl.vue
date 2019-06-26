@@ -28,7 +28,7 @@
                 <label>Ribs Connection</label>
                 <select name="ribs_connection">
                     <option value="ALL">All Ribs</option>
-                    <option value="ALTERNATIVE">Alternative Ribs</option>
+                    <option value="ALTERNATE">Alternative Ribs</option>
                 </select>
             </div>
             <div class="card-footer">

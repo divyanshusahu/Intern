@@ -70,12 +70,13 @@ export default {
                             ]
                         ],
                         "rib_connection" : this.al_value,
-                        "riser_length" : parseFloat(document.getElementsByName("rla_cl_susplen")[0].value),
+                        "riser_length" : parseFloat(document.getElementsByName("rla_cl_susplen")[0].value).toFixed(1),
                         "chordwise_locations_percentc" : document.getElementsByName("rla_cl_location")[0].value.split(",").map(
                             function(x) {
-                                return parseFloat(x,10);
+                                return parseFloat(x,10).toFixed(1);
                             }
                         ),
+                        "distance_between_karabinas" : parseFloat(document.getElementsByName("advip_others_dkl")[0].value).toFixed(1),
                         "L1_length_percentl": 20.0, 
                         "user_defined_ribs": [
                             0, 
@@ -83,7 +84,6 @@ export default {
                             8, 
                             13
                         ],
-                        "distance_between_karabinas" : parseFloat(document.getElementsByName("advip_others_dkl")[0].value),
                         "riser_end_separation_length": 400.0,
                     }
                 ];
