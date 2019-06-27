@@ -31,9 +31,6 @@
           <li v-on:click="got_clicked_brake_lines">
             <a href="#" id="btn_brake_lines">Brake Lines</a>
           </li>
-          <li>
-            <a href="#">Run</a>
-          </li>
           <li class="divider"></li>
           <li v-on:click="got_clicked_ai">
             <a href="#" id="btn_advance_input">Advance Input</a>

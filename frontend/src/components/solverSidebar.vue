@@ -42,9 +42,7 @@ export default {
     },
     stop_solver : function() {
       EventBus.$on("solver_overall_resuslt", (solver_result) => {
-        this.axios.post('/api/job_cancel', solver_result).then((data) => {
-          console.log(data);
-        });
+        this.axios.post('/api/job_cancel', solver_result);
       });
     }
   }

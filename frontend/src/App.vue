@@ -4,7 +4,7 @@
 
     <div class="wrapper">
       <sidebar />
-      <div id="content">
+      <div id="content" v-touch:swipe.left="sidebar_swipe_toggle">
         <topbar />
         <softwareOutput />
         <outputLog />
@@ -25,6 +25,8 @@ import softwareOutput from './components/softwareOutput.vue'
 import outputLog from './components/outputLog.vue'
 import allInputs from './components/allInputs.vue'
 
+import { EventBus } from './main.js'
+
 export default {
   name: 'app',
   components: {
@@ -34,6 +36,17 @@ export default {
     outputLog,
     allInputs
   },
+  data : function() {
+    return {
+      swipe : null
+    }
+  },
+  methods : {
+    sidebar_swipe_toggle : function() {
+      this.swipe = true;
+      EventBus.$emit("android_swipe_toggle", this.swipe);
+    }
+  }
 }
 </script>
 

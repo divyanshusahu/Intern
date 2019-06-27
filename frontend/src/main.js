@@ -13,6 +13,9 @@ Vue.use(VueAxios, axios);
 
 import App from './App.vue'
 
+import Vue2TouchEvents from 'vue2-touch-events'
+Vue.use(Vue2TouchEvents)
+
 Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false

@@ -163,6 +163,12 @@ export default {
         this.run_the_software();
       }
     });
+    EventBus.$on("mobile_sidebar_toggle", (sidebar_toggle) => {
+      this.sidebar_collapse_flag = sidebar_toggle;
+    });
+    EventBus.$on("android_swipe_toggle", (swipe) => {
+      this.sidebar_collapse_flag = !swipe;
+    });
   }
 }
 </script>
