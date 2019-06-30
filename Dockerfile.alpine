@@ -1,0 +1,10 @@
+FROM python:3.6-alpine
+
+LABEL name="Divyanshu Sahu"
+LABEL email="dsahu1997@gmail.com"
+
+RUN cd ~ \
+    && wget http://geuz.org/gmsh/bin/Linux/gmsh-3.0.6-Linux64.tgz \
+    && tar -xzvf gmsh-3.0.6-Linux64.tgz \
+    && cp gmsh-3.0.6-Linux64/bin/gmsh /usr/bin/
+

@@ -46,10 +46,18 @@
     transition: 0.5s;
 }
 
-.blur_the_wrapper {
-    filter: blur(10px);
+.user_define {
+    padding: 1em;
 }
 
+.custom_user_define_inputs input{
+    width : 60%;
+}
+
+.user_define_add_remove_buttons button{
+    float: right;
+    margin: 0.5em;
+}
 
 /*.custom_modal_header {
     width: 100%;
