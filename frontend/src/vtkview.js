@@ -446,6 +446,7 @@ export function load(container, options) {
             });
         }
     }
+    document.getElementsByTagName("canvas")[0].style.height = "100%";
 }
 
 export function initLocalFileLoader(container) {
