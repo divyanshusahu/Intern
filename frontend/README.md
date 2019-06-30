@@ -1,29 +1,29 @@
-# airparachute
+<h1 align="center">Welcome to Ram Paraz 👋</h1>
+<p>
+  <img src="https://img.shields.io/badge/version-0.9-blue.svg?cacheSeconds=2592000" />
+  <a href="https://twitter.com/d1vy4n5hu">
+    <img alt="Twitter: d1vy4n5hu" src="https://img.shields.io/twitter/follow/d1vy4n5hu.svg?style=social" target="_blank" />
+  </a>
+</p>
 
-## Project setup
-```
+> A software to display the design of the parachute
+
+## Install
+
+```sh
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Author
 
-### Compiles and minifies for production
-```
-npm run build
-```
+👤 **Divyanshu Sahu**
 
-### Run your tests
-```
-npm run test
-```
+* Twitter: [@d1vy4n5hu](https://twitter.com/d1vy4n5hu)
+* Github: [@divyanshusahu](https://github.com/divyanshusahu)
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Show your support
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
