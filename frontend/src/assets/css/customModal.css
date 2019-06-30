@@ -50,6 +50,15 @@
     padding: 1em;
 }
 
+.user_define span {
+    width: 75%;
+    margin-right: 1em;
+}
+
+.custom_user_define_inputs {
+    margin-top: 0.5em;
+}
+
 .custom_user_define_inputs input{
     width : 60%;
 }

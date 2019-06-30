@@ -11,7 +11,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col">
-              <b>Total Ribs</b>
+              <p>Total Ribs</p>
             </div>
             <div class="col">
               <input type="number" value="28.0" name="planform_total_ribs" style="width: 100px">
@@ -19,20 +19,20 @@
           </div>
           <div class="row">
             <div class="col">
-              <b>Platform Type</b>
+              <p>Platform Type</p>
             </div>
             <div class="col">
-              <select name="planform_plftype">
+              <select name="planform_plftype" v-model="hide_user_define">
                 <option value="RECTANGULAR">Rectangular</option>
                 <option value="ELLIPTICAL">Elliptical</option>
                 <option value="USER_DEFINED">User Define</option>
               </select>
             </div>
           </div>
-          <br />
+          <br>
           <div class="row">
             <div class="col">
-              <b>Span (mm)</b>
+              <p>Span (mm)</p>
             </div>
             <div class="col">
               <input type="number" value="16180.0" name="planform_span" style="width: 100px">
@@ -40,14 +40,14 @@
           </div>
           <div class="row">
             <div class="col">
-              <b>Chord (mm)</b>
+              <p>Chord (mm)</p>
             </div>
             <div class="col">
               <input type="number" value="5810.0" name="planform_chord" style="width: 100px">
             </div>
           </div>
-          <br />
-          <div class="user_define card">
+          <br>
+          <div class="user_define card" v-if="hide_user_define === 'USER_DEFINED'">
             <p>Spanwise chord length percent</p>
             <div class="custom_user_define_inputs" id="user_defined_planform">
               <input type="text" value="0,0,100" name="planform_user_define">
@@ -81,18 +81,20 @@ export default {
   data: function() {
     return {
       input_toggle: true,
-      planform_input_obj: {}
+      planform_input_obj: {},
+      hide_user_define : "RECTANGULAR"
     };
   },
-  methods : {
-    add_user_define : function() {
+  methods: {
+    add_user_define: function() {
       let inp_node = document.createElement("input");
       inp_node.setAttribute("type", "text");
       inp_node.setAttribute("name", "planform_user_define");
       document.getElementById("user_defined_planform").appendChild(inp_node);
     },
-    remove_user_define : function() {
-      let last_child = document.getElementById("user_defined_planform").lastChild;
+    remove_user_define: function() {
+      let last_child = document.getElementById("user_defined_planform")
+        .lastChild;
       document.getElementById("user_defined_planform").removeChild(last_child);
     }
   },
@@ -107,13 +109,11 @@ export default {
     EventBus.$on("run_got_clicked", run_clicked_flag => {
       if (run_clicked_flag) {
         let user_defined = document.getElementsByName("planform_user_define");
-        let chord_length_percent = []
-        for (let i=0; i<user_defined.length;i++) {
-          let cur = user_defined[i].value.split(",").map(
-            function(x) {
-              return parseFloat(x);
-            }
-          );
+        let chord_length_percent = [];
+        for (let i = 0; i < user_defined.length; i++) {
+          let cur = user_defined[i].value.split(",").map(function(x) {
+            return parseFloat(x);
+          });
           chord_length_percent.push(cur);
         }
         this.planform_input_obj["planform_description"] = {
