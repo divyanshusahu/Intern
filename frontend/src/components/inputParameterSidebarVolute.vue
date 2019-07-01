@@ -9,32 +9,33 @@
       </div>
       <div class="card-body">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col">
-              <span>Shape</span>
+          <fieldset>
+            <legend>Volute</legend>
+            <div class="row">
+              <div class="col">
+                <span>Shape</span>
+              </div>
+              <div class="col">
+                <span>Elliptic</span>
+              </div>
             </div>
-            <div class="col">
-              <span>Elliptic</span>
+            <div class="row">
+              <div class="col">
+                <span>Minot to Major axis ratio</span>
+              </div>
+              <div class="col">
+                <input type="number" value="1.0" name="volute_input_minot_ratio" style="width:100px;">
+              </div>
             </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col">
-              <span>Minot to Major axis ratio</span>
+            <div class="row">
+              <div class="col">
+                <span>Semi Span Angle (deg)</span>
+              </div>
+              <div class="col">
+                <input type="number" value="45.0" name="volute_input_ssa" style="width: 100px">
+              </div>
             </div>
-            <div class="col">
-              <input type="number" value="1.0" name="volute_input_minot_ratio" style="width:100px;">
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col">
-              <span>Semi Span Angle (deg)</span>
-            </div>
-            <div class="col">
-              <input type="number" value="45.0" name="volute_input_ssa" style="width: 100px">
-            </div>
-          </div>
+          </fieldset>
         </div>
       </div>
       <div class="card-footer">

@@ -22,23 +22,25 @@
               <span>L1 Combination</span>
               <input type="checkbox" name="is_bl_l1" style="width:20%;" v-model="bl_l1" />
               <br />
-              <span>L1 Length</span>
-              <input type="text" name="bl_l1_length" value="20" style="width:20%;" />
-              <div class="custom_user_define_inputs" id="l1_bl">
-                <input type="text" value="0,1" name="bl_l1_inputs" />
-                <input type="text" value="2,3" name="bl_l1_inputs" />
-              </div>
-              <div class="user_define_add_remove_buttons">
-                <button
-                  type="button"
-                  class="btn btn-sm btn-secondary"
-                  v-on:click="remove_l1_user_define"
-                >Remove</button>
-                <button
-                  type="button"
-                  class="btn btn-sm btn-secondary"
-                  v-on:click="add_l1_user_define"
-                >Add</button>
+              <div v-bind:class="{disabledDiv:!bl_l1}">
+                <span>L1 Length</span>
+                <input type="text" name="bl_l1_length" value="20" style="width:20%;" />
+                <div class="custom_user_define_inputs" id="l1_bl">
+                  <input type="text" value="0,1" name="bl_l1_inputs" />
+                  <input type="text" value="2,3" name="bl_l1_inputs" />
+                </div>
+                <div class="user_define_add_remove_buttons">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-secondary"
+                    v-on:click="remove_l1_user_define"
+                  >Remove</button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-secondary"
+                    v-on:click="add_l1_user_define"
+                  >Add</button>
+                </div>
               </div>
             </div>
           </div>
@@ -47,23 +49,25 @@
               <span>L2 Combination</span>
               <input type="checkbox" name="is_bl_l2" style="width:20%;" v-model="bl_l2" />
               <br />
-              <span>L2 Length</span>
-              <input type="text" name="bl_l2_length" value="20" style="width:20%;" />
-              <div class="custom_user_define_inputs" id="l2_bl">
-                <input type="text" value="1,2,4" name="bl_l2_inputs" />
-                <input type="text" value="3,5,8" name="bl_l2_inputs" />
-              </div>
-              <div class="user_define_add_remove_buttons">
-                <button
-                  type="button"
-                  class="btn btn-sm btn-secondary"
-                  v-on:click="remove_l2_user_define"
-                >Remove</button>
-                <button
-                  type="button"
-                  class="btn btn-sm btn-secondary"
-                  v-on:click="add_l2_user_define"
-                >Add</button>
+              <div v-bind:class="{disabledDiv:!bl_l2}">
+                <span>L2 Length</span>
+                <input type="text" name="bl_l2_length" value="20" style="width:20%;" />
+                <div class="custom_user_define_inputs" id="l2_bl">
+                  <input type="text" value="1,2,4" name="bl_l2_inputs" />
+                  <input type="text" value="3,5,8" name="bl_l2_inputs" />
+                </div>
+                <div class="user_define_add_remove_buttons">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-secondary"
+                    v-on:click="remove_l2_user_define"
+                  >Remove</button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-secondary"
+                    v-on:click="add_l2_user_define"
+                  >Add</button>
+                </div>
               </div>
             </div>
           </div>

@@ -12,18 +12,20 @@
         </h5>
       </div>
       <div class="card-body">
-        <p>Ribs Connection</p>
-        <input name="ribs_connection" type="radio" value="ALL" v-model="user_define"> All Ribs
-        <br>
-        <input name="ribs_connection" type="radio" value="ALTERNATE" v-model="user_define"> Alternative Ribs
-        <br>
-        <input name="ribs_connection" type="radio" value="USER_DEFINED" v-model="user_define"> User Define
-        <input
-          type="text"
-          name="user_defined_ribs"
-          value="1,3,5,7"
-          v-if="user_define==='USER_DEFINED'"
-        >
+        <fieldset>
+          <legend>Ribs Connection</legend>
+          <input name="ribs_connection" type="radio" value="ALL" v-model="user_define"> All Ribs
+          <br>
+          <input name="ribs_connection" type="radio" value="ALTERNATE" v-model="user_define"> Alternative Ribs
+          <br>
+          <input name="ribs_connection" type="radio" value="USER_DEFINED" v-model="user_define"> User Define
+          <input
+            type="text"
+            name="user_defined_ribs"
+            value="1,3,5,7"
+            v-if="user_define==='USER_DEFINED'"
+          >
+        </fieldset>
       </div>
       <div class="card-footer">
         <button
