@@ -1,8 +1,8 @@
 <template>
   <nav id="sidebar" v-bind:class="{active: sidebar_toggle}">
     <div class="sidebar-header">
-      <h3 style="text-align: center;">SOFTWARE</h3>
-      <strong>SN</strong>
+      <h3 style="text-align: center;">PARAZ</h3>
+      <strong>PARAZ</strong>
       <i
         class="far fa-arrow-alt-circle-left d-inline-block d-lg-none"
         style="float: right; font-size: 1.5em;"
@@ -11,12 +11,12 @@
     </div>
 
     <ul class="list-unstyled components">
-      <fileSidebar/>
-      <viewSidebar/>
-      <inputParameterSidebar/>
-      <roundCanopySidebar/>
-      <solverSidebar/>
-      <helpSidebar/>
+      <fileSidebar />
+      <viewSidebar />
+      <inputParameterSidebar />
+      <roundCanopySidebar />
+      <solverSidebar />
+      <helpSidebar />
     </ul>
   </nav>
 </template>
@@ -49,9 +49,8 @@ export default {
     EventBus.$on("sidebar_flag_got_clicked", sidebar_collapse_flag => {
       this.sidebar_toggle = sidebar_collapse_flag;
     });
-    EventBus.$on("android_swipe_toggle", (swipe) => {
-      if (this.sidebar_toggle == true)
-        this.sidebar_toggle = !swipe;
+    EventBus.$on("android_swipe_toggle", swipe => {
+      if (this.sidebar_toggle == true) this.sidebar_toggle = !swipe;
     });
   },
   methods: {

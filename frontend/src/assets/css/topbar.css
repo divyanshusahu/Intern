@@ -1,64 +1,56 @@
 .navbar {
-    /*padding: 15px 10px;*/
-    /*background: rgb(33, 33, 33);*/
-    border: none;
-    border-radius: 0;
-    /*margin-bottom: 40px;*/
-    color: #626262;
-    /*box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.5);*/
-    width: 100%;
-    height: 80px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /*padding: 15px 10px;*/
+  /*background: rgb(33, 33, 33);*/
+  border: none;
+  border-radius: 0;
+  /*margin-bottom: 40px;*/
+  color: #626262;
+  /*box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.5);*/
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
+  box-shadow: none;
+  outline: none !important;
+  border: none;
 }
 
 #sidebarCollapse {
-    width: 40px;
-    height: 40px;
-    background: inherit;
-    cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background: inherit;
+  cursor: pointer;
 }
 
 #sidebarCollapse.active span {
-    width: 80%;
-    height: 2px;
-    margin: 0 auto;
-    display: block;
-    background: #555;
-    /*transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
-    transition-delay: 0.2s;*/
+  width: 80%;
+  height: 2px;
+  margin: 0 auto;
+  display: block;
+  background: #555;
+  /*transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+  transition-delay: 0.2s;*/
 }
 
 #sidebarCollapse i {
-    font-size: 30px;
-    text-align: center;
-    color: #626262;
+  font-size: 30px;
+  text-align: center;
+  color: #626262;
 }
 
 #sidebarCollapse.active i {
-    display: none;
+  display: none;
 }
-
-
-/*#sidebarCollapse span:first-of-type {
-    transform: rotate(45deg) translate(2px, 2px);
-}
-
-#sidebarCollapse span:nth-of-type(2) {
-    opacity: 0;
-}
-
-#sidebarCollapse span:last-of-type {
-    transform: rotate(-45deg) translate(1px, -1px);
-}*/
 
 #sidebarCollapse.active span {
-    transform: none;
-    opacity: 1;
-    margin: 5px auto;
+  transform: none;
+  opacity: 1;
+  margin: 5px auto;
+}
+
+#navbarSupportedContent ul li {
+  margin: 0.8rem;
+  cursor: pointer;
 }

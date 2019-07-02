@@ -1,18 +1,72 @@
 #content {
-    width: 100%;
-    padding: 0px;
-    min-height: 100vh;
-    margin-left: 0px;
+  width: 100%;
+  padding: 0px;
+  min-height: 100vh;
+  margin-left: 0px;
+}
+
+#output_screen {
+  width: 100%;
+  height: 75%;
+  margin-top: 1em;
+}
+
+#view_toolbar {
+  width: 90%;
+  height: 10%;
+  background-color: #fafafa;
+  margin-left: 5%;
+}
+
+#view_toolbar ul {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: table;
+}
+
+#view_toolbar ul li {
+  display: table-cell;
+  height: 100%;
+  width: 60px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.toolbar_active {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: none;
+  color: #09b7bf;
 }
 
 #softwareOutput {
-    width: 90%;
-    /*border: 1px solid #ccc;*/
-    height: 75%;
-    /*background: #fff;*/
-    /*box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.5);*/
-    margin-top: 1em;
-    margin-left: 5%;
+  width: 90%;
+  /*border: 1px solid #ccc;*/
+  height: 90%;
+  /*background: #fff;*/
+  /*box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.5);*/
+  margin-left: 5%;
+}
+
+.display_none_element {
+  display: none;
+}
+
+#dxf_output {
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+#dxf_output button {
+  margin-top: 20%;
 }
 
 #loader {
@@ -28,61 +82,70 @@
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
 }
-  
+
 #loader > div {
-    height: 100%;
-    width: 8px;
-    display: inline-block;
-    margin-left: 2px;
-    -webkit-animation: delay 0.8s infinite ease-in-out;
-    animation: delay 0.8s infinite ease-in-out;
-}
-  
-#loader .bar1{
-    background-color: #754fa0 ;
+  height: 100%;
+  width: 8px;
+  display: inline-block;
+  margin-left: 2px;
+  -webkit-animation: delay 0.8s infinite ease-in-out;
+  animation: delay 0.8s infinite ease-in-out;
 }
 
-#loader .bar2{
-    background-color: #09b7bf;
-    -webkit-animation-delay: -0.7s;
-    animation-delay: -0.7s;
+#loader .bar1 {
+  background-color: #754fa0;
 }
 
-#loader .bar3{
-    background-color: #90d36b;
-    -webkit-animation-delay: -0.6s;
-    animation-delay: -0.6s;
+#loader .bar2 {
+  background-color: #09b7bf;
+  -webkit-animation-delay: -0.7s;
+  animation-delay: -0.7s;
 }
 
-#loader .bar4{
-    background-color: #f2d40d;
-    -webkit-animation-delay: -0.5s;
-    animation-delay: -0.5s;
+#loader .bar3 {
+  background-color: #90d36b;
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
 }
 
-#loader .bar5{
-    background-color: #fcb12b;
-    -webkit-animation-delay: -0.4s;
-    animation-delay: -0.4s;
+#loader .bar4 {
+  background-color: #f2d40d;
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
 }
 
-#loader .bar6{
-    background-color: #ed1b72;
-    -webkit-animation-delay: -0.3s;
-    animation-delay: -0.3s;
+#loader .bar5 {
+  background-color: #fcb12b;
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+
+#loader .bar6 {
+  background-color: #ed1b72;
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
 }
 
 @-webkit-keyframes delay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.05) }  
-  20% { -webkit-transform: scaleY(1.0) }
+  0%,
+  40%,
+  100% {
+    -webkit-transform: scaleY(0.05);
+  }
+  20% {
+    -webkit-transform: scaleY(1);
+  }
 }
 
 @keyframes delay {
-  0%, 40%, 100% { 
+  0%,
+  40%,
+  100% {
     transform: scaleY(0.05);
     -webkit-transform: scaleY(0.05);
-  }  20% { 
-    transform: scaleY(1.0);
-    -webkit-transform: scaleY(1.0);
+  }
+  20% {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
   }
 }
