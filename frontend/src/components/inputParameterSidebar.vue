@@ -11,31 +11,31 @@
         </a>
         <ul class="list-unstyled" id="input_parameter" v-bind:class="{collapse: input_parameter_flag}">
           <li v-on:click="got_clicked_planform">
-            <img src="../assets/icon/planform_selected.svg" alt="Planform" height="40" width="40"/>
+            <!--<img src="../assets/icon/planform_selected.svg" alt="Planform" height="40" width="40"/>-->
             <a href="#" id="btn_planform">PlanForm</a>
           </li>
           <li v-on:click="got_clicked_airfoil">
-            <img src="../assets/icon/airfoil_i.svg" alt="Airfoil" height="40" width="40"/>
+            <!--<img src="../assets/icon/airfoil_i.svg" alt="Airfoil" height="40" width="40"/>-->
             <a href="#" id="btn_airfoil">Airfoil</a>
           </li>
           <li v-on:click="got_clicked_volute">
-            <img src="../assets/icon/volute_selected.svg" alt="Volute" height="40" width="40"/>
+            <!--<img src="../assets/icon/volute_selected.svg" alt="Volute" height="40" width="40"/>-->
             <a href="#" id="btn_volute">Volute</a>
           </li>
           <li v-on:click="got_clicked_al">
-            <img src="../assets/icon/anchor_selected.svg" alt="Anchor Location" height="40" width="40"/>
+            <!--<img src="../assets/icon/anchor_selected.svg" alt="Anchor Location" height="40" width="40"/>-->
             <a href="#" id="btn_anchor_location">Anchor Location</a>
           </li>
           <li v-on:click="got_clicked_fp">
-            <img src="../assets/icon/panels_selected.svg" alt="Flat Panels" height="40" width="40"/>
+            <!--<img src="../assets/icon/panels_selected.svg" alt="Flat Panels" height="40" width="40"/>-->
             <a href="#" id="btn_flat_panels">Flat Panels</a>
           </li>
           <li v-on:click="got_clicked_rla">
-            <img src="../assets/icon/riserlines_selected.svg" alt="Riserlines" height="40" width="40"/>
+            <!--<img src="../assets/icon/riserlines_selected.svg" alt="Riserlines" height="40" width="40"/>-->
             <a href="#" id="btn_rigging_lines_arrangement">Rigging Lines Arrangement</a>
           </li>
           <li v-on:click="got_clicked_brake_lines">
-            <img src="../assets/icon/brake_selected.svg" alt="Brake Lines" height="40" width="40"/>
+            <!--<img src="../assets/icon/brake_selected.svg" alt="Brake Lines" height="40" width="40"/>-->
             <a href="#" id="btn_brake_lines">Brake Lines</a>
           </li>
           <li class="divider"></li>

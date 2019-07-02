@@ -74,3 +74,7 @@ legend {
   width: inherit;
   max-width: inherit;
 }
+
+#airfoil_plot {
+  max-width: 100%;
+}
