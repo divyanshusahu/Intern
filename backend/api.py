@@ -104,11 +104,19 @@ def cancel_job() :
   
   response = batch.cancel_job(
     jobId=job_id,
-    resason='Cancelling Job'
+    reason='Cancelling Job'
   )
 
   return response
 
+@app.route('/api/download_dxf', methods=['POST'])
+def download_dxf() :
+  data = request.get_json()
+  case_id = data["case_id"]
+  download_dxf_name = "%s/ram_2d_drawing.dxf" % (case_id)
+  download_dxf_url = create_presigned_url(download_dxf_name)
+
+  return jsonify(url=download_dxf_url)
 
 if __name__ == '__main__':
   app.run(debug=True)

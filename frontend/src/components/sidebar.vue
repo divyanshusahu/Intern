@@ -12,7 +12,7 @@
 
     <ul class="list-unstyled components">
       <fileSidebar />
-      <viewSidebar />
+      <!--<viewSidebar />-->
       <inputParameterSidebar />
       <roundCanopySidebar />
       <solverSidebar />
@@ -25,7 +25,7 @@
 import { EventBus } from "../main.js";
 
 import fileSidebar from "./fileSidebar.vue";
-import viewSidebar from "./viewSidebar.vue";
+//import viewSidebar from "./viewSidebar.vue";
 import inputParameterSidebar from "./inputParameterSidebar.vue";
 import roundCanopySidebar from "./roundCanopySidebar.vue";
 import solverSidebar from "./solverSidebar.vue";
@@ -34,7 +34,7 @@ import helpSidebar from "./helpSidebar.vue";
 export default {
   components: {
     fileSidebar,
-    viewSidebar,
+    //viewSidebar,
     inputParameterSidebar,
     roundCanopySidebar,
     solverSidebar,

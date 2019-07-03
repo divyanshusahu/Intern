@@ -24,10 +24,14 @@
   margin: 0;
   padding: 0;
   height: 100%;
-  display: table;
+  display: inline-table;
 }
 
-#view_toolbar ul li {
+.view_icons {
+  float: right;
+}
+
+.tabs_3d_2d li, .view_icons li {
   display: table-cell;
   height: 100%;
   width: 60px;

@@ -10,8 +10,6 @@ def run_solver(path_to_input) :
         run_code = 2
         return run_code
 
-    #c2 = "cp /solver/test/gmsh_file.geo /work/"
-    #subprocess.run(c2, shell=True)
     c3 = "gmsh /work/gmsh_file.geo -algo del2d -2 -bin -o /work/cad_surfacefile.vtk"
     r3 = subprocess.run(c3, shell=True).returncode
     if r3 != 0 :
@@ -25,7 +23,9 @@ def run_solver(path_to_input) :
         return run_code
 
     output_file_path = path_to_input.split("/")[0] + "/cad_surfacefile.vtp"
+    output_dxf_path = path_to_input.split("/")[0] + "/ram_2d_drawing.dxf"
     upld_fl('/work/cad_surfacefile.vtp', output_file_path)
+    upld_fl('/work/ram_2d_drawing.dxf', output_dxf_path)
     return 0
 
 if __name__ == "__main__" :

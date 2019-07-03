@@ -3,9 +3,11 @@ node_modules
 dist
 this_project
 solverMain
+round_canopy
 tmp
 vtk_to_vtp
 icon
+views
 *.db
 __pycache__
 

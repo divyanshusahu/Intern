@@ -15,7 +15,11 @@
       </a>
       </li>
       <li>
-      <a href="#" v-on:click="save_input_file">Save Input</a>
+      <a href="#" v-on:click="save_project_file">Save Project</a>
+      </li>
+      <li>
+      <a href="#" v-on:click="load_project_file">Load Project</a>
+        <input id="project_file_input" type="file" accept=".scf,.json" style="display:none;" />
       </li>
     </ul>
     </li>
@@ -23,8 +27,8 @@
 
 <script>
 import { EventBus } from '../main.js';
-import { initLocalFileLoader } from '../vtkview.js';
-import { save_input } from '../save_inputs.js';
+import { initLocalFileLoader, load } from '../vtkview.js';
+import { save_input, load_input } from '../save_inputs.js';
 export default {
   data : function() {
     return {
@@ -53,8 +57,15 @@ export default {
     document.getElementById("vtp_file_input").click();
     initLocalFileLoader();
     },
-    save_input_file : function() {
+    save_project_file : function() {
       save_input();
+    },
+    load_project_file : function() {
+      var pf = document.getElementById("project_file_input");
+      pf.click();
+      pf.addEventListener("change", function(){
+        load_input(pf.files[0]);
+      });
     }
   }
 }

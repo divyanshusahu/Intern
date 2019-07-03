@@ -514,62 +514,92 @@ export function display_result(url) {
 
 export function change_camera_view(view) {
     if (view == 'top') {
-        renderer.getActiveCamera().setViewUp(0, 1, 0);
-        //renderer.getActiveCamera().setPhysicalViewNorth(1, 1, 1);
-        renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
-        renderer.getActiveCamera().setPosition(2937.4682, 0, 41801.8841657527);
-        renderer.getActiveCamera().setViewAngle(30);
-        renderer.resetCameraClippingRange();
-        updateCamera(renderer.getActiveCamera());
+        try {
+            renderer.getActiveCamera().setViewUp(0, 1, 0);
+            //renderer.getActiveCamera().setPhysicalViewNorth(1, 1, 1);
+            renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
+            renderer.getActiveCamera().setPosition(2937.4682, 0, 41801.8841657527);
+            renderer.getActiveCamera().setViewAngle(30);
+            renderer.resetCameraClippingRange();
+            updateCamera(renderer.getActiveCamera());
+        }
+        catch {
+            // This is empty
+        }
     }
 
     else if (view == 'bottom') {
-        renderer.getActiveCamera().setViewUp(0, 1, 0);
-        //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
-        renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
-        renderer.getActiveCamera().setPosition(2937.4682, 0, -27396.0232657527);
-        renderer.getActiveCamera().setViewAngle(30);
-        renderer.resetCameraClippingRange();
-        updateCamera(renderer.getActiveCamera());
+        try {
+            renderer.getActiveCamera().setViewUp(0, 1, 0);
+            //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
+            renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
+            renderer.getActiveCamera().setPosition(2937.4682, 0, -27396.0232657527);
+            renderer.getActiveCamera().setViewAngle(30);
+            renderer.resetCameraClippingRange();
+            updateCamera(renderer.getActiveCamera());
+        }
+        catch {
+            // This is empty
+        }
     }
 
     else if (view == 'right') {
-        renderer.getActiveCamera().setViewUp(0, 0, 1);
-        //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
-        renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
-        renderer.getActiveCamera().setPosition(2937.4682, 34598.9537157527, 7202.93045);
-        renderer.getActiveCamera().setViewAngle(30);
-        renderer.resetCameraClippingRange();
-        updateCamera(renderer.getActiveCamera());
+        try {
+            renderer.getActiveCamera().setViewUp(0, 0, 1);
+            //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
+            renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
+            renderer.getActiveCamera().setPosition(2937.4682, 34598.9537157527, 7202.93045);
+            renderer.getActiveCamera().setViewAngle(30);
+            renderer.resetCameraClippingRange();
+            updateCamera(renderer.getActiveCamera());
+        }
+        catch {
+            // This is empty
+        }
     }
 
     else if (view == 'left') {
-        renderer.getActiveCamera().setViewUp(0, 0, 1);
-        //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
-        renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
-        renderer.getActiveCamera().setPosition(2937.4682, -34598.9537157527, 7202.93045);
-        renderer.getActiveCamera().setViewAngle(30);
-        renderer.resetCameraClippingRange();
-        updateCamera(renderer.getActiveCamera());
+        try {
+            renderer.getActiveCamera().setViewUp(0, 0, 1);
+            //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
+            renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
+            renderer.getActiveCamera().setPosition(2937.4682, -34598.9537157527, 7202.93045);
+            renderer.getActiveCamera().setViewAngle(30);
+            renderer.resetCameraClippingRange();
+            updateCamera(renderer.getActiveCamera());
+        }
+        catch {
+            // This is empty
+        }
     }
 
     else if (view == 'back') {
-        renderer.getActiveCamera().setViewUp(0, 0, 1);
-        //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
-        renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
-        renderer.getActiveCamera().setPosition(37536.4219157527, 0, 7202.93045);
-        renderer.getActiveCamera().setViewAngle(30);
-        renderer.resetCameraClippingRange();
-        updateCamera(renderer.getActiveCamera());
+        try {
+            renderer.getActiveCamera().setViewUp(0, 0, 1);
+            //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
+            renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
+            renderer.getActiveCamera().setPosition(37536.4219157527, 0, 7202.93045);
+            renderer.getActiveCamera().setViewAngle(30);
+            renderer.resetCameraClippingRange();
+            updateCamera(renderer.getActiveCamera());
+        }
+        catch {
+            // This is empty
+        }
     }
 
     else if (view == 'front') {
-        renderer.getActiveCamera().setViewUp(0, 0, 1);
-        //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
-        renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
-        renderer.getActiveCamera().setPosition(-31661.4855157527, 0, 7202.93045);
-        renderer.getActiveCamera().setViewAngle(30);
-        renderer.resetCameraClippingRange();
-        updateCamera(renderer.getActiveCamera());
+        try {
+            renderer.getActiveCamera().setViewUp(0, 0, 1);
+            //renderer.getActiveCamera().setPhysicalViewNorth(0, 0, 1);
+            renderer.getActiveCamera().setFocalPoint(2937.4682, 0, 7202.93045);
+            renderer.getActiveCamera().setPosition(-31661.4855157527, 0, 7202.93045);
+            renderer.getActiveCamera().setViewAngle(30);
+            renderer.resetCameraClippingRange();
+            updateCamera(renderer.getActiveCamera());
+        }
+        catch {
+            // This is empty
+        }
     }
 }
