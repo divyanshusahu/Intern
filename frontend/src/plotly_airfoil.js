@@ -36,10 +36,10 @@ export function airfoil_plot(airfoil) {
     height: 250
   }
 
-  var config = {
+  /*var config = {
     responsive: true
-  }
+  }*/
 
   var div = document.getElementById("airfoil_plot");
-  Plotly.newPlot(div,data,layout,config);
+  Plotly.newPlot(div,data,layout);
 }

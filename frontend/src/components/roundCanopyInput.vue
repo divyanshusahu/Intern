@@ -125,7 +125,7 @@
                     <input
                       type="number"
                       value="50.0"
-                      name="flat_panels_sa_max_value"
+                      name="rc_sa_max_value"
                       style="width: 100px"
                     />
                   </div>
@@ -138,7 +138,7 @@
                     <input
                       type="number"
                       value="1.0"
-                      name="flat_panels_sa_min_value"
+                      name="rc_sa_min_value"
                       style="width: 100px"
                     />
                   </div>
@@ -151,7 +151,7 @@
                     <input
                       type="number"
                       value="0.5"
-                      name="flat_panels_sap_sides"
+                      name="rc_panels_sap_sides"
                       style="width: 100px"
                     />
                   </div>
@@ -164,7 +164,7 @@
                     <input
                       type="number"
                       value="0.5"
-                      name="flat_panels_sap_front"
+                      name="rc_panels_sap_front"
                       style="width: 100px"
                     />
                   </div>
@@ -177,7 +177,7 @@
                     <input
                       type="number"
                       value="0.5"
-                      name="flat_panels_sap_rear"
+                      name="rc_panels_sap_rear"
                       style="width: 100px"
                     />
                   </div>

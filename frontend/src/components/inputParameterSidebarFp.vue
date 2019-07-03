@@ -107,48 +107,12 @@ import { EventBus } from "../main.js";
 export default {
   data: function() {
     return {
-      input_toggle: true,
-      flat_panels_obj: {}
+      input_toggle: true
     };
   },
   created() {
     EventBus.$on("input_param_fp_got_clicked", input_param_fp_flag => {
       this.input_toggle = input_param_fp_flag;
-    });
-
-    EventBus.$on("run_got_clicked", run_clicked_flag => {
-      if (run_clicked_flag) {
-        this.flat_panels_obj["drawing_2d"] = {
-          file_name: "/work/ram_2d_drawing.dxf",
-          sewing_allowance: {
-            panel_rear_percentc: parseFloat(
-              document.getElementsByName("flat_panels_sap_rear")[0].value
-            ),
-            max_value: parseFloat(
-              document.getElementsByName("flat_panels_sa_max_value")[0].value
-            ),
-            min_value: parseFloat(
-              document.getElementsByName("flat_panels_sa_min_value")[0].value
-            ),
-            rib_rear_percentc: parseFloat(
-              document.getElementsByName("flat_panels_sar_rear")[0].value
-            ),
-            rib_front_percentc: parseFloat(
-              document.getElementsByName("flat_panels_sar_front")[0].value
-            ),
-            panel_front_percentc: parseFloat(
-              document.getElementsByName("flat_panels_sap_front")[0].value
-            ),
-            panel_sides_percentc: parseFloat(
-              document.getElementsByName("flat_panels_sap_sides")[0].value
-            ),
-            rib_sides_percentc: parseFloat(
-              document.getElementsByName("flat_panels_sar_sides")[0].value
-            )
-          }
-        };
-        EventBus.$emit("inputParamFP_obj", this.flat_panels_obj);
-      }
     });
   }
 };

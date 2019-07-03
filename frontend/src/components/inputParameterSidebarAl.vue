@@ -44,29 +44,12 @@ export default {
   data: function() {
     return {
       input_toggle: true,
-      user_define: "ALL",
-      ribs: {}
+      user_define: "ALL"
     };
   },
   created() {
     EventBus.$on("input_param_al_got_clicked", input_param_al_flag => {
       this.input_toggle = input_param_al_flag;
-    });
-
-    EventBus.$on("run_got_clicked", run_clicked_flag => {
-      if (run_clicked_flag) {
-        this.ribs["alv"] = this.user_define;
-        this.ribs["udr"] = [1, 3, 8, 13];
-        if (this.user_define === "USER_DEFINED") {
-          this.ribs["udr"] = document
-            .getElementsByName("user_defined_ribs")[0]
-            .value.split(",")
-            .map(function(x) {
-              return parseInt(x) - 1;
-            });
-        }
-        EventBus.$emit("inputParamAL_obj", this.ribs);
-      }
     });
   }
 };

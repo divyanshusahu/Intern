@@ -91,11 +91,8 @@ export default {
   data: function() {
     return {
       input_toggle: true,
-      brake_lines_obj: {},
-      bl_l1: false,
-      bl_l2: false,
-      l1: {},
-      l2: {}
+      bl_l1: '',
+      bl_l2: ''
     };
   },
   methods: {
@@ -127,52 +124,6 @@ export default {
         this.input_toggle = input_param_brake_lines_flag;
       }
     );
-
-    EventBus.$on("run_got_clicked", run_clicked_flag => {
-      if (run_clicked_flag) {
-        let br = document
-          .getElementsByName("bl_brake_ribs")[0]
-          .value.split(",")
-          .map(function(x) {
-            return x;
-          });
-        this.brake_lines_obj["brake_line_description"] = {
-          user_defined_ribs: br,
-          enable_generation: true
-        };
-        if (this.bl_l1) {
-          this.l1["L1_length_percentl"] = parseFloat(
-            document.getElementsByName("bl_l1_length")[0].value
-          );
-          let usrl1 = [];
-          let inpsl1 = document.getElementsByName("bl_l1_inputs");
-          for (let i = 0; i < inpsl1.length; i++) {
-            let cur = inpsl1[i].value.split(",").map(function(x) {
-              return parseFloat(x);
-            });
-            usrl1.push(cur);
-          }
-          this.l1["L1_combination"] = usrl1;
-          Object.assign(this.bl_obj["brake_line_description"], this.l1);
-        }
-        if (this.bl_l2) {
-          this.l2["L2_length_percentl"] = parseFloat(
-            document.getElementsByName("bl_l2_length")[0].value
-          );
-          let usrl2 = [];
-          let inpsl2 = document.getElementsByName("bl_l2_inputs");
-          for (let i = 0; i < inpsl2.length; i++) {
-            let cur = inpsl2[i].value.split(",").map(function(x) {
-              return parseFloat(x);
-            });
-            usrl2.push(cur);
-          }
-          this.l2["L2_combination"] = usrl2;
-          Object.assign(this.bl_obj["brake_line_description"][0], this.l2);
-        }
-        EventBus.$emit("inputParamBL_obj", this.brake_lines_obj);
-      }
-    });
   }
 };
 </script>

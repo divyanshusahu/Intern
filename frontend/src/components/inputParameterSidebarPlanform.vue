@@ -81,7 +81,6 @@ export default {
   data: function() {
     return {
       input_toggle: true,
-      planform_input_obj: {},
       hide_user_define : "RECTANGULAR"
     };
   },
@@ -105,34 +104,6 @@ export default {
         this.input_toggle = input_param_planform_flag;
       }
     );
-
-    EventBus.$on("run_got_clicked", run_clicked_flag => {
-      if (run_clicked_flag) {
-        let user_defined = document.getElementsByName("planform_user_define");
-        let chord_length_percent = [];
-        for (let i = 0; i < user_defined.length; i++) {
-          let cur = user_defined[i].value.split(",").map(function(x) {
-            return parseFloat(x);
-          });
-          chord_length_percent.push(cur);
-        }
-        this.planform_input_obj["planform_description"] = {
-          max_chord_length: parseFloat(
-            document.getElementsByName("planform_chord")[0].value
-          ),
-          spanwise_chord_length_percentc: chord_length_percent,
-          shape: document.getElementsByName("planform_plftype")[0].value,
-          span_length: parseFloat(
-            document.getElementsByName("planform_span")[0].value
-          )
-        };
-
-        this.planform_input_obj["number_of_panel"] = parseFloat(
-          document.getElementsByName("planform_total_ribs")[0].value
-        );
-        EventBus.$emit("inputParamPLANFORM_obj", this.planform_input_obj);
-      }
-    });
   }
 };
 </script>

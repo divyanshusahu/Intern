@@ -88,21 +88,13 @@
 
 <script>
 import { EventBus } from "../main.js";
+import { collect_inputs } from "../save_inputs.js";
 export default {
   data: function() {
     return {
       topbar_flag: true,
       sidebar_collapse_flag: false,
-      run_clicked_flag: false,
-      input_param_obj: {},
       solver_result: {},
-      input_param_planform_flag: false,
-      input_param_airfoil_flag: false,
-      input_param_volute_flag: false,
-      input_param_al_flag: false,
-      input_param_fp_flag: false,
-      input_param_rla_flag: false,
-      input_param_brake_lines_flag: false
     };
   },
   methods: {
@@ -143,38 +135,10 @@ export default {
         this.input_param_brake_lines_flag
       );
     },
-    run_clicked: function() {
-      this.run_clicked_flag = true;
-      this.input_param_obj = {};
-      EventBus.$emit("run_got_clicked", this.run_clicked_flag);
-    },
-
-    recieve_parameters: function() {
-      EventBus.$on("inputParamPLANFORM_obj", planform_input_obj => {
-        Object.assign(this.input_param_obj, planform_input_obj);
-      });
-      EventBus.$on("inputParamAI_obj", advance_input_obj => {
-        Object.assign(this.input_param_obj, advance_input_obj);
-      });
-      EventBus.$on("inputParamFP_obj", flat_panels_obj => {
-        Object.assign(this.input_param_obj, flat_panels_obj);
-      });
-      EventBus.$on("inputParamVOLUTE_obj", volute_obj => {
-        Object.assign(this.input_param_obj, volute_obj);
-      });
-      EventBus.$on("inputParamBL_obj", brake_lines_obj => {
-        Object.assign(this.input_param_obj, brake_lines_obj);
-      });
-      EventBus.$on("inputParamRLA_obj", rla_obj => {
-        Object.assign(this.input_param_obj, rla_obj);
-      });
-      EventBus.$on("inputParamAI_obj", advance_input_obj => {
-        Object.assign(this.input_param_obj, advance_input_obj);
-      });
-    },
 
     create_request: function() {
-      this.axios.post("/api/submit", this.input_param_obj).then(res => {
+      let inp = collect_inputs();
+      this.axios.post("/api/submit", inp).then(res => {
         Object.assign(this.solver_result, res.data);
         EventBus.$emit("solver_overall_result", this.solver_result);
       });
@@ -203,10 +167,6 @@ export default {
       document.getElementById("loader").style.display = "block";
       document.getElementById("softwareOutput").style.backgroundColor =
         "#1c2020";
-      this.run_clicked();
-      this.recieve_parameters();
-      this.run_clicked();
-      this.recieve_parameters();
       this.create_request();
     }
   },

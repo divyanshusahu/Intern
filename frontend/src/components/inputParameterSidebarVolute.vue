@@ -54,28 +54,12 @@ import { EventBus } from "../main.js";
 export default {
   data: function() {
     return {
-      input_toggle: true,
-      volute_obj: {}
+      input_toggle: true
     };
   },
   created() {
     EventBus.$on("input_param_volute_got_clicked", input_param_volute_flag => {
       this.input_toggle = input_param_volute_flag;
-    });
-
-    EventBus.$on("run_got_clicked", run_clicked_flag => {
-      if (run_clicked_flag) {
-        this.volute_obj["volute_description"] = {
-          shape: "ELLIPTIC",
-          semi_span_angle: parseFloat(
-            document.getElementsByName("volute_input_ssa")[0].value
-          ),
-          minor_to_major_axes: parseFloat(
-            document.getElementsByName("volute_input_minot_ratio")[0].value
-          )
-        };
-        EventBus.$emit("inputParamVOLUTE_obj", this.volute_obj);
-      }
     });
   }
 };

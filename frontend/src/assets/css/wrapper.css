@@ -2,6 +2,7 @@
 body {
     background-color: #eaeaea;
     font-family: "Roboto";
+    max-height: 100%;
 }
 
 .wrapper {

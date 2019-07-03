@@ -59,7 +59,6 @@ export default {
   data : function() {
     return {
       input_toggle : true,
-      airfoil_input_obj : {},
       std_airfoil: 'ClarkY'
     }
   },
@@ -74,34 +73,6 @@ export default {
   created() {
     EventBus.$on('input_param_airfoil_got_clicked', (input_param_airfoil_flag) => {
       this.input_toggle = input_param_airfoil_flag;
-    });
-
-    EventBus.$on('run_got_clicked', (run_clicked_flag) => {
-      if (run_clicked_flag)
-      {
-        this.airfoil_input_obj["rib_description"] = {
-          "LE_cut" : {
-            "angle_with_chord_line" : parseFloat(document.getElementsByName("airfoil_acl")[0].value),
-            "chord_length_percentc" : parseFloat(document.getElementsByName("airfoil_clp")[0].value)
-          },
-          "lightening_holes": [
-            {
-              "shape": "ELLIPTIC", 
-              "box_index": 0, 
-              "minor_to_major_axes": 0.7, 
-              "size": 5
-            }, 
-            {
-              "shape": "TRIANGULAR", 
-              "box_index": 1, 
-              "minor_to_major_axes": 0.7
-            }
-          ],
-          "aerofoil" : "/solverMain/test/airfoil.txt",
-          "tape_V_angle":20
-        };
-        EventBus.$emit('inputParamAI_obj', this.airfoil_input_obj);
-      }
     });
   }
 }

@@ -502,23 +502,6 @@ if (userParams.url || userParams.fileURL) {
     load(myContainer, userParams);
 }
 
-// Auto setup if no method get called within 100ms
-/*setTimeout(() => {
-    if (autoInit) {
-        //initLocalFileLoader();
-        const exampleContainer = document.querySelector('.content');
-        const rootBody = document.querySelector('#softwareOutput');
-        const myContainer = exampleContainer || rootBody;
-        myContainer.classList.add(style.fullScreen);
-        EventBus.$on("run_got_clicked", (run_clicked_flag) => {
-            if (run_clicked_flag) {
-                var obj = { "fileURL": "http://127.0.0.1:5000/tmp/test.vtp" };
-                //load(myContainer, obj);
-            }
-        });
-    }
-}, 100);*/
-
 export function display_result(url) {
     document.getElementById("loader").style.display = "none";
     const exampleContainer = document.querySelector('.content');
