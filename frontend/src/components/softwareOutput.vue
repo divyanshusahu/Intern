@@ -26,7 +26,7 @@
         </li>
       </ul>
     </div>
-    <div id="softwareOutput" class="card" v-bind:class="{display_none_element:!drawing_3d_flag}">
+    <div id="softwareOutput" class="card" v-show="drawing_3d_flag">
       <!--<img class="card-img-top" src="../assets/images/p1.jpg">-->
       <div class="content"></div>
       <div id="loader">
@@ -38,7 +38,7 @@
         <div class="bar6"></div>
       </div>
     </div>
-    <div id="dxf_output" v-if="!drawing_3d_flag">
+    <div id="dxf_output" v-show="!drawing_3d_flag">
       <button class="btn btn-success" v-on:click="download_dxf">Download DXF</button>
     </div>
   </div>

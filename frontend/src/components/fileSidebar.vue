@@ -27,7 +27,7 @@
 
 <script>
 import { EventBus } from '../main.js';
-import { initLocalFileLoader, load } from '../vtkview.js';
+import { initLocalFileLoader } from '../vtkview.js';
 import { save_input, load_input } from '../save_inputs.js';
 export default {
   data : function() {
@@ -64,7 +64,13 @@ export default {
       var pf = document.getElementById("project_file_input");
       pf.click();
       pf.addEventListener("change", function(){
-        load_input(pf.files[0]);
+        try {
+          load_input(pf.files[0]);
+        }
+        catch {
+          // This can be empty
+        }
+        pf.value = "";
       });
     }
   }

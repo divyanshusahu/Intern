@@ -123,7 +123,7 @@ export default {
     return {
       input_toggle: true,
       rla_l1: '',
-      rla_l2: ''
+      rla_l2: '',
     };
   },
   methods: {

@@ -47,11 +47,16 @@
                   <option value="LINEAR">Linear</option>
                   <option value="USER_DEFINED">User Defined</option>
                 </select>
-                <input type="text" value="1,2,7,12" name="ud_wo_variation" v-if="washout_variation==='USER_DEFINED'">
+                <input
+                  type="text"
+                  value="1,2,7,12"
+                  name="ud_wo_variation"
+                  v-show="washout_variation==='USER_DEFINED'"
+                />
               </div>
             </div>
           </fieldset>
-          <br>
+          <br />
           <fieldset>
             <legend>Side Flap Description</legend>
             <div class="row">
@@ -79,7 +84,7 @@
               </div>
             </div>
           </fieldset>
-          <br>
+          <br />
           <fieldset>
             <legend>Transform Geometry</legend>
             <div class="row">
@@ -99,7 +104,7 @@
               </div>
             </div>
           </fieldset>
-          <br>
+          <br />
           <fieldset>
             <legend>Slider</legend>
             <div class="row">
@@ -119,7 +124,7 @@
               </div>
             </div>
           </fieldset>
-          <br>
+          <br />
           <fieldset>
             <legend>Mesh Parameter</legend>
             <div class="row">
@@ -150,7 +155,7 @@ export default {
   data: function() {
     return {
       input_toggle: true,
-      washout_variation : "QUADRATIC"
+      washout_variation: "QUADRATIC"
     };
   },
   created() {

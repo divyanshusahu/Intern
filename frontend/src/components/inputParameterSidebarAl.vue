@@ -19,11 +19,16 @@
           <input name="ribs_connection" type="radio" value="ALTERNATE" v-model="user_define"> Alternative Ribs
           <br>
           <input name="ribs_connection" type="radio" value="USER_DEFINED" v-model="user_define"> User Define
-          <input
+          <!--<input
             type="text"
             name="user_defined_ribs"
             value="1,3,5,7"
-            v-if="user_define==='USER_DEFINED'"
+            v-show="user_define==='USER_DEFINED'"
+          >-->
+          <input
+            type="text"
+            name="user_defined_ribs"
+            value="1,3,8,13"
           >
         </fieldset>
       </div>

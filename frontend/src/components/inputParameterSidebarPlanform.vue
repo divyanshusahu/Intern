@@ -47,7 +47,7 @@
             </div>
           </div>
           <br>
-          <div class="user_define card" v-if="hide_user_define === 'USER_DEFINED'">
+          <div class="user_define card" v-show="hide_user_define === 'USER_DEFINED'">
             <p>Spanwise chord length percent</p>
             <div class="custom_user_define_inputs" id="user_defined_planform">
               <input type="text" value="0,0,100" name="planform_user_define">

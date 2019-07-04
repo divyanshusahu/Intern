@@ -8,7 +8,7 @@ export function collect_inputs() {
   );
   var chord_length_percent = [];
   for (let i = 0; i < planform_user_defined.length; i++) {
-    let cur = planform_user_defined[i].value.split(",").map(function(x) {
+    let cur = planform_user_defined[i].value.split(",").map(function (x) {
       return parseFloat(x);
     });
     chord_length_percent.push(cur);
@@ -107,7 +107,7 @@ export function collect_inputs() {
     udrs = document
       .getElementsByName("user_defined_ribs")[0]
       .value.split(",")
-      .map(function(x) {
+      .map(function (x) {
         return parseInt(x) - 1;
       });
   }
@@ -121,7 +121,7 @@ export function collect_inputs() {
       chordwise_locations_percentc: document
         .getElementsByName("rla_cl_location")[0]
         .value.split(",")
-        .map(function(x) {
+        .map(function (x) {
           return parseFloat(x, 10);
         }),
       distance_between_karabinas: parseFloat(
@@ -132,7 +132,7 @@ export function collect_inputs() {
     }
   ];
 
-  if (document.getElementsByName("is_rla_l1").checked) {
+  if (document.getElementsByName("is_rla_l1")[0].checked) {
     let rla_l1 = {};
     rla_l1["L1_length_percentl"] = parseFloat(
       document.getElementsByName("rla_l1_length")[0].value
@@ -140,7 +140,7 @@ export function collect_inputs() {
     let usrl1 = [];
     let inpsl1 = document.getElementsByName("rla_l1_inputs");
     for (let i = 0; i < inpsl1.length; i++) {
-      let cur = inpsl1[i].value.split(",").map(function(x) {
+      let cur = inpsl1[i].value.split(",").map(function (x) {
         return parseFloat(x);
       });
       usrl1.push(cur);
@@ -149,7 +149,7 @@ export function collect_inputs() {
     Object.assign(inp_json["anchor_description"][0], rla_l1);
   }
 
-  if (document.getElementsByName("is_rla_l2").checked) {
+  if (document.getElementsByName("is_rla_l2")[0].checked) {
     let rla_l2 = {};
     rla_l2["L2_length_percentl"] = parseFloat(
       document.getElementsByName("rla_l2_length")[0].value
@@ -157,7 +157,7 @@ export function collect_inputs() {
     let usrl2 = [];
     let inpsl2 = document.getElementsByName("rla_l2_inputs");
     for (let i = 0; i < inpsl2.length; i++) {
-      let cur = inpsl2[i].value.split(",").map(function(x) {
+      let cur = inpsl2[i].value.split(",").map(function (x) {
         return parseFloat(x);
       });
       usrl2.push(cur);
@@ -169,7 +169,7 @@ export function collect_inputs() {
   let br = document
     .getElementsByName("bl_brake_ribs")[0]
     .value.split(",")
-    .map(function(x) {
+    .map(function (x) {
       return x;
     });
   inp_json["brake_line_description"] = {
@@ -177,7 +177,7 @@ export function collect_inputs() {
     enable_generation: true
   };
 
-  if (document.getElementsByName("is_bl_l1").checked) {
+  if (document.getElementsByName("is_bl_l1")[0].checked) {
     let bl_l1 = {};
     bl_l1["L1_length_percentl"] = parseFloat(
       document.getElementsByName("bl_l1_length")[0].value
@@ -185,7 +185,7 @@ export function collect_inputs() {
     let usrl1 = [];
     let inpsl1 = document.getElementsByName("bl_l1_inputs");
     for (let i = 0; i < inpsl1.length; i++) {
-      let cur = inpsl1[i].value.split(",").map(function(x) {
+      let cur = inpsl1[i].value.split(",").map(function (x) {
         return parseFloat(x);
       });
       usrl1.push(cur);
@@ -194,7 +194,7 @@ export function collect_inputs() {
     Object.assign(inp_json["brake_line_description"], bl_l1);
   }
 
-  if (document.getElementsByName("is_bl_l2").checked) {
+  if (document.getElementsByName("is_bl_l2")[0].checked) {
     let bl_l2 = {};
     bl_l2["L1_length_percentl"] = parseFloat(
       document.getElementsByName("bl_l2_length")[0].value
@@ -202,7 +202,7 @@ export function collect_inputs() {
     let usrl2 = [];
     let inpsl2 = document.getElementsByName("bl_l2_inputs");
     for (let i = 0; i < inpsl2.length; i++) {
-      let cur = inpsl2[i].value.split(",").map(function(x) {
+      let cur = inpsl2[i].value.split(",").map(function (x) {
         return parseFloat(x);
       });
       usrl2.push(cur);
@@ -248,14 +248,14 @@ export function collect_inputs() {
       angle: document
         .getElementsByName("advip_tg_ra")[0]
         .value.split(",")
-        .map(function(x) {
+        .map(function (x) {
           return parseFloat(x, 10);
         })
     },
     translation: document
       .getElementsByName("advip_tg_ta")[0]
       .value.split(",")
-      .map(function(x) {
+      .map(function (x) {
         return parseFloat(x, 10);
       })
   };
@@ -281,8 +281,9 @@ function merge_inputs(inp_json) {
     inp_json["planform_description"]["shape"];
   if (inp_json["planform_description"]["shape"] == "USER_DEFINED") {
     let cur = inp_json["planform_description"]["spanwise_chord_length_percentc"];
-    for (let i=0;i<cur.length;i++) {
-      let a = document.getElementsByName("planform_user_define")[i];
+    let inputs = document.getElementsByName("planform_user_define");
+    for (let i = 0; i < cur.length; i++) {
+      let a = inputs[i];
       if (a) {
         a.value = cur[i].join();
       }
@@ -291,7 +292,14 @@ function merge_inputs(inp_json) {
         inp_node.setAttribute("type", "text");
         inp_node.setAttribute("name", "planform_user_define");
         document.getElementById("user_defined_planform").appendChild(inp_node);
-        inp_json.setAttribute("value", cur[i].join());
+        inp_node.setAttribute("value", cur[i].join());
+      }
+    }
+    if (cur.length < inputs.length) {
+      let diff = inputs.length - cur.length;
+      for (let i = 0; i < diff; i++) {
+        document.getElementById("user_defined_planform").removeChild(
+          document.getElementById("user_defined_planform").lastChild);
       }
     }
   }
@@ -302,7 +310,7 @@ function merge_inputs(inp_json) {
     inp_json["rib_description"]["LE_cut"]["angle_with_chord_line"];
 
   document.getElementsByName("volute_input_minot_ratio")[0].value =
-    inp_json["volute_description"]["minor_to_major_axis"];
+    inp_json["volute_description"]["minor_to_major_axes"];
   document.getElementsByName("volute_input_ssa")[0].value =
     inp_json["volute_description"]["semi_span_angle"];
 
@@ -318,18 +326,173 @@ function merge_inputs(inp_json) {
     inp_json["drawing_2d"]["sewing_allowance"]["rib_rear_percentc"];
   document.getElementsByName("flat_panels_sap_front")[0].value =
     inp_json["drawing_2d"]["sewing_allowance"]["panel_front_percentc"];
-  document.getElementsByName("flat_panels_sar_rear")[0].value =
-    inp_json["drawing_2d"]["sewing_allowance"]["panels_rear_percentc"];
+  document.getElementsByName("flat_panels_sap_rear")[0].value =
+    inp_json["drawing_2d"]["sewing_allowance"]["panel_rear_percentc"];
   document.getElementsByName("flat_panels_sap_sides")[0].value =
-    inp_json["drawing_2d"]["sewing_allowance"]["panels_sides_percentc"];
+    inp_json["drawing_2d"]["sewing_allowance"]["panel_sides_percentc"];
 
-  
+  if (inp_json["anchor_description"][0]["rib_connection"] == "ALL")
+    document.getElementsByName("ribs_connection")[0].checked = true;
+  else if (inp_json["anchor_description"][0]["rib_connection"] == "ALTERNATE")
+    document.getElementsByName("ribs_connection")[1].checked = true;
+  else if (inp_json["anchor_description"][0]["rib_connection"] == "USER_DEFINED") {
+    document.getElementsByName("ribs_connection")[2].checked = true;
+    document.getElementsByName("user_defined_ribs")[0].value =
+      inp_json["anchor_description"][0]["user_defined_ribs"].join();
+  }
 
+  document.getElementsByName("rla_cl_location").value =
+    inp_json["anchor_description"][0]["chordwise_locations_percentc"].join();
+  document.getElementsByName("rla_cl_susplen").value =
+    inp_json["anchor_description"][0]["riser_length"];
+  document.getElementsByName("advip_others_dkl").value =
+    inp_json["anchor_description"][0]["distance_between_karabinas"];
+
+  if (inp_json["anchor_description"][0].hasOwnProperty('L1_length_percentl')) {
+    document.getElementsByName("is_rla_l1")[0].checked = true;
+    document.getElementsByName("rla_l1_length")[0].value =
+      inp_json["anchor_description"][0]["L1_length_percentl"];
+    let cur = inp_json["anchor_description"][0]["L1_combination"];
+    let inputs = document.getElementsByName("rla_l1_inputs");
+    for (let i = 0; i < cur.length; i++) {
+      let a = inputs[i];
+      if (a) {
+        a.value = cur[i].join();
+      }
+      else {
+        let inp_node = document.createElement("input");
+        inp_node.setAttribute("type", "text");
+        inp_node.setAttribute("name", "rla_l1_inputs");
+        document.getElementById("l1_rla").appendChild(inp_node);
+        inp_node.setAttribute("value", cur[i].join());
+      }
+    }
+    if (cur.length < inputs.length) {
+      let diff = inputs.length - cur.length;
+      for (let i = 0; i < diff; i++) {
+        document.getElementById("l1_rla").removeChild(
+          document.getElementById("l1_rla").lastChild);
+      }
+    }
+  }
+
+  if (inp_json["anchor_description"][0].hasOwnProperty('L2_length_percentl')) {
+    document.getElementsByName("is_rla_l2")[0].checked = true;
+    document.getElementsByName("rla_l2_length")[0].value =
+      inp_json["anchor_description"][0]["L2_length_percentl"];
+    let cur = inp_json["anchor_description"][0]["L2_combination"];
+    let inputs = document.getElementsByName("rla_l2_inputs");
+    for (let i = 0; i < cur.length; i++) {
+      let a = inputs[i];
+      if (a) {
+        a.value = cur[i].join();
+      }
+      else {
+        let inp_node = document.createElement("input");
+        inp_node.setAttribute("type", "text");
+        inp_node.setAttribute("name", "rla_l2_inputs");
+        document.getElementById("l2_rla").appendChild(inp_node);
+        inp_node.setAttribute("value", cur[i].join());
+      }
+    }
+    if (cur.length < inputs.length) {
+      let diff = inputs.length - cur.length;
+      for (let i = 0; i < diff; i++) {
+        document.getElementById("l2_rla").removeChild(
+          document.getElementById("l2_rla").lastChild);
+      }
+    }
+  }
+
+  document.getElementsByName("bl_brake_ribs")[0].value =
+    inp_json["brake_line_description"]["user_defined_ribs"].join();
+
+  if (inp_json["brake_line_description"].hasOwnProperty('L1_length_percentl')) {
+    document.getElementsByName("is_bl_l1")[0].checked = true;
+    document.getElementsByName("bl_l1_length")[0].value =
+      inp_json["brake_line_description"]["L1_length_percentl"];
+    let cur = inp_json["brake_line_description"]["L1_combination"];
+    let inputs = document.getElementsByName("bl_l1_inputs");
+    for (let i = 0; i < cur.length; i++) {
+      let a = inputs[i];
+      if (a) {
+        a.value = cur[i].join();
+      }
+      else {
+        let inp_node = document.createElement("input");
+        inp_node.setAttribute("type", "text");
+        inp_node.setAttribute("name", "bl_l1_inputs");
+        document.getElementById("l1_bl").appendChild(inp_node);
+        inp_node.setAttribute("value", cur[i].join());
+      }
+    }
+    if (cur.length < inputs.length) {
+      let diff = inputs.length - cur.length;
+      for (let i = 0; i < diff; i++) {
+        document.getElementById("l1_bl").removeChild(
+          document.getElementById("l1_bl").lastChild);
+      }
+    }
+  }
+
+  if (inp_json["brake_line_description"].hasOwnProperty('L2_length_percentl')) {
+    document.getElementsByName("is_bl_l2")[0].checked = true;
+    document.getElementsByName("bl_l2_length")[0].value =
+      inp_json["brake_line_description"]["L2_length_percentl"];
+    let cur = inp_json["brake_line_description"]["L2_combination"];
+    let inputs = document.getElementsByName("bl_l2_inputs");
+    for (let i = 0; i < cur.length; i++) {
+      let a = inputs[i];
+      if (a) {
+        a.value = cur[i].join();
+      }
+      else {
+        let inp_node = document.createElement("input");
+        inp_node.setAttribute("type", "text");
+        inp_node.setAttribute("name", "bl_l2_inputs");
+        document.getElementById("l2_bl").appendChild(inp_node);
+        inp_node.setAttribute("value", cur[i].join());
+      }
+    }
+    if (cur.length < inputs.length) {
+      let diff = inputs.length - cur.length;
+      for (let i = 0; i < diff; i++) {
+        document.getElementById("l2_bl").removeChild(
+          document.getElementById("l2_bl").lastChild);
+      }
+    }
+  }
+
+  document.getElementsByName("advip_washout_description_ta")[0].value =
+    inp_json["washout_description"]["tip_angle"];
+  document.getElementsByName("advip_washout_description_cr")[0].value =
+    inp_json["washout_description"]["center_of_rotation_percentc"];
+  document.getElementsByName("advip_washout_description_variation")[0].value =
+    inp_json["washout_description"]["variation"];
+  document.getElementsByName("ud_wo_variation")[0].value =
+    inp_json["washout_description"]["user_defined_angle"].join();
+
+  document.getElementsByName("advip_sfd_rel")[0].value =
+    inp_json["side_flap_description"]["rear_edge_length_percentl"];
+  document.getElementsByName("advip_sfd_fel")[0].value =
+    inp_json["side_flap_description"]["front_edge_length_percentl"];
+  document.getElementsByName("advip_sfd_index")[0].value =
+    inp_json["side_flap_description"]["start_line_index"];
+
+  document.getElementsByName("advip_tg_ra")[0].value =
+    inp_json["transform_geometry"]["rotation"]["angle"].join();
+  document.getElementsByName("advip_tg_ta")[0].value =
+    inp_json["transform_geometry"]["translation"].join();
+
+  document.getElementsByName("advip_slider_ap")[0].value =
+    inp_json["slider"]["percent_area"];
+  document.getElementsByName("advip_slider_wlr")[0].value =
+    inp_json["slider"]["width_length_ratio"];
 }
 
 export function load_input(blob) {
   var project_file = new FileReader();
-  project_file.addEventListener("load", function() {
+  project_file.addEventListener("load", function () {
     merge_inputs(JSON.parse(project_file.result));
   });
   project_file.readAsText(blob, "UTF-8");

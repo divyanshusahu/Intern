@@ -69,12 +69,12 @@ function preventDefaults(e) {
 const rootControllerContainer = document.createElement('div');
 rootControllerContainer.setAttribute('class', style.rootController);
 
-const addDataSetButton = document.createElement('img');
+/*const addDataSetButton = document.createElement('img');
 addDataSetButton.setAttribute('class', style.button);
 addDataSetButton.addEventListener('click', () => {
     const isVisible = rootControllerContainer.style.display !== 'none';
     rootControllerContainer.style.display = isVisible ? 'none' : 'block';
-});
+});*/
 
 const fpsMonitor = vtkFPSMonitor.newInstance();
 const fpsElm = fpsMonitor.getFpsMonitorContainer();
@@ -112,7 +112,7 @@ function createViewer(container) {
     renderWindow.getInteractor().setDesiredUpdateRate(15);
 
     container.appendChild(rootControllerContainer);
-    container.appendChild(addDataSetButton);
+    //container.appendChild(addDataSetButton);
 
     if (userParams.fps) {
         if (Array.isArray(userParams.fps)) {
@@ -174,16 +174,16 @@ function createPipeline(fileName, fileContents) {
     opacitySelector.setAttribute('max', '100');
     opacitySelector.setAttribute('min', '1');
 
-    const labelSelector = document.createElement('label');
+    /*const labelSelector = document.createElement('label');
     labelSelector.setAttribute('class', selectorClass);
-    labelSelector.innerHTML = fileName;
+    labelSelector.innerHTML = fileName;*/
 
     const controlContainer = document.createElement('div');
     controlContainer.setAttribute('class', style.control);
-    controlContainer.appendChild(labelSelector);
+    //controlContainer.appendChild(labelSelector);
     controlContainer.appendChild(representationSelector);
-    controlContainer.appendChild(presetSelector);
-    controlContainer.appendChild(colorBySelector);
+    //controlContainer.appendChild(presetSelector);
+    //controlContainer.appendChild(colorBySelector);
     controlContainer.appendChild(componentSelector);
     controlContainer.appendChild(opacitySelector);
     if (rootControllerContainer.children.length) {
