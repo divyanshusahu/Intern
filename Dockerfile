@@ -23,5 +23,6 @@ COPY solverMain /solverMain
 COPY vtk_to_vtp/vtkunstructured_to_polydataset /solverMain/
 
 RUN chmod +x /solverMain/solverMain /solverMain/vtkunstructured_to_polydataset
+RUN chmod +x /solverMain/roundCanopy
 
 WORKDIR /python

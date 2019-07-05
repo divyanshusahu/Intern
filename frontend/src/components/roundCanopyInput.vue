@@ -11,7 +11,7 @@
         <div class="container-fluid">
           <fieldset>
             <legend>
-              <input type="checkbox" v-model="round_canopy_checkbox" />
+              <input type="checkbox" name="rc_checkbox" v-model="round_canopy_checkbox" />
             </legend>
             <div v-bind:class="{disabledDiv:!round_canopy_checkbox}">
               <fieldset>
@@ -91,7 +91,7 @@
                   <div class="col">
                     <input
                       type="number"
-                      value="1000"
+                      value="10000"
                       name="round_canopy_susplen"
                       style="width:100px;"
                     />
@@ -178,6 +178,53 @@
                       type="number"
                       value="0.5"
                       name="rc_panels_sap_rear"
+                      style="width: 100px"
+                    />
+                  </div>
+                </div>
+              </fieldset>
+              <br>
+              <fieldset>
+                <legend>Transform Geometry</legend>
+                <div class="row">
+                  <div class="col">
+                    <p>Rotation Angle</p>
+                  </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      value="0,0,0"
+                      name="rc_rot_angle"
+                      style="width: 100px"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <p>Translation</p>
+                  </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      value="0,0,0"
+                      name="rc_translation"
+                      style="width: 100px"
+                    />
+                  </div>
+                </div>
+              </fieldset>
+              <br>
+              <fieldset>
+                <legend>Mesh Parameters</legend>
+                <div class="row">
+                  <div class="col">
+                    <p>Edge Length</p>
+                  </div>
+                  <div class="col">
+                    <input
+                      type="number"
+                      value="2.0"
+                      name="rc_mp_el"
                       style="width: 100px"
                     />
                   </div>

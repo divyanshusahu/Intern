@@ -1,4 +1,4 @@
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   .wrapper {
     display: block;
   }
@@ -123,4 +123,10 @@
   #dxf_output {
     height: 75vh;
   }
+
+  .mobile_inputs_icons img {
+    margin: 0 0.3rem;
+    cursor: pointer;
+  }
+
 }

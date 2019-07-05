@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-white">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <button
         type="button"
@@ -14,9 +14,49 @@
         <span></span>
       </button>
 
-      <button type="button" class="btn d-block d-lg-none" v-on:click="run_the_software">
+      <span class="d-block d-md-none mobile_inputs_icons">
+        <img
+          src="../assets/icon/planform.png"
+          alt="Planform"
+          title="Planform"
+          height="20"
+          width="20"
+          v-on:click="got_clicked_planform"
+        />
+        <img
+          src="../assets/icon/airfoil.png"
+          alt="Airfoil"
+          title="Airfoil"
+          height="20"
+          width="20"
+          v-on:click="got_clicked_airfoil"
+        />
+        <img src="../assets/icon/volute.png" alt="Volute" title="Volute" height="20" width="20" 
+          v-on:click="got_clicked_volute" />
+        <img src="../assets/icon/anchor.png" alt="Anchor" title="Anchor" height="20" width="20"
+          v-on:click="got_clicked_al" />
+        <img src="../assets/icon/panels.png" alt="Panels" title="Panels" height="20" width="20"
+          v-on:click="got_clicked_fp" />
+        <img
+          src="../assets/icon/riserlines.png"
+          alt="Riser Lines"
+          title="Riser Lines"
+          height="20"
+          width="20"
+          v-on:click="got_clicked_rla"
+        />
+        <img
+          src="../assets/icon/brake.png"
+          alt="Brake Lines"
+          title="Brake Lines"
+          height="20"
+          width="20"
+          v-on:click="got_clicked_brake_lines"
+        />
+      </span>
+      <button type="button" class="btn d-block d-md-none" v-on:click="run_the_software">
         <i class="fas fa-play sidebar_icons"></i>
-        <b>Run</b>
+        <b class="d-none">Run</b>
       </button>
 
       <!-- Sidebar pagination which later discarded
@@ -34,7 +74,7 @@
         <ul class="nav navbar-nav ml-auto" style="float: right;">
           <li class="nav-item" v-on:click="got_clicked_planform">
             <img
-              src="../assets/icon/planform.svg"
+              src="../assets/icon/planform.png"
               alt="Planform"
               title="Planform"
               height="40"
@@ -43,7 +83,7 @@
           </li>
           <li class="nav-item" v-on:click="got_clicked_airfoil">
             <img
-              src="../assets/icon/airfoil.svg"
+              src="../assets/icon/airfoil.png"
               alt="Airfoil"
               title="Airfoil"
               height="40"
@@ -51,17 +91,17 @@
             />
           </li>
           <li class="nav-item" v-on:click="got_clicked_volute">
-            <img src="../assets/icon/volute.svg" alt="Volute" title="Volute" height="40" width="40" />
+            <img src="../assets/icon/volute.png" alt="Volute" title="Volute" height="40" width="40" />
           </li>
           <li class="nav-item" v-on:click="got_clicked_al">
-            <img src="../assets/icon/anchor.svg" alt="Anchor" title="Anchor" height="40" width="40" />
+            <img src="../assets/icon/anchor.png" alt="Anchor" title="Anchor" height="40" width="40" />
           </li>
           <li class="nav-item" v-on:click="got_clicked_fp">
-            <img src="../assets/icon/panels.svg" alt="Panels" title="Panels" height="40" width="40" />
+            <img src="../assets/icon/panels.png" alt="Panels" title="Panels" height="40" width="40" />
           </li>
           <li class="nav-item" v-on:click="got_clicked_rla">
             <img
-              src="../assets/icon/riserlines.svg"
+              src="../assets/icon/riserlines.png"
               alt="Riser Lines"
               title="Riser Lines"
               height="40"
@@ -70,7 +110,7 @@
           </li>
           <li class="nav-item" v-on:click="got_clicked_brake_lines">
             <img
-              src="../assets/icon/brake.svg"
+              src="../assets/icon/brake.png"
               alt="Brake Lines"
               title="Brake Lines"
               height="40"
@@ -78,7 +118,7 @@
             />
           </li>
           <li class="nav-item" v-on:click="run_the_software">
-            <img src="../assets/icon/run.svg" alt="Run" title="Run" height="40" width="40" />
+            <img src="../assets/icon/run.png" alt="Run" title="Run" height="40" width="40" />
           </li>
         </ul>
       </div>

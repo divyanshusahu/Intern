@@ -16,7 +16,6 @@ def submit_job() :
   data = request.get_json()
   data["mesh_parameters"] = {
     "fixed_node_file_name" : "/work/fixed_nodes.txt",
-    "edge_length_percentc" : 3,
     "mesh_file_name" : "/work/cad_surfacefile.vtk",
     "geometry_file_name" : "/work/gmsh_file.geo"
   }
@@ -91,29 +90,11 @@ def check_job_status() :
   
   return jsonify(url=url, current_status=response['jobs'][0]['status'])
 
-@app.route('/api/job_cancel', methods=['POST'])
-def cancel_job() :
-  data = request.get_json()
-  batch = boto3.client('batch')
-  try :
-    for case in CaseModel.query(data['case_id']) :
-      job_id = case.attribute_values['job_id']
-  except Exception as e :
-    print(e)
-    return jsonify(runcode=10)
-  
-  response = batch.cancel_job(
-    jobId=job_id,
-    reason='Cancelling Job'
-  )
-
-  return response
-
 @app.route('/api/download_dxf', methods=['POST'])
 def download_dxf() :
   data = request.get_json()
   case_id = data["case_id"]
-  download_dxf_name = "%s/ram_2d_drawing.dxf" % (case_id)
+  download_dxf_name = "%s/drawing.dxf" % (case_id)
   download_dxf_url = create_presigned_url(download_dxf_name)
 
   return jsonify(url=download_dxf_url)
