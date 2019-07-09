@@ -6,8 +6,6 @@ solverMain
 round_canopy
 tmp
 vtk_to_vtp
-icon
-views
 *.db
 __pycache__
 
