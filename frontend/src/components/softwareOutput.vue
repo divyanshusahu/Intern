@@ -27,7 +27,10 @@
       </ul>
     </div>
     <div id="softwareOutput" class="card" v-show="drawing_3d_flag">
-      <!--<img class="card-img-top" src="../assets/images/p1.jpg">-->
+      <!--<img class="card-img-top" src="../assets/images/p.png">-->
+      <div class="welcome_div">
+        <h1>ParaZ</h1>
+      </div>
       <div class="content"></div>
       <div id="loader">
         <div class="bar1"></div>
@@ -63,7 +66,6 @@ export default {
   methods: {
     download_dxf : function() {
       if (this.caseID.hasOwnProperty('case_id')) {
-        console.log(this.caseID);
         this.axios.post("/api/download_dxf", this.caseID).then((res) => {
           saveAs(res.data["url"], "ram_2d_drawing.dxf");
         })

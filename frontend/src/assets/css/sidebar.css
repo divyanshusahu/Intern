@@ -8,8 +8,8 @@
   /*background-color: #1f2837;*/
   background-color: rgb(28, 43, 54);
   color: rgba(255, 255, 255, 0.5);
-  /*transition: all 0.2s cubic-bezier(0.945, 0.020, 0.270, 0.665);
-  transform-origin: bottom left;*/
+  transition: all 0.2s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+  transform-origin: bottom left;
   /*box-shadow: 12px 4px 6px 0 rgba(0, 0, 0, 0.5);*/
   line-height: 2em;
   border-right: 1px solid black;
@@ -101,4 +101,9 @@ ul ul a {
 
 .toggle_dropdown_menu {
   transform: rotate(180deg);
+}
+
+.zeus_logo {
+  width: 75%;
+  opacity: 0.5;
 }

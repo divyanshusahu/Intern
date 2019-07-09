@@ -139,6 +139,7 @@ export default {
   },
   methods: {
     got_clicked: function() {
+      document.getElementsByClassName("small_screen_overlay")[0].style.display = "block";
       this.sidebar_collapse_flag = !this.sidebar_collapse_flag;
       EventBus.$emit("sidebar_flag_got_clicked", this.sidebar_collapse_flag);
     },
@@ -186,14 +187,14 @@ export default {
 
     run_the_software: function() {
       if (
-        document.getElementById("softwareOutput").children[0].children.length
+        document.getElementById("softwareOutput").children[1].children.length
       ) {
         document
           .getElementById("softwareOutput")
           .removeChild(
             document
               .getElementById("softwareOutput")
-              .getElementsByTagName("div")[0]
+              .getElementsByTagName("div")[1]
           );
         let a = document.createElement("div");
         a.setAttribute("class", "content");
@@ -201,12 +202,15 @@ export default {
           .getElementById("softwareOutput")
           .insertBefore(
             a,
-            document.getElementById("softwareOutput").firstChild
+            document.getElementById("softwareOutput").lastChild
           );
       }
       document.getElementById("loader").style.display = "block";
+      document.getElementById("softwareOutput").style.backgroundImage =
+        "url('')";
       document.getElementById("softwareOutput").style.backgroundColor =
         "#1c2020";
+      document.getElementsByClassName("welcome_div")[0].style.display = "none";
       this.create_request();
     }
   },

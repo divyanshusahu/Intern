@@ -4,7 +4,12 @@
 
     <div class="wrapper">
       <sidebar />
-      <div id="content" v-touch:swipe.left="sidebar_swipe_toggle">
+      <div id="content">
+        <div class="small_screen_overlay"
+          v-touch:swipe.left="sidebar_swipe_toggle" 
+          v-touch:tap="sidebar_swipe_toggle"
+        >
+        </div>
         <topbar />
         <softwareOutput />
         <outputLog />
@@ -12,7 +17,6 @@
     </div>
 
     <allInputs />
-    <!--<div class="small_screen_overlay"></div>-->
 
   </div>
 
@@ -44,6 +48,7 @@ export default {
   methods : {
     sidebar_swipe_toggle : function() {
       this.swipe = true;
+      document.getElementsByClassName("small_screen_overlay")[0].style.display = "none";
       EventBus.$emit("android_swipe_toggle", this.swipe);
     }
   }
@@ -52,7 +57,6 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*text-align: center;

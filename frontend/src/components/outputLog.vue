@@ -36,7 +36,12 @@ export default {
           self.axios.post('/api/job_status', self.caseID).then((res) => {
             if (self.logRender != res.data["current_status"]) {
               self.logRender = res.data["current_status"];
-              this.$forceUpdate();
+              try {
+                this.$forceUpdate();
+              }
+              catch {
+                // This can be empty
+              }
             }
             if(res.data['current_status'] == 'SUCCEEDED') {
               Object.assign(self.result, res.data);

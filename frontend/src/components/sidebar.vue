@@ -18,6 +18,9 @@
       <solverSidebar />
       <helpSidebar />
     </ul>
+    <a href="https://zeusnumerix.com" target="_blank">
+      <img src="../assets/images/zeus.png" class="zeus_logo" />
+    </a>
   </nav>
 </template>
 

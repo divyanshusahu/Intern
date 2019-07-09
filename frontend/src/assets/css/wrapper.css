@@ -1,7 +1,7 @@
-@import "https://fonts.googleapis.com/css?family=Roboto";
+@import "https://fonts.googleapis.com/css?family=Ubuntu";
 body {
     background-color: #eaeaea;
-    font-family: "Roboto";
+    font-family: "Ubuntu";
     max-height: 100%;
 }
 

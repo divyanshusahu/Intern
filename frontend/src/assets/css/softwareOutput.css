@@ -55,6 +55,16 @@
   /*background: #fff;*/
   /*box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.5);*/
   margin-left: 5%;
+  background-image: url("../images/p.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  /*background-color: rgba(28,28,28,1);*/
+}
+
+.welcome_div {
+  text-align: center;
+  color: rgb(0,0,250);
+  margin-top: 15rem;
 }
 
 #dxf_output {
