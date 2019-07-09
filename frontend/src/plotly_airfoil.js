@@ -30,10 +30,10 @@ export function airfoil_plot(airfoil) {
   var data = [trace];
 
   var layout = {
-    title: airfoil,
     autosize: true,
     width: 500,
-    height: 250
+    height: 250,
+    padding: 0
   }
 
   /*var config = {

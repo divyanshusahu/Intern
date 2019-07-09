@@ -3,7 +3,7 @@
     <div id="view_toolbar">
       <ul class="tabs_3d_2d">
         <li v-bind:class="{toolbar_active:drawing_3d_flag}" v-on:click="drawing_3d_flag=true">3D</li>
-        <li v-bind:class="{toolbar_active:!drawing_3d_flag}" v-on:click="drawing_3d_flag=false">2D</li>
+        <li v-bind:class="{toolbar_active:!drawing_3d_flag}" v-on:click="dxf">2D</li>
       </ul>
       <ul class="view_icons" v-if="drawing_3d_flag">
         <li v-on:click="change_view('front')">
@@ -25,6 +25,11 @@
           <img src="../assets/views/bottomview.png" alt="Bottom View" title="Bottom View">
         </li>
       </ul>
+      <ul class="view_icons" v-if="!drawing_3d_flag">
+        <li>
+          <button class="btn btn-success" v-on:click="download_dxf">Download DXF</button>
+        </li>
+      </ul>
     </div>
     <div id="softwareOutput" class="card" v-show="drawing_3d_flag">
       <!--<img class="card-img-top" src="../assets/images/p.png">-->
@@ -42,7 +47,10 @@
       </div>
     </div>
     <div id="dxf_output" v-show="!drawing_3d_flag">
-      <button class="btn btn-success" v-on:click="download_dxf">Download DXF</button>
+      <!---->
+      <div id="dxf_image">
+        <!--<img src="../assets/images/b.png"  alt="DXF Image" title="DXF Image" />-->
+      </div>
     </div>
   </div>
 </template>
@@ -51,6 +59,7 @@
 import { EventBus } from "../main.js";
 import { saveAs } from "file-saver";
 import { change_camera_view } from "../vtkview.js";
+import { dxf_image_viewer } from "../dxf_viewer.js";
 export default {
   data: function() {
     return {
@@ -73,6 +82,10 @@ export default {
     },
     change_view : function(view) {
       change_camera_view(view);
+    },
+    dxf : function() {
+      this.drawing_3d_flag=false;
+      dxf_image_viewer();
     }
   }
 };

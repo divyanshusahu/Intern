@@ -14,6 +14,17 @@ module.exports = {
                 changeOrigin: true
             }
         }
+    },
+    pages: {
+        index: {
+            entry: './src/main.js',
+            template: 'public/index.html',
+            filename: 'index.html'
+        },
+        introPage: {
+            entry: './src/introPage.js',
+            template: 'public/introPage.html',
+            filename: 'introPage.html'
+        }
     }
-
 }

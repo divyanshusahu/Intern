@@ -3,7 +3,8 @@
   padding: 0px;
   min-height: 100vh;
   margin-left: 0px;
-  background-color: #dabcad;
+  /*background-color: #dabcad;*/
+  background-color: #64899e;
 }
 
 #output_screen {
@@ -59,11 +60,12 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   /*background-color: rgba(28,28,28,1);*/
+  border: 0;
 }
 
 .welcome_div {
   text-align: center;
-  color: rgb(0,0,250);
+  color: rgb(255,255,255);
   margin-top: 15rem;
 }
 
@@ -76,8 +78,8 @@
   text-align: center;
 }
 
-#dxf_output button {
-  margin-top: 20%;
+#dxf_image img {
+    width: 40%;
 }
 
 #loader {
