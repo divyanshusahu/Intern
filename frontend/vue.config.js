@@ -22,7 +22,7 @@ module.exports = {
             filename: 'index.html'
         },
         introPage: {
-            entry: './src/introPage.js',
+            entry: './src/intro.js',
             template: 'public/introPage.html',
             filename: 'introPage.html'
         }

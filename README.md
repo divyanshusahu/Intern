@@ -96,11 +96,15 @@ The renderer screen first display a loader than followed by output canvas.
 
 **Output Log (outputLog.vue, outputLog.css)**
 
+outputLog.vue is used create request to the server to check for the output file. If output file in generated and uploaded to the S3 bucket.
+
 **All Inputs Popup (allInputs.vue)**
 
 ### Backend
 
-Python Flask framework is used for backend.
+#### Getting Started
+
+Python3 and Python Flask framework is used for backend.
 
 ```bash
 cd backend
@@ -123,7 +127,21 @@ flask run
 2. The image first download the uploaded input.scf from S3 Bucket.
 3. It then run the solver and upload the output vtp and dxf file back to S3 bucket.
 
-### AWS Fargate
+### AWS Services
+
+#### S3 Bucket
+
+1. S3 bucket is used to save the input.scf and the generated output vtp and dxf files.
+
+#### ECR
+
+1. ECR is used to store our docker image in aws repository.
+
+#### ECS
+
+1. ECS is used to create a cluster which is used to define the Fargate confriguations and environment.
+
+#### Fargate
 
 Our used confriguation: 0.5 vCPU, 1GB memory
 
@@ -138,7 +156,11 @@ Pricing is per second with a 1-minute minimum. Duration is calculated from the t
 Our task is completed around 40 to 50 seconds.
 
 **Estimated Cost per Execution**
+
 cost = (0.04256*0.5)/60 + (0.004655)/60
+
 cost = 0.000355 + 0.0000775
+
 cost = **$0.0004325** 
+
 cost = **0.03**
