@@ -62,11 +62,10 @@ The basics of VueJS can be found [here](https://vuejs.org/v2/guide/).
 ```
 
 - fileSidebar (fileSidebar.vue, save_inputs.js, vtkview.js)
-File menu has four list elements. Function 'initLocalFileLoader' is used from vtkview.js
-New (For clearing the output screen)
-Open (For displaying the pre generated vtp file on the screen)
-Save Project (For saving the current input json locally)
-Load Project (For loading the inputs from the file)
+>File menu has four list elements. Function 'initLocalFileLoader' is used from vtkview.js
+>Open (For displaying the pre generated vtp file on the screen)
+>Save Project (For saving the current input json locally)
+>Load Project (For loading the inputs from the file)
 
 - viewSidebar (viewSidebar.vue, vtkview.js)
 View Sidebar has six list elements named 'front view', back view', left view', right view', top view', bottom view'.
@@ -112,14 +111,27 @@ pip install -r requirments.txt
 flask run
 ```
 
-1. First we create a post request at **/api/submit**. 
-2. It then upload the input.scf project file to S3 Bucket. 
-3. Then it submit the AWS Fargate task.
-4. The case_id, task_id pair is saved in dynamo db.
-5. It returned the job_id.
-6. Then again we create a post request at **/api/job_status** with case_id as a data.
-7. It then checks for the output file created in the S3 bucket. If created then return the pre_signed url else return null.
-8. There is another route **/api/download_dxf** to download the output dxf file.
+**Directory Structure**
+
+```bash
+.flaskenv
+api.py
+case_model.py
+cloud_connect.py
+requirments.txt
+run_process.py
+settings.py
+snowflake.py
+```
+
+**Files Description**
+
+1. .flaskenv (contains flask configuration environment variables)
+2. api.py : flask app (contains different routes)
+2.1 */api/submit* : We submit the input json through post request at this route. It collects the input data and uploaded it in S3 bucket as filename *'case_id/input.scf'*. After uploading the file it initiate ecs run task function which is used to invoke fargate instance. Then it save the case_id and task_id pair in dynamoDB. This route return the case_id.
+2.2 */api/job_status* : It checks if the output file is generated or not. It takes case_id as an input and checks for *"case_id/cad_surfacefile.vtp"* in S3 bucket. It uses a boto3 object to check if the output file is present or not. If present then return 'SUCCEEDED' else return 'RUNNING'.
+2.3 */api/download_dxf* : This route is used to download the generated dxf file. It takes case_id as an input and search for dxf file in S3 bucket *"case_id/drawing.dxf"*. Then it generate a pre_signed url for it to download.
+3. case_model.py
 
 ### Docker Image
 
