@@ -149,6 +149,7 @@ Each vCPU is a thread of a CPU core, except for T2 instances.
 
 Price: 
 $0.04256 per hour per vCPU
+
 $0.004655 per hour per GB memory
 
 Pricing is per second with a 1-minute minimum. Duration is calculated from the time you start to download your container image (docker pull) until the Task terminates, rounded up to the nearest second.
@@ -157,10 +158,9 @@ Our task is completed around 40 to 50 seconds.
 
 **Estimated Cost per Execution**
 
+```python
 cost = (0.04256*0.5)/60 + (0.004655)/60
-
 cost = 0.000355 + 0.0000775
-
-cost = **$0.0004325** 
-
-cost = **0.03**
+cost = 0.0004325 dollars 
+cost = 0.03 Rs
+```
