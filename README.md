@@ -4,7 +4,7 @@
 
 ### Front End
 
-Frontend is build using VueJS 2.
+The frontend is build using VueJS 2.
 
 #### Get Started
 
@@ -16,88 +16,159 @@ npm run serve
 
 The basics of VueJS can be found [here](https://vuejs.org/v2/guide/).
 
-**Page Structure**
-
-```html
-<!-- page structure -->
-
-<div id="app">
-	<div class="wrapper">
-		<sidebar />
-		<div id="content">
-			<topbar />
-			<softwareOutput />
-			<outputLog />
-		</div>
-	</div>
-	
-	<!-- Input Pop-up divs -->
-	<allInputs />
-</div>
-```
-
 **Dependencies**
 
 1. *bootstrap-vue* is used for styling.
 2. *vue-axios* is used for creating the requests.
-3. *vue2-touch-events* is used for adding swipe functionality on sidebar.
-4. Event Bus is used for transfering variables from one components to another.
+3. *vue2-touch-events* is used for adding swipe functionality on the sidebar.
+4. Event Bus is used for transferring variables from one component to another.
 
-**Components**
+**Directory Structure**
+
+```bash
+public
+src
+babel.config.js
+package-lock.json
+package.json
+vue.config.json
+```
+
+1. *vue.config.js* : This file contains user define configuration for the vue development environment.
+
+**Directory Structure (public)**
+
+```bash
+public\
+  index.html
+  favicon.png
+```
+
+**Page Structure**
+
+```html
+<!-- page structure -->
+<!-- index.html -->
+
+<div id="app">
+  <div class="wrapper">
+	<sidebar />
+	<div id="content">
+	  <topbar />
+	  <softwareOutput />
+	  <outputLog />
+	</div>
+  </div>
+	
+  <!-- Input Pop-up divs -->
+  <allInputs />
+</div>
+```
+
+**Directory Structure (src)**
+
+```bash
+src/
+  assets/
+  components/
+  App.vue
+  dxf_viewer.js
+  main.js
+  plotly_airfoil.js
+  save_inputs.js
+  vtkview.js
+```
+
+1. *dxf_viewer.js* : This file use *'viewerjs'* library to display the output DXF in image format(png, jpg, jpeg)
+2. *plotly_airfoil.js* : This file use *'plotly.js'* library to plot the airfoil graph.
+3. *save_inputs.js* : This file contains four functions.
+	1. collect_inputs() : This function collects all the input parameters from the HTML page and saves it as a JSON object.
+	2. save_input() : This function uses *'file-saver'* library to save the inputs in a file.
+	3. merge_inputs() : This function is used to load an input file from the local computer and update the inputs values in the HTML page.
+	4. load_input() : This function is used to read the JSON file uploaded by the user.
+4. *vtk_view.js* : This file contains the code of VTK geometric viewer. Three user-defined functions are created at the end of the file.
+	1. initLocalFileLoader() : This function is used to read and load the local VTP file to the renderer screen.
+	2. display_result() : This function is used to read and load the VTP file from the URL and display it in the renderer screen.
+	3. change_camera_view() : This function is used to change the camera view.
+5. *main.js* : This file contains all the configurations for the app page. All the modules should be imported in this file to used it on all the components.
+6. *App.vue* : This page defines the page structure of index.html stated above. All the CSS files should be imported here.
+
+#### Components
 
 **Sidebar (sidebar.vue, sidebar.css)**
 
 ```html
 <!-- sidebar structure -->
 <nav id="sidebar">
-	<ul>
-		<fileSidebar />
-		<!-- viewSidebar -->
-		<inputParameterSidebar />
-		<roundCanopySidebar />
-		<solverSidebar />
-		<helpSidebar />
-	</ul>
+  <ul>
+	<fileSidebar />
+	<!-- viewSidebar -->
+	<inputParameterSidebar />
+	<roundCanopySidebar />
+	<solverSidebar />
+	<helpSidebar />
+  </ul>
 </nav>
 ```
 
-- fileSidebar (fileSidebar.vue, save_inputs.js, vtkview.js)
->File menu has four list elements. Function 'initLocalFileLoader' is used from vtkview.js
->Open (For displaying the pre generated vtp file on the screen)
->Save Project (For saving the current input json locally)
->Load Project (For loading the inputs from the file)
+* _fileSidebar (fileSidebar.vue, save_inputs.js, vtkview.js)_
+	* File menu has four list elements. Function 'initLocalFileLoader' is used from vtkview.js
+	* Open (For displaying the pre-generated VTP file on the screen)
+	* Save Project (For saving the current input JSON locally)
+	* Load Project (For loading the inputs from the file)
 
-- viewSidebar (viewSidebar.vue, vtkview.js)
-View Sidebar has six list elements named 'front view', back view', left view', right view', top view', bottom view'.
-After adding the view icons in the toolbar viewSide is not included in rendering.
-Function 'change_camera_view' is used from vtkview.js
+* _viewSidebar (viewSidebar.vue, vtkview.js)_
+	* View Sidebar has six list elements named 'front view', back view', left view', right view', top view', bottom view'.
+	* After adding the view icons in the toolbar viewSide is not included in rendering.
+	* Function 'change_camera_view' is used from vtkview.js
 
-- inputParameterSidebar (inputParameterSidebar.vue)
-It has seven different parameters list elements.
+* _inputParameterSidebar (inputParameterSidebar.vue, save_inputs.js)_
+	* It has seven different input parameters list elements.
 
-- roundCanopySidebar (roundCanopySidebar.vue)
-It contain round canopy input parameters.
+* _roundCanopySidebar (roundCanopySidebar.vue, save_inputs.js)_
+	 * It contains round canopy input parameters.
 
-- solverSidebar (solverSidebar.vue)
-It contains two list elements named 'Stop Solver'  and 'Run Solver'.
+* solverSidebar (solverSidebar.vue)
+	* It contains two list elements named 'Stop Solver'  and 'Run Solver'.
 
-- helpSidebar (helpSidebar.vue)
-It contains two list elements named 'help' and 'manual'. 
+* helpSidebar (helpSidebar.vue)
+	* It contains two list elements named 'help' and 'manual'. 
 
-**Topbar (topbar.vue, topbar.css)**
+**Topbar (topbar.vue, topbar.css, save_inputs.js)**
 
-It has Sidebar toggle button with inputs parameter icons with a Run botton.
+* It has Sidebar toggle button with inputs parameter icons with a Run button.
 
 **Software Output (softwareOutput.vue, softwareOutput.css)**
 
-The toolbar has two tabs for 3D and 2D display followed by six different view icons.
-The renderer screen first display a loader than followed by output canvas.
+* This div is diveded into two parts toolbar and output display.
+* The toolbar has two tabs for 3D and 2D display followed by six different view icons.
+* The 3D display initially have a dummy image. After clicking 'Run' it is replaced with a loader. When the output is ready the loader is replaced by the output canvas.
+* The 2D display shows the converted jpeg or png image of the dxf with a download dxf button.
 
-**Output Log (outputLog.vue, outputLog.css)**
+**Output Log (outputLog.vue, outputLog.css, vtkview.js)**
 
-outputLog.vue is used create request to the server to check for the output file. If output file in generated and uploaded to the S3 bucket.
+* This component send a request to the server in every five seconds to check the status of the output files. If the server return 'succeeded' it clears the interval and call the display_result() function from _vtkview.js_.
 
-**All Inputs Popup (allInputs.vue)**
+**All Inputs Popup (allInputs.vue, customModal.css)**
+
+```html
+<!-- This div is hidden by default -->
+  <div>
+    <roundCanopyInput />
+    <inputParameterSidebarPlanform />
+    <inputParameterSidebarAirfoil />
+    <inputParameterSidebarVolute />
+    <inputParameterSidebarAl />
+    <inputParameterSidebarFp />
+    <inputParameterSidebarRLA />
+    <inputParameterSidebarBL />
+    <inputParameterSidebarAi />
+  </div>
+```
+
+This div is hidden by default. On clicking the input parameters button it toggles the display flag and the respective input modal is shown.
+
+----
 
 ### Backend
 
@@ -128,30 +199,42 @@ snowflake.py
 
 1. .flaskenv (contains flask configuration environment variables)
 2. api.py : flask app (contains different routes)
-2.1 */api/submit* : We submit the input json through post request at this route. It collects the input data and uploaded it in S3 bucket as filename *'case_id/input.scf'*. After uploading the file it initiate ecs run task function which is used to invoke fargate instance. Then it save the case_id and task_id pair in dynamoDB. This route return the case_id.
-2.2 */api/job_status* : It checks if the output file is generated or not. It takes case_id as an input and checks for *"case_id/cad_surfacefile.vtp"* in S3 bucket. It uses a boto3 object to check if the output file is present or not. If present then return 'SUCCEEDED' else return 'RUNNING'.
-2.3 */api/download_dxf* : This route is used to download the generated dxf file. It takes case_id as an input and search for dxf file in S3 bucket *"case_id/drawing.dxf"*. Then it generate a pre_signed url for it to download.
-3. case_model.py
+	1. */api/submit* : We submit the input json through post request at this route. It collects the input data and uploaded it in S3 bucket as filename *'case_id/input.scf'*. After uploading the file it initiate ecs run task function which is used to invoke fargate instance. Then it save the case_id and task_id pair in dynamoDB. This route return the case_id.
+	2. */api/job_status* : It checks if the output file is generated or not. It takes case_id as an input and checks for *"case_id/cad_surfacefile.vtp"* in S3 bucket. It uses a boto3 object to check if the output file is present or not. If present then return 'SUCCEEDED' else return 'RUNNING'.
+	3. */api/download_dxf* : This route is used to download the generated dxf file. It takes case_id as an input and search for dxf file in S3 bucket *"case_id/drawing.dxf"*. Then it generate a pre_signed url for it to download.
+3. case_model.py : This file contains the code for dymanoDB. The case_id, task_id pair is saved using in the table name case. Python library pynamodb is used for this operations.
+4. *cloud_connect.py* : This files contains three boto3 functions to upload, download and create presigned url functions.
+5. *requirments.txt* : This files contains all the dependencies for backend environment.
+6. *run_process.py* : This files contains the system call commands to run the solver. We copy this file inside the docker image. It first run the respective solver(solverMain or roundCanopy) then it runs gmsh followed by vtk_to_vtp. The output files are uploaded back to S3 bucket using function created in *cloud_connect.py*.
+7. *settings.py* : This file contains the environment variables.
+8. *snowflake.py* : This file contain the code for generating the case_id.
 
-### Docker Image
+----
+
+### Docker Image (Dockerfile)
 
 1. The Docker image is based on Ubuntu 18.04
-2. The image first download the uploaded input.scf from S3 Bucket.
-3. It then run the solver and upload the output vtp and dxf file back to S3 bucket.
+2. The python code is in /python/ directory.
+3. The solver code is inside /solverMain/ directory.
+4. The output generated files are saved in /work/ folder.
+5. The image first download the uploaded *input.scf* from S3 Bucket using a function upld_file written in *cloud_connect.py*.
+6. It then run the solver from file *run_process.py* and upload the output vtp and dxf file back to S3 bucket using *cloud_connect.py*.
+
+----
 
 ### AWS Services
 
 #### S3 Bucket
 
-1. S3 bucket is used to save the input.scf and the generated output vtp and dxf files.
+* S3 bucket is used to save the input.scf and the generated output vtp and dxf files.
 
 #### ECR
 
-1. ECR is used to store our docker image in aws repository.
+* ECR is used to store our docker image in aws repository.
 
 #### ECS
 
-1. ECS is used to create a cluster which is used to define the Fargate confriguations and environment.
+* ECS is used to create a cluster which is used to define the Fargate confriguations and environment.
 
 #### Fargate
 
