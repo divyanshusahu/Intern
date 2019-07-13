@@ -12,7 +12,7 @@
 
 .input_popup {
   width: 600px;
-  min-height: 400px;
+  /*min-height: 400px;*/
   max-height: 600px;
   overflow: auto;
   z-index: 40;

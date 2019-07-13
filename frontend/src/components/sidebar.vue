@@ -59,6 +59,7 @@ export default {
   methods: {
     mobile_sidebar_got_clicked: function() {
       this.sidebar_toggle = !this.sidebar_toggle;
+      document.getElementsByClassName("small_screen_overlay")[0].style.display = "none";
       EventBus.$emit("mobile_sidebar_toggle", this.sidebar_toggle);
     }
   }
