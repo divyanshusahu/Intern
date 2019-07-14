@@ -6,13 +6,16 @@
   overflow: auto;
   /*background: rgba(0, 0, 0, 0.8);*/
   /*background-color: #1f2837;*/
-  background-color: rgb(28, 43, 54);
-  color: rgba(255, 255, 255, 0.5);
-  transition: all 0.2s cubic-bezier(0.945, 0.020, 0.270, 0.665);
-  transform-origin: bottom left;
-  /*box-shadow: 12px 4px 6px 0 rgba(0, 0, 0, 0.5);*/
+  /*background-color: rgb(28, 43, 54);*/
+  background: linear-gradient(87deg, #172b4d 0, #1a174d 100%);
+  color: rgba(255, 255, 255, 0.95);
+  /*transition: all 0.4s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+  transform-origin: bottom left;*/
+  /*box-shadow: 12px 4px 6px 4px rgba(0, 0, 0, 0.5);*/
   line-height: 2em;
-  border-right: 1px solid black;
+  transition: all 0.2s ease-in;
+  display: flex;
+  flex-direction: column;
 }
 
 #sidebar img {
@@ -32,14 +35,14 @@
 #sidebar .sidebar-header {
   padding: 20px;
   height: 80px;
-  background-color: rgb(28, 43, 54);
+  background-color: #1a174d;
   color: #fafafa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 #sidebar.active {
   margin-left: -280px;
-  transform: rotateY(100deg);
+  /*transform: rotateY(100deg);*/
   /*min-width: 80px;
   max-width: 80px;*/
   text-align: center;
@@ -79,7 +82,8 @@
 }
 
 #sidebar ul li a:hover {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.5s;
   /*background-color: rgba(0, 0, 0, 1);*/
 }
 
@@ -103,7 +107,14 @@ ul ul a {
   transform: rotate(180deg);
 }
 
+.zeus_logo_div {
+  flex-grow: 1;
+  position: relative;
+}
+
 .zeus_logo {
   width: 75%;
-  opacity: 0.5;
+  opacity: 1;
+  position: absolute;
+  bottom: 25px;
 }

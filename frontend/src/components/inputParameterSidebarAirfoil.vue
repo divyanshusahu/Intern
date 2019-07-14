@@ -10,7 +10,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col">
-              <span>Chord length percentage</span>
+              <p>Chord length <span class="d-none d-sm-inline-block">percentage</span></p>
             </div>
             <div class="col">
               <input type="number" value="5.0" name="airfoil_clp" style="width: 100px">
@@ -18,7 +18,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <span>Angle with chord length</span>
+              <p>Angle with chord length</p>
             </div>
             <div class="col">
               <input type="number" value="135.0" name="airfoil_acl" style="width: 100px">

@@ -13,7 +13,7 @@
             <legend>Sewing Allowance</legend>
             <div class="row">
               <div class="col">
-                <p>Max Value (mm)</p>
+                <p>Max Value <span class="d-none d-sm-inline-block">(mm)</span></p>
               </div>
               <div class="col">
                 <input
@@ -26,7 +26,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <p>Min Value (mm)</p>
+                <p>Min Value <span class="d-none d-sm-inline-block">(mm)</span></p>
               </div>
               <div class="col">
                 <input type="number" value="1.0" name="flat_panels_sa_min_value" style="width: 100px">
@@ -38,7 +38,7 @@
             <legend>Sewing Allowance for Ribs</legend>
             <div class="row">
               <div class="col">
-                <p>Sides (% of chord)</p>
+                <p>Sides <span class="d-none d-sm-inline-block">(% of chord)</span></p>
               </div>
               <div class="col">
                 <input type="number" value="2.0" name="flat_panels_sar_sides" style="width: 100px">
@@ -46,7 +46,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <p>Front (% of chord)</p>
+                <p>Front <span class="d-none d-sm-inline-block">(% of chord)</span></p>
               </div>
               <div class="col">
                 <input type="number" value="2.0" name="flat_panels_sar_front" style="width: 100px">
@@ -54,7 +54,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <p>Rear (% of chord)</p>
+                <p>Rear <span class="d-none d-sm-inline-block">(% of chord)</span></p>
               </div>
               <div class="col">
                 <input type="number" value="2.0" name="flat_panels_sar_rear" style="width: 100px">
@@ -66,7 +66,7 @@
             <legend>Sewing Allowance Panel</legend>
             <div class="row">
               <div class="col">
-                <p>Sides (% of chord)</p>
+                <p>Sides <span class="d-none d-sm-inline-block">(% of chord)</span></p>
               </div>
               <div class="col">
                 <input type="number" value="2.0" name="flat_panels_sap_sides" style="width: 100px">
@@ -74,7 +74,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <p>Front (% of chord)</p>
+                <p>Front <span class="d-none d-sm-inline-block">(% of chord)</span></p>
               </div>
               <div class="col">
                 <input type="number" value="2.0" name="flat_panels_sap_front" style="width: 100px">
@@ -82,7 +82,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <p>Rear (% of chord)</p>
+                <p>Rear <span class="d-none d-sm-inline-block">(% of chord)</span></p>
               </div>
               <div class="col">
                 <input type="number" value="2.0" name="flat_panels_sap_rear" style="width: 100px">

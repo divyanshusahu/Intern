@@ -13,7 +13,7 @@
             <legend>Washout Description</legend>
             <div class="row">
               <div class="col">
-                <span>Tip angle (deg)</span>
+                <span>Tip angle <span class="d-none d-sm-inline-block">(deg)</span></span>
               </div>
               <div class="col">
                 <input
@@ -61,7 +61,7 @@
             <legend>Side Flap Description</legend>
             <div class="row">
               <div class="col">
-                <span>Rear Edge Length</span>
+                <span>Rear <span class="d-none d-sm-inline-block">Edge Length</span></span>
               </div>
               <div class="col">
                 <input type="number" value="10.0" name="advip_sfd_rel" style="width: 100px" />
@@ -69,7 +69,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <span>Front Edge Length</span>
+                <span>Front <span class="d-none d-sm-inline-block">Edge Length</span></span>
               </div>
               <div class="col">
                 <input type="number" value="20.0" name="advip_sfd_fel" style="width: 100px" />

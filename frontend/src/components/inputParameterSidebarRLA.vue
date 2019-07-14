@@ -7,7 +7,7 @@
     <div class="card bg-light input_popup">
       <div class="card-header">
         <h5>
-          Rigging Lines Arrangment
+          Rigging Lines <i style="font-style:normal;" class="d-none d-sm-inline-block">Arrangment</i>
           <span v-on:click="input_toggle = !input_toggle">&times;</span>
         </h5>
       </div>
@@ -17,7 +17,7 @@
             <legend>Chordwise Location</legend>
             <div class="row">
               <div class="col">
-                <p>Location (% of chord)</p>
+                <p>Location <span class="d-none d-sm-inline-block">(% of chord)</span></p>
               </div>
               <div class="col">
                 <input

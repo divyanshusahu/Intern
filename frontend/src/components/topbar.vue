@@ -14,47 +14,39 @@
         <span></span>
       </button>
 
-      <span class="d-block d-md-none mobile_inputs_icons">
+      <span class="d-block d-lg-none mobile_inputs_icons">
         <img
           src="../assets/icon/planform.png"
           alt="Planform"
           title="Planform"
-          height="20"
-          width="20"
           v-on:click="got_clicked_planform"
         />
         <img
           src="../assets/icon/airfoil.png"
           alt="Airfoil"
           title="Airfoil"
-          height="20"
-          width="20"
           v-on:click="got_clicked_airfoil"
         />
-        <img src="../assets/icon/volute.png" alt="Volute" title="Volute" height="20" width="20" 
+        <img src="../assets/icon/volute.png" alt="Volute" title="Volute" 
           v-on:click="got_clicked_volute" />
-        <img src="../assets/icon/anchor.png" alt="Anchor" title="Anchor" height="20" width="20"
+        <img src="../assets/icon/anchor.png" alt="Anchor" title="Anchor"
           v-on:click="got_clicked_al" />
-        <img src="../assets/icon/panels.png" alt="Panels" title="Panels" height="20" width="20"
+        <img src="../assets/icon/panels.png" alt="Panels" title="Panels"
           v-on:click="got_clicked_fp" />
         <img
           src="../assets/icon/riserlines.png"
           alt="Riser Lines"
           title="Riser Lines"
-          height="20"
-          width="20"
           v-on:click="got_clicked_rla"
         />
         <img
           src="../assets/icon/brake.png"
           alt="Brake Lines"
           title="Brake Lines"
-          height="20"
-          width="20"
           v-on:click="got_clicked_brake_lines"
         />
       </span>
-      <button type="button" class="btn d-block d-md-none" v-on:click="run_the_software">
+      <button type="button" class="btn d-block d-lg-none" v-on:click="run_the_software">
         <i class="fas fa-play sidebar_icons"></i>
         <b class="d-none">Run</b>
       </button>

@@ -26,7 +26,7 @@
         </li>
       </ul>
       <ul class="view_icons" v-if="!drawing_3d_flag">
-        <li>
+        <li style="width:150px;">
           <button class="btn btn-success" v-on:click="download_dxf">Download DXF</button>
         </li>
       </ul>

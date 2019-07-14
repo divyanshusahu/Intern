@@ -11,8 +11,10 @@
         >
         </div>
         <topbar />
-        <softwareOutput />
-        <outputLog />
+        <div class="outputs">
+          <softwareOutput />
+          <outputLog />
+        </div>
       </div>
     </div>
 

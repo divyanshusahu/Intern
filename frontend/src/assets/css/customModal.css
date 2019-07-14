@@ -33,7 +33,6 @@
 .pop_up_toggle {
   visibility: hidden;
   display: none;
-  transition: 0.5s;
 }
 
 .user_define {

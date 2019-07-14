@@ -1,7 +1,6 @@
 #outputLog {
-    height: 10%;
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 1em;
-    overflow: auto
+    height: 6%;
+    width: 100%;
+    overflow: auto;
+    margin-top: 1%;
 }

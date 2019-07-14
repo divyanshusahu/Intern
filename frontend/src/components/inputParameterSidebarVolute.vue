@@ -13,15 +13,15 @@
             <legend>Volute</legend>
             <div class="row">
               <div class="col">
-                <span>Shape</span>
+                <p>Shape</p>
               </div>
               <div class="col">
-                <span>Elliptic</span>
+                <p>Elliptic</p>
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <span>Minot to Major axis ratio</span>
+                <p>Minot to Major axis ratio</p>
               </div>
               <div class="col">
                 <input type="number" value="1.0" name="volute_input_minot_ratio" style="width:100px;">
@@ -29,7 +29,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <span>Semi Span Angle (deg)</span>
+                <p>Semi Span Angle <span class="d-none d-sm-inline-block">(deg)</span></p>
               </div>
               <div class="col">
                 <input type="number" value="45.0" name="volute_input_ssa" style="width: 100px">

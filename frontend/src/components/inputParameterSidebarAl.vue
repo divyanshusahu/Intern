@@ -29,6 +29,7 @@
             type="text"
             name="user_defined_ribs"
             value="1,3,8,13"
+            style="width:200px;"
           >
         </fieldset>
       </div>
