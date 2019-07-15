@@ -19,6 +19,7 @@
 #output_screen {
   width: 100%;
   height: 90%;
+  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.2);
 }
 
 #view_toolbar {
@@ -51,7 +52,7 @@
 
 .toolbar_active {
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 1);
   border-bottom: none;
   color: #09b7bf;
 }
