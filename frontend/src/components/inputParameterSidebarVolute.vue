@@ -43,7 +43,7 @@
           type="button"
           class="btn btn-success"
           v-on:click="input_toggle = !input_toggle"
-        >Close</button>
+        >Apply</button>
       </div>
     </div>
   </div>

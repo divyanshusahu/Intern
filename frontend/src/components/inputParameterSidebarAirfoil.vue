@@ -38,6 +38,14 @@
                 </select>
               </div>
             </div>
+            <div class="row">
+              <div class="col">
+                <p>Or from file</p>
+              </div>
+              <div class="col">
+                <input type="file" accept=".txt" id="user_defined_input" />
+              </div>
+            </div>
             <div id="airfoil_plot" class="d-none d-md-block">
               
             </div>
@@ -45,7 +53,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <button type="button" class="btn btn-success" v-on:click="input_toggle = !input_toggle">Close</button>
+        <button type="button" class="btn btn-success" v-on:click="input_toggle = !input_toggle">Apply</button>
       </div>
     </div>
   </div>
